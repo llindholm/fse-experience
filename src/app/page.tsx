@@ -25,7 +25,7 @@ const transformationStories = [
     quote:
       "I landed two high-ticket clients in one week, and they both paid in full.",
     name: "Gagan | FSE Client",
-    
+
     result: "2 clients · paid in full",
   },
   {
@@ -34,7 +34,7 @@ const transformationStories = [
     quote:
       "I sold a $15K package one week after implementing the strategy. No sales call. No pitch. Just premium content that did the heavy lifting for me.",
     name: "FSE Client",
-    
+
     result: "$15K · no sales call",
   },
   {
@@ -43,7 +43,7 @@ const transformationStories = [
     quote:
       "My content keeps compounding. Every post does even better than the last.",
     name: "FSE Client",
-    
+
     result: "2 signups already",
   },
   {
@@ -52,7 +52,7 @@ const transformationStories = [
     quote:
       "I’ve done a lot of programs, but nothing has ever pulled together content, sales, offers, and messaging like this.",
     name: "FSE Client",
-    
+
     result: "No more starting over",
   },
 ];
@@ -1398,7 +1398,7 @@ export default function Home() {
                 <div className="story-person">
                   <div className="story-person-copy">
                     <p>{story.name}</p>
-                    
+
                   </div>
 
                   <strong className="story-result">{story.result}</strong>
@@ -1607,7 +1607,17 @@ export default function Home() {
                   </p>
                 </div>
 
-                <p className="jess-proof-signature">— Jess</p>
+                <p className="jess-proof-signature">
+                  JESSICA CAVER LINDHOLM
+                </p>
+
+                <section className="checkout-divider">
+                  <div className="divider-line" />
+                </section>
+
+                <p className="jess-proof-founder">
+                  Founder · To Living Free
+                </p>
               </Insight>
             </div>
           </div>
@@ -1644,7 +1654,7 @@ export default function Home() {
 
             <a
               className="primary-enrollment-button"
-              href="#"
+              href="https://course.tolivingfree.com/fse-experience-checkout"
               aria-label="Enroll in Feminine Sales Engine"
             >
               <span>Enter Feminine Sales Engine</span>
@@ -1652,15 +1662,15 @@ export default function Home() {
             </a>
 
             <Insight delay={0.3}>
-            <p className="final-note">
-              <span>Your message. Your authority. Your offers.</span>
-              <span>Built to sell for you.</span>
-            </p>
-          </Insight>
+              <p className="final-note">
+                <span>Your message. Your authority. Your offers.</span>
+                <span>Built to sell for you.</span>
+              </p>
+            </Insight>
           </Insight>
         </section>
 
-        
+
 
         <section className="after-enrollment">
           <Insight>
@@ -1669,21 +1679,17 @@ export default function Home() {
 
           <div className="after-enrollment-sequence">
             <Insight>
-              <p>You enter the complete FSE experience.</p>
+              <p>The entire FSE experience is yours.</p>
             </Insight>
 
             <Insight delay={0.08}>
-              <p>You begin with the foundation of your message.</p>
+              <p>One complete system.</p>
             </Insight>
 
-            <Insight delay={0.16}>
-              <p>You build each layer in the order it becomes useful.</p>
-            </Insight>
 
             <Insight delay={0.24}>
               <p>
-                You leave with a business that is clearer, stronger, and designed to
-                keep working.
+                Designed to keep working for you.
               </p>
             </Insight>
           </div>
@@ -1735,7 +1741,7 @@ export default function Home() {
           <Insight delay={0.24}>
             <a
               className="final-enrollment-button"
-              href="#"
+              href="https://course.tolivingfree.com/fse-experience-checkout"
               aria-label="Join Feminine Sales Engine"
             >
               <span>Join Feminine Sales Engine</span>
@@ -1752,14 +1758,14 @@ export default function Home() {
         </section>
 
         <footer className="experience-footer">
-          <a href="#top">To Living Free</a>
+          <a href="https://tolivingfree.com">To Living Free</a>
 
           <p>Feminine Sales Engine™</p>
 
           <div>
-            <a href="#">Terms</a>
-            <a href="#">Privacy</a>
-            <a href="#">Support</a>
+            <a href="https://course.tolivingfree.com/terms-of-use">Terms</a>
+            <a href="https://course.tolivingfree.com/privacy-policy">Privacy</a>
+            <a href="mailto:support@tolivingfree.com">Support</a>
           </div>
         </footer>
       </section>

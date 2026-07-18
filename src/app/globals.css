@@ -3154,7 +3154,7 @@ a {
   max-width: 650px;
   margin: 0 auto 70px;
   color: var(--rose);
-  font-size: 10px;
+  font-size: 16px;
   letter-spacing: 0.26em;
   text-transform: uppercase;
 }
@@ -3762,12 +3762,60 @@ a {
 
 .jess-proof-signature {
   margin: clamp(3rem, 5vw, 5rem) 0 0;
+  margin-top: 36px;
+  margin-bottom: 10px;
   color: var(--rose);
-  font-family: "Italiana", serif;
-  font-size: clamp(2.2rem, 3.8vw, 4rem);
-  font-style: italic;
-  letter-spacing: -0.04em;
+  font-family: "Manrope";
+  font-size: clamp(1.2rem, 2vw, 1.75rem);
+  letter-spacing: .12em;
   line-height: 1;
+}
+
+.jess-proof-founder {
+  font-family: var(--font-manrope);
+  font-size: 0.82rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 234, 0.58);
+  margin: 0;
+}
+
+/* ---------- Rose Divider ---------- */
+
+.checkout-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin: 10px 0 12px;
+}
+
+.divider-line {
+  flex: 1;
+  max-width: 180px;
+  height: 1px;
+  background: rgba(245, 240, 234, .18);
+}
+
+.divider-rose {
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  background: #A46A73;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 0 0 1px rgba(245, 240, 234, .08),
+    0 12px 30px rgba(0, 0, 0, .18);
+}
+
+.rose-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #F5F0EA;
 }
 
 @media (max-width: 800px) {
@@ -3819,7 +3867,7 @@ a {
 
   .jess-proof-signature {
     margin-top: 3rem;
-    font-size: 2.8rem;
+    font-size: 1.2rem;
   }
 }
 
