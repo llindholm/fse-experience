@@ -1,8 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 type PromptStage = "dot" | "fse" | "join" | "enroll";
+
+type CloseReason =
+    | "close_button"
+    | "outside_click"
+    | "continue_exploring"
+    | "go_to_enrollment"
+    | "escape_key";
 
 const promptContent: Record<
     PromptStage,
@@ -48,11 +56,13 @@ const promptContent: Record<
 
 export default function EnrollmentPrompt() {
     const [stage, setStage] = useState<PromptStage>("dot");
+
     const toggleRef = useRef<HTMLInputElement>(null);
 
+    const openSourceRef = useRef("floating_prompt");
+    const closeReasonRef = useRef<CloseReason>("close_button");
 
     useEffect(() => {
-
         const stageMap: Record<string, PromptStage> = {
             "chapter-one": "dot",
             "chapter-two": "dot",
@@ -123,13 +133,80 @@ export default function EnrollmentPrompt() {
         };
     }, []);
 
+    useEffect(() => {
+        function handleKeyDown(event: KeyboardEvent) {
+            if (event.key !== "Escape") return;
+            if (!toggleRef.current?.checked) return;
+
+            toggleRef.current.checked = false;
+
+            void trackEvent("enrollment_close", {
+                sectionId: "enrollment-prompt",
+                metadata: {
+                    closeReason: "escape_key",
+                    promptStage: stage,
+                },
+            });
+        }
+
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [stage]);
+
+    function handlePromptToggle(
+        event: React.ChangeEvent<HTMLInputElement>
+    ) {
+        const isOpen = event.currentTarget.checked;
+
+        if (isOpen) {
+            void trackEvent("enrollment_open", {
+                sectionId: "enrollment-prompt",
+                metadata: {
+                    source: openSourceRef.current,
+                    promptStage: stage,
+                },
+            });
+
+            return;
+        }
+
+        void trackEvent("enrollment_close", {
+            sectionId: "enrollment-prompt",
+            metadata: {
+                closeReason: closeReasonRef.current,
+                promptStage: stage,
+            },
+        });
+
+        closeReasonRef.current = "close_button";
+    }
+
+    function prepareOpen() {
+        openSourceRef.current = "floating_prompt";
+    }
+
+    function prepareClose(reason: CloseReason) {
+        closeReasonRef.current = reason;
+    }
+
     function goToEnrollment(
         event: React.MouseEvent<HTMLAnchorElement>
     ) {
         event.preventDefault();
 
-        if (toggleRef.current) {
+        if (toggleRef.current?.checked) {
             toggleRef.current.checked = false;
+
+            void trackEvent("enrollment_close", {
+                sectionId: "enrollment-prompt",
+                metadata: {
+                    closeReason: "go_to_enrollment",
+                    promptStage: stage,
+                },
+            });
         }
 
         window.requestAnimationFrame(() => {
@@ -142,8 +219,6 @@ export default function EnrollmentPrompt() {
 
     const content = promptContent[stage];
 
-    console.log("Current FSE prompt stage:", stage);
-
     return (
         <div
             className="enrollment-prompt"
@@ -155,12 +230,14 @@ export default function EnrollmentPrompt() {
                 className="enrollment-prompt-toggle"
                 type="checkbox"
                 aria-hidden="true"
+                onChange={handlePromptToggle}
             />
 
             <label
                 className="enrollment-prompt-backdrop"
                 htmlFor="fse-enrollment-prompt"
                 aria-label="Close enrollment prompt"
+                onClick={() => prepareClose("outside_click")}
             />
 
             <div
@@ -172,6 +249,7 @@ export default function EnrollmentPrompt() {
                     className="enrollment-prompt-close"
                     htmlFor="fse-enrollment-prompt"
                     aria-label="Close enrollment prompt"
+                    onClick={() => prepareClose("close_button")}
                 >
                     ×
                 </label>
@@ -190,6 +268,9 @@ export default function EnrollmentPrompt() {
                     <label
                         className="enrollment-prompt-cta"
                         htmlFor="fse-enrollment-prompt"
+                        onClick={() =>
+                            prepareClose("continue_exploring")
+                        }
                     >
                         <span>{content.action}</span>
                         <span aria-hidden="true">↓</span>
@@ -210,8 +291,12 @@ export default function EnrollmentPrompt() {
                 className="enrollment-prompt-trigger"
                 htmlFor="fse-enrollment-prompt"
                 aria-label="Open Feminine Sales Engine prompt"
+                onClick={prepareOpen}
             >
-                <span className="prompt-stage prompt-stage-dot" aria-hidden="true">
+                <span
+                    className="prompt-stage prompt-stage-dot"
+                    aria-hidden="true"
+                >
                     <i />
                 </span>
 
