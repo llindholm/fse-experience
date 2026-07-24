@@ -1,11 +1,11 @@
 "use client";
 
-import Insight from "@/components/Insight";
-import EnrollmentPrompt from "@/components/EnrollmentPrompt";
+import Insight from "@/components/marketing/Insight";
+import EnrollmentPrompt from "@/components/marketing/EnrollmentPrompt";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
-import TrackedCheckoutLink from "@/components/TrackedCheckoutLink";
+import TrackedCheckoutLink from "@/components/marketing/TrackedCheckoutLink";
 
 const pressureItems = [
   "Post more.",

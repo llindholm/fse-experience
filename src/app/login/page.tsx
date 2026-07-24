@@ -1,4 +1,4 @@
-import AdminLoginForm from "@/components/dashboard/AdminLoginForm";
+import AdminLoginForm from "@/components/admin/AdminLoginForm";
 import "./login.css";
 
 type LoginPageProps = {
@@ -14,9 +14,13 @@ export default async function LoginPage({
 
     const nextPath =
         params.next?.startsWith("/") &&
-        !params.next.startsWith("//")
+            !params.next.startsWith("//")
             ? params.next
-            : "/admin";
+            : "/library";
+
+    const isAdminLogin =
+        nextPath === "/admin" ||
+        nextPath.startsWith("/admin/");
 
     return (
         <main className="admin-login-page">
@@ -29,14 +33,21 @@ export default async function LoginPage({
 
                 <div className="admin-login-intro">
                     <p className="admin-login-eyebrow">
-                        Private workspace
+                        {isAdminLogin
+                            ? "Private workspace"
+                            : "Private Collection"}
                     </p>
 
-                    <h1>Insights</h1>
+                    <h1>
+                        {isAdminLogin
+                            ? "Insights"
+                            : "Enter the Library"}
+                    </h1>
 
                     <p>
-                        Your private view of performance, visitor
-                        journeys, and growth.
+                        {isAdminLogin
+                            ? "Your private view of performance, visitor journeys, and growth."
+                            : "Return to your courses, resources, and body of work."}
                     </p>
                 </div>
 

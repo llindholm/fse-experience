@@ -66,33 +66,111 @@ export async function updateSession(
     } = await supabase.auth.getUser();
 
     const pathname = request.nextUrl.pathname;
-    const isAdminRoute =
-        pathname === "/admin" ||
-        pathname.startsWith("/admin/");
 
-    const isLoginRoute =
-        pathname === "/login";
+const isAdminRoute =
+    pathname === "/admin" ||
+    pathname.startsWith("/admin/");
 
-    if (isAdminRoute && !user) {
-        const loginUrl = request.nextUrl.clone();
+const isLibraryRoute =
+    pathname === "/library" ||
+    pathname.startsWith("/library/");
 
-        loginUrl.pathname = "/login";
-        loginUrl.searchParams.set(
-            "next",
-            pathname
+const isProtectedRoute =
+    isAdminRoute || isLibraryRoute;
+
+const isLoginRoute = pathname === "/login";
+
+if (isProtectedRoute && !user) {
+    const loginUrl = request.nextUrl.clone();
+
+    loginUrl.pathname = "/login";
+    loginUrl.search = "";
+
+    const requestedPath = `${pathname}${request.nextUrl.search}`;
+
+    loginUrl.searchParams.set("next", requestedPath);
+
+    return NextResponse.redirect(loginUrl);
+}
+
+if (isAdminRoute && user) {
+    const {
+        data: profile,
+        error: profileError,
+    } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", user.id)
+        .maybeSingle();
+
+    if (profileError) {
+        console.error(
+            "Unable to verify administrator role:",
+            profileError
         );
-
-        return NextResponse.redirect(loginUrl);
     }
 
-    if (isLoginRoute && user) {
-        const adminUrl = request.nextUrl.clone();
+    if (profile?.role !== "admin") {
+        const libraryUrl = request.nextUrl.clone();
 
-        adminUrl.pathname = "/admin";
-        adminUrl.search = "";
+        libraryUrl.pathname = "/library";
+        libraryUrl.search = "";
 
-        return NextResponse.redirect(adminUrl);
+        return NextResponse.redirect(libraryUrl);
+    }
+}
+
+if (isLoginRoute && user) {
+    const requestedNext =
+        request.nextUrl.searchParams.get("next");
+
+    let safeNext =
+        requestedNext?.startsWith("/") &&
+        !requestedNext.startsWith("//")
+            ? requestedNext
+            : "/library";
+
+    const requestedPathname =
+        safeNext.split("?")[0];
+
+    const requestsAdmin =
+        requestedPathname === "/admin" ||
+        requestedPathname.startsWith("/admin/");
+
+    if (requestsAdmin) {
+        const {
+            data: profile,
+            error: profileError,
+        } = await supabase
+            .from("profiles")
+            .select("role")
+            .eq("id", user.id)
+            .maybeSingle();
+
+        if (
+            profileError ||
+            profile?.role !== "admin"
+        ) {
+            safeNext = "/library";
+        }
     }
 
-    return response;
+    const destinationUrl =
+        request.nextUrl.clone();
+
+    const [destinationPath, query = ""] =
+        safeNext.split("?");
+
+    destinationUrl.pathname =
+        destinationPath;
+
+    destinationUrl.search =
+        query ? `?${query}` : "";
+
+    return NextResponse.redirect(
+        destinationUrl
+    );
+}
+
+return response;
 }

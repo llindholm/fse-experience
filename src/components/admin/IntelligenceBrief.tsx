@@ -1,4 +1,4 @@
-import type { IntelligenceBrief as IntelligenceBriefData } from "@/lib/dashboard/intelligence";
+import type { IntelligenceBrief as IntelligenceBriefData } from "@/lib/admin/intelligence";
 
 type IntelligenceBriefProps = {
     brief: IntelligenceBriefData;

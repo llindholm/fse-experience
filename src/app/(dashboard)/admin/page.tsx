@@ -1,17 +1,18 @@
-import ChapterProgress from "@/components/dashboard/ChapterProgress";
-import StatCard from "@/components/dashboard/StatCard";
+import ChapterProgress from "@/components/admin/ChapterProgress";
+import StatCard from "@/components/admin/StatCard";
 import {
     getChapterProgression,
     getDailyVisitorTrend,
     getOverviewMetrics,
     getSalesFunnel,
     getRecentSessions,
-} from "@/lib/dashboard/analytics";
-import VisitorTrend from "@/components/dashboard/VisitorTrend";
-import SalesFunnel from "@/components/dashboard/SalesFunnel";
-import IntelligenceBrief from "@/components/dashboard/IntelligenceBrief";
-import { buildIntelligenceBrief } from "@/lib/dashboard/intelligence";
-import SessionExplorer from "@/components/dashboard/SessionExplorer";
+} from "@/lib/admin/analytics";
+import VisitorTrend from "@/components/admin/VisitorTrend";
+import SalesFunnel from "@/components/admin/SalesFunnel";
+import IntelligenceBrief from "@/components/admin/IntelligenceBrief";
+import { buildIntelligenceBrief } from "@/lib/admin/intelligence";
+import SessionExplorer from "@/components/admin/SessionExplorer";
+import SignOutButton from "@/components/admin/SignOutButton";
 
 
 export default async function AdminPage() {

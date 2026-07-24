@@ -1,0 +1,54 @@
+.account-page {
+    min-height: 100svh;
+    padding: 120px 8vw;
+}
+
+.account-card {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.account-eyebrow {
+    margin-bottom: 16px;
+    font-family: var(--font-manrope);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.account-card h1 {
+    margin-bottom: 48px;
+    font-family: var(--font-italiana);
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 400;
+}
+
+.account-details {
+    padding: 28px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.14);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+}
+
+.account-detail {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.account-detail span {
+    opacity: 0.6;
+}
+
+.account-sign-out {
+    margin-top: 40px;
+    padding: 14px 24px;
+    border: 1px solid currentColor;
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+}
+
+.account-sign-out:disabled {
+    cursor: wait;
+    opacity: 0.6;
+}

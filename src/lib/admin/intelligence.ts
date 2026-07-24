@@ -3,7 +3,7 @@ import type {
     DailyVisitorMetric,
     FunnelStageMetric,
     OverviewMetrics,
-} from "@/lib/dashboard/analytics";
+} from "@/lib/admin/analytics";
 
 export type IntelligenceBrief = {
     greeting: string;

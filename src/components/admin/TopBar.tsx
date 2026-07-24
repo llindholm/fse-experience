@@ -1,4 +1,4 @@
-import SignOutButton from "@/components/dashboard/SignOutButton";
+import SignOutButton from "@/components/admin/SignOutButton";
 
 function formatDate() {
     return new Intl.DateTimeFormat("en-US", {

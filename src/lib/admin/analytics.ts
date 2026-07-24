@@ -504,7 +504,7 @@ type SessionAnalyticsRow = {
     event_name: string;
     section_id: string | null;
     created_at: string;
-    device: string | null;
+    device_type: string | null;
 };
 
 function getChapterNumber(sectionId: string | null) {
@@ -573,7 +573,7 @@ export async function getRecentSessions(
     const { data, error } = await supabaseAdmin
         .from("analytics_events")
         .select(
-            "visitor_id, session_id, event_name, section_id, created_at, device"
+            "visitor_id, session_id, event_name, section_id, created_at, device_type"
         )
         .eq("site", "fse")
         .in("event_name", [
@@ -697,7 +697,7 @@ export async function getRecentSessions(
                         : "left";
 
             const device =
-                orderedRows.find((row) => row.device)?.device ?? null;
+                orderedRows.find((row) => row.device_type)?.device_type ?? null;
 
             return {
                 sessionId,

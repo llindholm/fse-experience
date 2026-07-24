@@ -1,14 +1,15 @@
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseSecretKey = process.env.SUPABASE_SECRET_KEY;
+const supabaseUrl =
+    process.env.SUPABASE_INTELLIGENCE_URL;
 
-if (!supabaseUrl) {
-    throw new Error("Missing NEXT_PUBLIC_SUPABASE_URL");
-}
+const supabaseSecretKey =
+    process.env.SUPABASE_SECRET_KEY;
 
-if (!supabaseSecretKey) {
-    throw new Error("Missing SUPABASE_SECRET_KEY");
+if (!supabaseUrl || !supabaseSecretKey) {
+    throw new Error(
+        "Missing TLF Intelligence Supabase environment variables."
+    );
 }
 
 export const supabaseAdmin = createClient(
@@ -16,8 +17,8 @@ export const supabaseAdmin = createClient(
     supabaseSecretKey,
     {
         auth: {
-            persistSession: false,
             autoRefreshToken: false,
+            persistSession: false,
         },
     }
 );

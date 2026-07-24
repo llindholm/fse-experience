@@ -1,0 +1,320 @@
+.course-page {
+    min-height: 100svh;
+    padding-bottom: 120px;
+    color: #241d1b;
+    background:
+        radial-gradient(circle at 88% 8%,
+            rgba(161, 95, 104, 0.12),
+            transparent 28rem),
+        #f5f0ea;
+}
+
+.course-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: min(100% - 48px, 1180px);
+    margin: 0 auto;
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(36, 29, 27, 0.12);
+}
+
+.course-header__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.course-header__eyebrow,
+.course-hero__eyebrow,
+.course-section-heading__eyebrow {
+    font-family: "Manrope", sans-serif;
+    font-size: 0.67rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #9f6068;
+}
+
+.course-header__title {
+    font-family: "Italiana", serif;
+    font-size: 1.75rem;
+    line-height: 1;
+}
+
+.course-header__back {
+    font-family: "Manrope", sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: rgba(36, 29, 27, 0.62);
+    text-decoration: none;
+}
+
+.course-hero,
+.course-continue,
+.course-curriculum {
+    width: min(100% - 48px, 1180px);
+    margin: 0 auto;
+}
+
+.course-hero {
+    padding: 92px 0 76px;
+}
+
+.course-hero__eyebrow {
+    margin: 0 0 22px;
+}
+
+.course-hero__title {
+    max-width: 1020px;
+    margin: 0;
+    font-family: "Italiana", serif;
+    font-size: clamp(4rem, 8vw, 8rem);
+    font-weight: 400;
+    line-height: 0.91;
+    letter-spacing: -0.045em;
+}
+
+.course-hero__subtitle {
+    max-width: 820px;
+    margin: 34px 0 0;
+    font-family: "Italiana", serif;
+    font-size: clamp(1.65rem, 3vw, 2.8rem);
+    line-height: 1.15;
+    color: #9f6068;
+}
+
+.course-hero__description {
+    max-width: 640px;
+    margin: 26px 0 0;
+    font-family: "Manrope", sans-serif;
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: rgba(36, 29, 27, 0.62);
+}
+
+.course-continue {
+    margin-bottom: 92px;
+    padding: clamp(34px, 5vw, 58px);
+    color: #f5f0ea;
+    background:
+        radial-gradient(circle at 92% 18%,
+            rgba(245, 240, 234, 0.14),
+            transparent 18rem),
+        #9f6068;
+}
+
+.course-continue__label {
+    padding-bottom: 24px;
+    font-family: "Manrope", sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 234, 0.7);
+}
+
+.course-continue__content {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 48px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(245, 240, 234, 0.22);
+}
+
+.course-continue__module {
+    margin: 0 0 10px;
+    font-family: "Manrope", sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 234, 0.66);
+}
+
+.course-continue__title {
+    max-width: 740px;
+    margin: 0;
+    font-family: "Italiana", serif;
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: 400;
+    line-height: 1;
+}
+
+.course-continue__duration {
+    margin: 14px 0 0;
+    font-family: "Manrope", sans-serif;
+    font-size: 0.8rem;
+    color: rgba(245, 240, 234, 0.62);
+}
+
+.course-continue__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    flex: 0 0 auto;
+    padding-bottom: 5px;
+    font-family: "Manrope", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #f5f0ea;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 240, 234, 0.5);
+}
+
+.course-curriculum {
+    padding-bottom: 90px;
+}
+
+.course-curriculum--secondary {
+    padding-top: 10px;
+}
+
+.course-section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 20px;
+}
+
+.course-section-heading__eyebrow,
+.course-section-heading__count {
+    margin: 0;
+}
+
+.course-section-heading__count {
+    font-family: "Manrope", sans-serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(36, 29, 27, 0.44);
+}
+
+.course-lesson-list {
+    border-top: 1px solid rgba(36, 29, 27, 0.16);
+}
+
+.course-lesson {
+    display: grid;
+    grid-template-columns: 50px minmax(0, 1fr) auto 24px;
+    align-items: center;
+    gap: 24px;
+    padding: 28px 0;
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(36, 29, 27, 0.16);
+    transition:
+        color 180ms ease,
+        padding 220ms ease;
+}
+
+.course-lesson:hover {
+    padding-left: 10px;
+    color: #9f6068;
+}
+
+.course-lesson__number {
+    font-family: "Manrope", sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: rgba(36, 29, 27, 0.36);
+}
+
+.course-lesson__content {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.course-lesson__title {
+    font-family: "Italiana", serif;
+    font-size: clamp(1.7rem, 3vw, 3rem);
+    line-height: 1;
+}
+
+.course-lesson__description {
+    font-family: "Manrope", sans-serif;
+    font-size: 0.8rem;
+    color: rgba(36, 29, 27, 0.54);
+}
+
+.course-lesson__duration {
+    font-family: "Manrope", sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(36, 29, 27, 0.44);
+}
+
+.course-lesson__arrow {
+    font-size: 1rem;
+}
+
+@media (max-width: 800px) {
+
+    .course-header,
+    .course-hero,
+    .course-continue,
+    .course-curriculum {
+        width: min(100% - 32px, 1180px);
+    }
+
+    .course-header {
+        align-items: flex-start;
+        padding: 22px 0;
+    }
+
+    .course-header__back {
+        max-width: 130px;
+        text-align: right;
+    }
+
+    .course-hero {
+        padding: 72px 0 60px;
+    }
+
+    .course-hero__title {
+        font-size: clamp(3.5rem, 16vw, 5.5rem);
+    }
+
+    .course-hero__subtitle {
+        font-size: clamp(1.7rem, 8vw, 2.5rem);
+    }
+
+    .course-continue {
+        margin-bottom: 72px;
+        padding: 30px 24px;
+    }
+
+    .course-continue__content {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .course-lesson {
+        grid-template-columns: 30px minmax(0, 1fr) 20px;
+        gap: 12px;
+        padding: 24px 0;
+    }
+
+    .course-lesson__duration {
+        display: none;
+    }
+
+    .course-lesson__title {
+        font-size: clamp(1.8rem, 9vw, 2.8rem);
+    }
+
+    .course-section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+}

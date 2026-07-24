@@ -1,4 +1,4 @@
-import type { FunnelStageMetric } from "@/lib/dashboard/analytics";
+import type { FunnelStageMetric } from "@/lib/admin/analytics";
 
 type SalesFunnelProps = {
     stages: FunnelStageMetric[];

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import type {
     RecentSessionMetric,
     SessionJourneyEvent,
-} from "@/lib/dashboard/analytics";
+} from "@/lib/admin/analytics";
 
 type SessionExplorerProps = {
     sessions: RecentSessionMetric[];

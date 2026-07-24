@@ -1,4 +1,4 @@
-import type { DailyVisitorMetric } from "@/lib/dashboard/analytics";
+import type { DailyVisitorMetric } from "@/lib/admin/analytics";
 
 type VisitorTrendProps = {
     data: DailyVisitorMetric[];

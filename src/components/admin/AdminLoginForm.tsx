@@ -10,7 +10,7 @@ type AdminLoginFormProps = {
 };
 
 export default function AdminLoginForm({
-    nextPath = "/admin",
+    nextPath = "/library",
 }: AdminLoginFormProps) {
     const router = useRouter();
 

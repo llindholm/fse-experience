@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import Sidebar from "@/components/dashboard/Sidebar";
-import TopBar from "@/components/dashboard/TopBar";
+import Sidebar from "@/components/admin/Sidebar";
+import TopBar from "@/components/admin/TopBar";
 import "./dashboard.css";
 
 type DashboardLayoutProps = {

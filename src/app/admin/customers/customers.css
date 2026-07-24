@@ -1,0 +1,330 @@
+.customers-page {
+    min-height: 100svh;
+    padding: clamp(40px, 6vw, 84px);
+}
+
+.customers-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+    padding-bottom: 48px;
+}
+
+.customers-eyebrow {
+    margin: 0 0 12px;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.58;
+}
+
+.customers-header h1 {
+    margin: 0;
+    font-family: var(--font-italiana);
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 400;
+    line-height: 0.95;
+}
+
+.customers-intro {
+    max-width: 480px;
+    margin: 20px 0 0;
+    opacity: 0.68;
+}
+
+.customers-create {
+    padding: 14px 22px;
+    border: 1px solid currentColor;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+.customers-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.customers-summary>div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 28px 0;
+}
+
+.customers-summary span {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.56;
+}
+
+.customers-summary strong {
+    font-family: var(--font-italiana);
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.customers-list {
+    margin-top: 64px;
+}
+
+.customers-list__heading,
+.customer-row {
+    display: grid;
+    grid-template-columns:
+        minmax(220px, 2fr) minmax(130px, 1fr) minmax(100px, 0.7fr) auto;
+    gap: 24px;
+    align-items: center;
+}
+
+.customers-list__heading {
+    padding-bottom: 14px;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.48;
+}
+
+.customer-row {
+    padding: 24px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.customer-row__identity {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.customer-row__identity strong {
+    font-weight: 500;
+}
+
+.customer-row__identity span,
+.customer-row__access {
+    font-size: 0.86rem;
+    opacity: 0.62;
+}
+
+.customer-row__role {
+    font-size: 0.68rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.customer-row__manage {
+    display: inline-flex;
+    gap: 10px;
+    color: inherit;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.customers-create-panel {
+    position: relative;
+}
+
+.customers-create-panel>summary {
+    list-style: none;
+}
+
+.customers-create-panel>summary::-webkit-details-marker {
+    display: none;
+}
+
+.customers-create-panel[open] .customers-create {
+    opacity: 0.5;
+}
+
+.customers-create-form {
+    position: absolute;
+    z-index: 10;
+    top: calc(100% + 16px);
+    right: 0;
+    width: min(620px, calc(100vw - 48px));
+    padding: clamp(28px, 4vw, 44px);
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    background: var(--paper);
+    color: var(--ink);
+}
+
+.customers-create-form__heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.customers-create-form__heading h2 {
+    margin: 0;
+    font-family: var(--font-italiana);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+}
+
+.customers-create-form__heading>p {
+    max-width: 260px;
+    margin: 0;
+    font-size: 0.86rem;
+    opacity: 0.64;
+}
+
+.customers-create-form__fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    padding: 32px 0;
+}
+
+.customers-create-form__fields label {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.customers-create-form__fields label>span,
+.customers-create-access legend {
+    font-size: 0.68rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    opacity: 0.58;
+}
+
+.customers-create-form__fields input {
+    width: 100%;
+    padding: 13px 0;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 0;
+    outline: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+}
+
+.customers-create-form__fields input:focus {
+    border-bottom-color: currentColor;
+}
+
+.customers-create-form__email {
+    grid-column: 1 / -1;
+}
+
+.customers-create-access {
+    display: grid;
+    gap: 14px;
+    margin: 0;
+    padding: 26px 0;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.customers-create-access legend {
+    margin-bottom: 18px;
+}
+
+.customers-create-access label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.customers-create-access input {
+    width: 16px;
+    height: 16px;
+    accent-color: currentColor;
+}
+
+.customers-create-form__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.customers-create-form__footer p {
+    max-width: 320px;
+    margin: 0;
+    font-size: 0.78rem;
+    opacity: 0.56;
+}
+
+.customers-create-form__footer button {
+    flex: 0 0 auto;
+    padding: 14px 20px;
+    border: 1px solid currentColor;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.customers-create-form__footer button:hover {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+
+
+@media (max-width: 760px) {
+    .customers-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .customers-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .customers-list__heading {
+        display: none;
+    }
+
+    .customer-row {
+        grid-template-columns: 1fr auto;
+    }
+
+    .customer-row__access,
+    .customer-row>div:nth-child(3) {
+        display: none;
+    }
+
+    .customers-create-panel {
+        width: 100%;
+    }
+
+    .customers-create-form {
+        position: static;
+        width: 100%;
+        margin-top: 18px;
+    }
+
+    .customers-create-form__heading,
+    .customers-create-form__footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .customers-create-form__fields {
+        grid-template-columns: 1fr;
+    }
+
+    .customers-create-form__email {
+        grid-column: auto;
+    }
+}
