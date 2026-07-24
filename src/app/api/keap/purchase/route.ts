@@ -4,8 +4,10 @@ import { NextResponse } from "next/server";
 
 import { createOrInviteCustomer } from "@/lib/admin/customer-management";
 import { getProductCourseSlugs } from "@/lib/products/product-access";
+import { updateKeapWelcomeUrl } from "@/lib/keap/contacts";
 
 type KeapPurchasePayload = {
+    contactId?: unknown;
     email?: unknown;
     firstName?: unknown;
     lastName?: unknown;
@@ -110,6 +112,7 @@ export async function POST(request: Request) {
             );
         }
 
+        const contactId = readString(payload.contactId);
         const email = readString(payload.email);
         const firstName = readString(
             payload.firstName
@@ -120,6 +123,19 @@ export async function POST(request: Request) {
         const product = readString(
             payload.product
         );
+
+        if (!contactId) {
+            return NextResponse.json(
+                {
+                    ok: false,
+                    error:
+                        "Keap contact ID is required.",
+                },
+                {
+                    status: 400,
+                }
+            );
+        }
 
         if (!email) {
             return NextResponse.json(
@@ -176,13 +192,19 @@ export async function POST(request: Request) {
             );
         }
 
+        await updateKeapWelcomeUrl({
+            contactId,
+            welcomeUrl: customer.welcomeUrl,
+        });
+
         console.info("Keap purchase processed", {
             userId: customer.userId,
+            contactId,
             product,
             created: customer.created,
-            coursesGranted:
-                courseSlugs.length,
+            coursesGranted: courseSlugs.length,
             welcomeLinkCreated: true,
+            welcomeLinkWrittenToKeap: true,
         });
 
         return NextResponse.json({
