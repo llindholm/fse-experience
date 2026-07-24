@@ -266,9 +266,9 @@ export const courses: Course[] = [
         slug: "signature-close",
         title: "The Signature Close",
         subtitle:
-            "SUBTITLE HERE",
+            "Build the sales system that quietly grows your business.",
         description:
-            "DESCRIPTION HERE",
+            "Create the offers, emails, and customer journey that consistently turns interest into premium clients—without launches or pressure.",
         content: [
             {
                 type: "lesson",
@@ -276,15 +276,15 @@ export const courses: Course[] = [
                     id: "full-funnel-overview",
                     slug: "full-funnel-overview",
                     title: "Your Full Funnel Overview",
-                    description: "description",
+                    description: "Your Full Funnel Overview",
                     duration: "93 min",
                     opening:
-                        "opening.",
+                        "See how every piece of the Feminine Sales Engine fits together into a complete client journey—from first interaction to premium sale—before you begin building your own.",
                     videoUrl:
-                        "",
+                        "https://player.vimeo.com/video/1119166260?h=3b161f3dad",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/the_feminine_sales_system_v2%20(240p).mp3",
-                    pdfUrl: "",
+                    pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/Mod%201%20-%20Signature%20Close.pdf",
                 },
             },
             {
@@ -293,15 +293,15 @@ export const courses: Course[] = [
                     id: "choosing-your-micro-offer",
                     slug: "choosing-your-micro-offer",
                     title: "Choosing Your Micro Offer",
-                    description: "description",
+                    description: "Choosing Your Micro Offer",
                     duration: "24 min",
                     opening:
-                        "opening.",
+                        "Choose the one small, high-value offer that creates immediate trust, attracts ideal buyers, and naturally leads into your signature offer.",
                     videoUrl:
-                        "",
+                        "https://player.vimeo.com/video/1109736361?h=630236225d",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/choosing_your_micro_offer_v2%20(240p).mp3",
-                    pdfUrl: "",
+                    pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/choosing_your_micro_offer_v2%20(240p).mp3",
                 },
             },
             {
@@ -310,15 +310,15 @@ export const courses: Course[] = [
                     id: "structure-your-micro-offer",
                     slug: "structure-your-micro-offer",
                     title: "Structure Your Micro Offer",
-                    description: "description",
+                    description: "Structure Your Micro Offer",
                     duration: "24 min",
                     opening:
-                        "opening.",
+                        "Design a micro offer that’s simple to consume, quick to implement, and intentionally built to create momentum toward your premium work.",
                     videoUrl:
-                        "",
+                        "https://player.vimeo.com/video/1109753238?h=5feb902aca",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/structure_your_micro_offer_v2%20(240p).mp3",
-                    pdfUrl: "",
+                    pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/Structure%20Your%20Micro%20Offer%20for%20Maximum%20Conversion%20-%20Signature%20Close.pdf",
                 },
             },
             {
@@ -327,15 +327,15 @@ export const courses: Course[] = [
                     id: "micro-offer-sales-page",
                     slug: "micro-offer-sales-page",
                     title: "Micro Offer Sales Page",
-                    description: "description",
+                    description: "Micro Offer Sales Page",
                     duration: "26 min",
                     opening:
-                        "opening.",
+                        "Build a simple sales page that answers the right questions, creates confidence, and converts buyers without relying on sales calls or launches.",
                     videoUrl:
-                        "",
+                        "https://player.vimeo.com/video/1109797543?h=c9003c3989",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/create_a_sales_page_that_converts_cold_traffic_v2%20(240p).mp3",
-                    pdfUrl: "",
+                    pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/Create%20a%20Sales%20Page%20That%20Converts%20Cold%20Traffic%20-%20Signature%20Close.pdf",
                 },
             },
             {
@@ -344,15 +344,15 @@ export const courses: Course[] = [
                     id: "cart-optimization",
                     slug: "cart-optimization",
                     title: "Cart Optimization: Bumps + OTOs",
-                    description: "description",
+                    description: "Cart Optimization: Bumps + OTOs",
                     duration: "25 min",
                     opening:
-                        "opening.",
+                        "Refine the buying experience with small improvements that increase conversions and remove unnecessary friction throughout your funnel.",
                     videoUrl:
-                        "",
+                        "https://player.vimeo.com/video/1110601870?h=b6cd352490",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/cart_optimization_v2%20(240p).mp3",
-                    pdfUrl: "",
+                    pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/Cart%20Optimization%20-%20Signature%20Close.pdf",
                 },
             },
             {
@@ -361,15 +361,15 @@ export const courses: Course[] = [
                     id: "soft-elevation-delivery-email",
                     slug: "soft-elevation-delivery-email",
                     title: "Soft Elevation™ Delivery Email",
-                    description: "description",
+                    description: "Soft Elevation™ Delivery Email",
                     duration: "23 min",
                     opening:
-                        "opening.",
+                        "Write the delivery email that welcomes new buyers while naturally introducing the next step in your customer journey.",
                     videoUrl:
-                        "",
+                        "https://player.vimeo.com/video/1110601870?h=b6cd352490",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/soft_elevation_delivery_email_training_v2%20(240p).mp3",
-                    pdfUrl: "",
+                    pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/Soft%20Elevation%20Delivery%20Email%20-%20Signature%20Close.pdf",
                 },
             },
             {
@@ -378,15 +378,15 @@ export const courses: Course[] = [
                     id: "soft-elevation-check-in-email",
                     slug: "soft-elevation-check-in-email",
                     title: "Soft Elevation™ Check In Email",
-                    description: "description",
-                    duration: "93 min",
+                    description: "Soft Elevation™ Check In Email",
+                    duration: "17 min",
                     opening:
-                        "opening.",
+                        "Create a simple follow-up email that strengthens trust, improves engagement, and quietly increases future conversions.",
                     videoUrl:
-                        "",
+                        "https://player.vimeo.com/video/1114056984?h=7b1b0694d3",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/soft_elevation_check_in_email_v2%20(240p).mp3",
-                    pdfUrl: "",
+                    pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/Soft%20Elevation%20Check%20In%20Email%20-%20Signature%20Close.pdf",
                 },
             },
             {
@@ -395,15 +395,15 @@ export const courses: Course[] = [
                     id: "soft-elevation-nurture",
                     slug: "soft-elevation-nurture",
                     title: "Soft Elevation™ Nurture Email",
-                    description: "description",
+                    description: "Soft Elevation™ Nurture Email",
                     duration: "34 min",
                     opening:
-                        "opening.",
+                        "Continue the relationship after purchase with an email that deepens connection and prepares buyers for your signature offer—without pressure or hard selling.",
                     videoUrl:
-                        "",
+                        "https://player.vimeo.com/video/1114531939?h=9e614da8ed",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/soft_elevation_nurture_email_v2%20(240p).mp3",
-                    pdfUrl: "",
+                    pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/Soft%20Elevation%20Nurture%20Email%20-%20Signature%20Close.pdf",
                 },
             },
             {
@@ -412,15 +412,15 @@ export const courses: Course[] = [
                     id: "your-signature-methodology",
                     slug: "your-signature-methodolgy",
                     title: "Your Signature Methodology",
-                    description: "description",
+                    description: "Your Signature Methodology",
                     duration: "28 min",
                     opening:
-                        "opening.",
+                        "Turn your expertise into a clear, branded framework that elevates your perceived value and makes your work unforgettable.",
                     videoUrl:
-                        "",
+                        "https://player.vimeo.com/video/1117198717?h=a82a7d6a6d",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/your_signature_methodology%20(240p).mp3",
-                    pdfUrl: "",
+                    pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/Your%20Signature%20Methodology%20-%20Signature%20Close.pdf",
                 },
             },
             {
@@ -429,15 +429,15 @@ export const courses: Course[] = [
                     id: "signature-offer-positioning",
                     slug: "signature-offer-positioning",
                     title: "Signature Offer Positioning",
-                    description: "description",
+                    description: "Signature Offer Positioning",
                     duration: "25 min",
                     opening:
-                        "opening.",
+                        "Position your signature offer so it becomes the obvious next step for ideal clients instead of another option in a crowded market.",
                     videoUrl:
-                        "",
+                        "https://player.vimeo.com/video/1119166260?h=3b161f3dad",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/signature_offer_positioning_v2%20(240p).mp3",
-                    pdfUrl: "",
+                    pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/Signature%20Offer%20Positioning%20-%20Signature%20Close.pdf",
                 },
             },
             {
@@ -446,15 +446,15 @@ export const courses: Course[] = [
                     id: "signature-offer-sales-page",
                     slug: "signature-offer-sales-page",
                     title: "Signature Offer Sales Page",
-                    description: "description",
+                    description: "Signature Offer Sales Page",
                     duration: "26 min",
                     opening:
-                        "opening.",
+                        "Build the premium sales page that communicates your methodology, positions your offer, and quietly does the closing for you.",
                     videoUrl:
-                        "",
+                        "https://player.vimeo.com/video/1120589475?h=cae2f84f1f",
                     audioUrl:
-                        "",
-                    pdfUrl: "",
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/signature_sales_page_v2%20(240p).mp3",
+                    pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/Signature%20Sales%20Page%20-%20Signature%20Close.pdf",
                 },
             },
             {
@@ -463,15 +463,15 @@ export const courses: Course[] = [
                     id: "quiet-close-promo-sequence",
                     slug: "quiet-close-promo-sequence",
                     title: "Quiet Close™ Promo Sequence",
-                    description: "description",
+                    description: "Quiet Close™ Promo Sequence",
                     duration: "31 min",
                     opening:
-                        "opening.",
+                        "Learn the evergreen five-email sequence that sells premium offers without launches, webinars, or constant promotion.",
                     videoUrl:
-                        "",
+                        "https://player.vimeo.com/video/1117198717?h=a82a7d6a6d",
                     audioUrl:
-                        "",
-                    pdfUrl: "",
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/quiet_close_promo_v2%20(240p).mp3",
+                    pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/Quiet%20Close%20Promo%20-%20Signature%20Close.pdf",
                 },
             },
             {
@@ -480,15 +480,15 @@ export const courses: Course[] = [
                     id: "quiet-close-plug-and-play-emails",
                     slug: "quiet-close-plug-and-play-emails",
                     title: "Quiet Close™ Plug-and-Play Emails",
-                    description: "description",
+                    description: "Quiet Close™ Plug-and-Play Emails",
                     duration: "34 min",
                     opening:
-                        "opening.",
+                        "Use AI prompts and proven templates to write your complete Quiet Close sequence and turn it into a long-term business asset.",
                     videoUrl:
-                        "",
+                        "https://player.vimeo.com/video/1128041862?h=a109443114",
                     audioUrl:
-                        "",
-                    pdfUrl: "",
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/quiet_close_plug-and-play_emails_v2%20(240p).mp3",
+                    pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/Quiet%20Close%20Plug-and-play%20Emails%20-%20Signature%20Close.pdf",
                 },
             },
         ]
