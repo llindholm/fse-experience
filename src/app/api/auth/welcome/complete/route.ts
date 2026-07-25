@@ -61,9 +61,18 @@ export async function POST(request: Request) {
         }
 
         const token = readString(payload.token);
-        const password = readString(
+        const password = readPassword(
             payload.password
         );
+        function readPassword(
+            value: unknown
+        ): string | undefined {
+            if (typeof value !== "string") {
+                return undefined;
+            }
+
+            return value || undefined;
+        }
 
         if (!token) {
             return NextResponse.json(

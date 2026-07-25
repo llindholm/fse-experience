@@ -234,17 +234,41 @@ function WelcomeSetup({
 
             const supabase = createClient();
 
-            const { error: signInError } =
-                await supabase.auth.signInWithPassword(
+            const {
+                data: signInData,
+                error: signInError,
+            } = await supabase.auth.signInWithPassword({
+                email: result.email,
+                password,
+            });
+
+            if (signInError) {
+                console.error(
+                    "Automatic welcome sign-in failed",
                     {
+                        message: signInError.message,
+                        code: signInError.code,
+                        status: signInError.status,
                         email: result.email,
-                        password,
                     }
                 );
 
-            if (signInError) {
                 throw new Error(
-                    "Your password was created, but we couldn’t sign you in automatically. Please sign in using your new password."
+                    `Your password was created, but sign-in failed: ${signInError.message}`
+                );
+            }
+
+            if (!signInData.session) {
+                console.error(
+                    "Welcome sign-in returned no session",
+                    {
+                        email: result.email,
+                        hasUser: Boolean(signInData.user),
+                    }
+                );
+
+                throw new Error(
+                    "Your password was created, but no login session was returned."
                 );
             }
 
