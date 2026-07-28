@@ -1,5 +1,10 @@
-import { createServerClient } from "@supabase/ssr";
-import { NextResponse, type NextRequest } from "next/server";
+import {
+    createServerClient,
+} from "@supabase/ssr";
+import {
+    NextResponse,
+    type NextRequest,
+} from "next/server";
 
 export async function updateSession(
     request: NextRequest
@@ -44,7 +49,11 @@ export async function updateSession(
                     });
 
                     cookiesToSet.forEach(
-                        ({ name, value, options }) => {
+                        ({
+                            name,
+                            value,
+                            options,
+                        }) => {
                             response.cookies.set(
                                 name,
                                 value,
@@ -58,6 +67,22 @@ export async function updateSession(
     );
 
     /*
+     * Preserve any refreshed Supabase cookies when
+     * returning a redirect or rewrite response.
+     */
+    function withSessionCookies(
+        destination: NextResponse
+    ) {
+        response.cookies
+            .getAll()
+            .forEach((cookie) => {
+                destination.cookies.set(cookie);
+            });
+
+        return destination;
+    }
+
+    /*
      * Do not remove this call. It verifies and refreshes
      * the authentication session when necessary.
      */
@@ -65,79 +90,102 @@ export async function updateSession(
         data: { user },
     } = await supabase.auth.getUser();
 
-    const pathname = request.nextUrl.pathname;
+    const pathname =
+        request.nextUrl.pathname;
 
-const isAdminRoute =
-    pathname === "/admin" ||
-    pathname.startsWith("/admin/");
+    const hostname =
+        request.nextUrl.hostname.toLowerCase();
 
-const isLibraryRoute =
-    pathname === "/library" ||
-    pathname.startsWith("/library/");
+    const isLibraryHostname =
+        hostname ===
+        "library.tolivingfree.com" ||
+        hostname === "library.localhost";
 
-const isProtectedRoute =
-    isAdminRoute || isLibraryRoute;
+    const isAdminRoute =
+        pathname === "/admin" ||
+        pathname.startsWith("/admin/");
 
-const isLoginRoute = pathname === "/login";
+    const isLibraryRoute =
+        pathname === "/library" ||
+        pathname.startsWith("/library/");
 
-if (isProtectedRoute && !user) {
-    const loginUrl = request.nextUrl.clone();
+    const isProtectedRoute =
+        isAdminRoute || isLibraryRoute;
 
-    loginUrl.pathname = "/login";
-    loginUrl.search = "";
+    const isLoginRoute =
+        pathname === "/login";
 
-    const requestedPath = `${pathname}${request.nextUrl.search}`;
+    /*
+     * The root of library.tolivingfree.com is the
+     * member entry point.
+     *
+     * Signed out:
+     * library.tolivingfree.com
+     * → library.tolivingfree.com/login
+     *
+     * Signed in:
+     * library.tolivingfree.com
+     * → internally renders /library while keeping
+     * the clean subdomain URL in the address bar.
+     */
+    if (
+        isLibraryHostname &&
+        pathname === "/"
+    ) {
+        if (!user) {
+            const loginUrl =
+                request.nextUrl.clone();
 
-    loginUrl.searchParams.set("next", requestedPath);
+            loginUrl.pathname = "/login";
+            loginUrl.search = "";
+            loginUrl.searchParams.set(
+                "next",
+                "/"
+            );
 
-    return NextResponse.redirect(loginUrl);
-}
+            return withSessionCookies(
+                NextResponse.redirect(loginUrl)
+            );
+        }
 
-if (isAdminRoute && user) {
-    const {
-        data: profile,
-        error: profileError,
-    } = await supabase
-        .from("profiles")
-        .select("role")
-        .eq("id", user.id)
-        .maybeSingle();
-
-    if (profileError) {
-        console.error(
-            "Unable to verify administrator role:",
-            profileError
-        );
-    }
-
-    if (profile?.role !== "admin") {
-        const libraryUrl = request.nextUrl.clone();
+        const libraryUrl =
+            request.nextUrl.clone();
 
         libraryUrl.pathname = "/library";
         libraryUrl.search = "";
 
-        return NextResponse.redirect(libraryUrl);
+        return withSessionCookies(
+            NextResponse.rewrite(libraryUrl)
+        );
     }
-}
 
-if (isLoginRoute && user) {
-    const requestedNext =
-        request.nextUrl.searchParams.get("next");
+    /*
+     * Protect member-library and admin routes.
+     */
+    if (isProtectedRoute && !user) {
+        const loginUrl =
+            request.nextUrl.clone();
 
-    let safeNext =
-        requestedNext?.startsWith("/") &&
-        !requestedNext.startsWith("//")
-            ? requestedNext
-            : "/library";
+        loginUrl.pathname = "/login";
+        loginUrl.search = "";
 
-    const requestedPathname =
-        safeNext.split("?")[0];
+        const requestedPath =
+            `${pathname}${request.nextUrl.search}`;
 
-    const requestsAdmin =
-        requestedPathname === "/admin" ||
-        requestedPathname.startsWith("/admin/");
+        loginUrl.searchParams.set(
+            "next",
+            requestedPath
+        );
 
-    if (requestsAdmin) {
+        return withSessionCookies(
+            NextResponse.redirect(loginUrl)
+        );
+    }
+
+    /*
+     * Only administrators may access /admin.
+     */
+    if (isAdminRoute && user) {
         const {
             data: profile,
             error: profileError,
@@ -147,30 +195,110 @@ if (isLoginRoute && user) {
             .eq("id", user.id)
             .maybeSingle();
 
-        if (
-            profileError ||
-            profile?.role !== "admin"
-        ) {
-            safeNext = "/library";
+        if (profileError) {
+            console.error(
+                "Unable to verify administrator role:",
+                profileError
+            );
+        }
+
+        if (profile?.role !== "admin") {
+            const libraryUrl =
+                request.nextUrl.clone();
+
+            libraryUrl.pathname =
+                isLibraryHostname
+                    ? "/"
+                    : "/library";
+
+            libraryUrl.search = "";
+
+            return withSessionCookies(
+                NextResponse.redirect(
+                    libraryUrl
+                )
+            );
         }
     }
 
-    const destinationUrl =
-        request.nextUrl.clone();
+    /*
+     * A signed-in user does not need to see /login.
+     */
+    if (isLoginRoute && user) {
+        const requestedNext =
+            request.nextUrl.searchParams.get(
+                "next"
+            );
 
-    const [destinationPath, query = ""] =
-        safeNext.split("?");
+        let safeNext =
+            requestedNext?.startsWith("/") &&
+                !requestedNext.startsWith("//")
+                ? requestedNext
+                : isLibraryHostname
+                    ? "/"
+                    : "/library";
 
-    destinationUrl.pathname =
-        destinationPath;
+        const requestedPathname =
+            safeNext.split("?")[0];
 
-    destinationUrl.search =
-        query ? `?${query}` : "";
+        const requestsAdmin =
+            requestedPathname === "/admin" ||
+            requestedPathname.startsWith(
+                "/admin/"
+            );
 
-    return NextResponse.redirect(
-        destinationUrl
-    );
-}
+        if (requestsAdmin) {
+            const {
+                data: profile,
+                error: profileError,
+            } = await supabase
+                .from("profiles")
+                .select("role")
+                .eq("id", user.id)
+                .maybeSingle();
 
-return response;
+            if (
+                profileError ||
+                profile?.role !== "admin"
+            ) {
+                safeNext =
+                    isLibraryHostname
+                        ? "/"
+                        : "/library";
+            }
+        }
+
+        /*
+         * Keep the clean root URL when someone signs
+         * in through library.tolivingfree.com/login.
+         */
+        if (
+            isLibraryHostname &&
+            safeNext === "/library"
+        ) {
+            safeNext = "/";
+        }
+
+        const destinationUrl =
+            request.nextUrl.clone();
+
+        const [
+            destinationPath,
+            query = "",
+        ] = safeNext.split("?");
+
+        destinationUrl.pathname =
+            destinationPath;
+
+        destinationUrl.search =
+            query ? `?${query}` : "";
+
+        return withSessionCookies(
+            NextResponse.redirect(
+                destinationUrl
+            )
+        );
+    }
+
+    return response;
 }
