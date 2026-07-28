@@ -26,25 +26,23 @@ const transformationStories = [
     title: "$16K in seven days.",
     quote:
       "I landed two high-ticket clients in one week, and they both paid in full.",
-    name: "Gagan | FSE Client",
-
-    result: "2 clients · paid in full",
+    name: "Gagan | Success & Identity Coach",
   },
   {
     belief: "Premium sales do not have to begin with a sales call.",
     title: "The content did the heavy lifting.",
     quote:
-      "I sold a $15K package one week after implementing the strategy. No sales call. No pitch. Just premium content that did the heavy lifting for me.",
-    name: "FSE Client",
+      "I sold a $3,333 package one week after implementing the strategy. No sales call. No pitch. Just premium content that did the heavy lifting for me.",
+    name: "Kristine | Love Attraction Coach",
 
     result: "$15K · no sales call",
   },
   {
-    belief: "The right content keeps working after it is posted.",
+    belief: "The right content keeps working after it's posted.",
     title: "Every post became stronger.",
     quote:
-      "My content keeps compounding. Every post does even better than the last.",
-    name: "FSE Client",
+      "Celebrating 2 new 1:1 clients! I upgraded my copy to be The Authority and BOOM!!.",
+    name: "Tonya | The Intuitive Mentor",
 
     result: "2 signups already",
   },
@@ -52,8 +50,8 @@ const transformationStories = [
     belief: "The biggest result is often how the business begins to feel.",
     title: "It finally felt scalable—and simple.",
     quote:
-      "I’ve done a lot of programs, but nothing has ever pulled together content, sales, offers, and messaging like this.",
-    name: "FSE Client",
+      "This program is blowing me away and I've only been in it for 2 days. It's like I had all the puzzle pieces and needed someone to help me click them together.",
+    name: "Lena | Women's Empowerment Courses",
 
     result: "No more starting over",
   },
@@ -83,9 +81,9 @@ const enrollmentIncludes = [
       "Connect your offers and sales pathways into an ecosystem that sells without constant launching.",
   },
   {
-    title: "Results Companion",
+    title: "Live Coaching through 2026",
     description:
-      "Turn each teaching into decisions, completed assets, and implementation inside your actual business.",
+      "Receive personalized support every step of the way so you know this works for your business on 3x monthly Zoom calls.",
   },
 ];
 
@@ -108,7 +106,7 @@ const invitationFaqs = [
   {
     question: "How quickly can I begin using what I learn?",
     answer:
-      "You can begin making changes immediately. Each part of the experience is designed to lead toward implementation, and the Results Companion helps you apply the work directly to your messaging, content, offers, and sales system.",
+      "You can begin making changes immediately. Each part of the experience is designed to lead toward implementation, and the Live Calls help you apply the work directly to your messaging, content, offers, and sales system.",
   },
   {
     question: "Do I need paid advertising?",
@@ -749,7 +747,7 @@ export default function Home() {
 
             <Insight delay={0.12}>
               <p className="bridge-question">
-                So what does that system actually look like?
+                It's created when every part of your business moves buyers in the same direction.
               </p>
             </Insight>
 
@@ -785,7 +783,7 @@ export default function Home() {
 
             <Insight delay={0.22}>
               <p className="chapter-subtitle">
-                The complete framework behind effortless sales.
+                The complete system behind effortless sales.
               </p>
             </Insight>
           </div>
@@ -1271,7 +1269,7 @@ export default function Home() {
               </h2>
 
               <p className="companion-copy">
-                As you move through FSE, the companion helps you apply each lesson to
+                As you move through FSE, the live calls through 2026 help you apply each lesson to
                 your actual business—turning the teaching into clear decisions,
                 completed messaging, content, and sales assets.
               </p>
@@ -1287,11 +1285,11 @@ export default function Home() {
 
             <div className="implementation-moments">
               <Insight>
-                <p>See the shift.</p>
+                <p>Live calls through 2026 so you see the shift.</p>
               </Insight>
 
               <Insight delay={0.16}>
-                <p>Everything else starts working together.</p>
+                <p>And everything starts working together.</p>
               </Insight>
 
             </div>
@@ -1340,8 +1338,8 @@ export default function Home() {
           <section className="narrative-bridge">
             <Insight>
               <p className="bridge-opening">
-                This isn't just about
-                <span>what you'll discover.</span>
+                This isn't just about breakthroughs.
+                <span>It's about results.</span>
               </p>
             </Insight>
 
@@ -1351,7 +1349,7 @@ export default function Home() {
 
             <Insight delay={0.12}>
               <p className="bridge-question">
-                So what happens when women begin building their businesses this way?
+                Here's what happens when you build your business this way...
               </p>
             </Insight>
 
@@ -1391,8 +1389,8 @@ export default function Home() {
 
             <Insight delay={0.12}>
               <h2>
-                It's the woman
-                <span>who created it.</span>
+                It's the woman you become
+                <span>in the process.</span>
               </h2>
             </Insight>
           </section>
@@ -1422,7 +1420,7 @@ export default function Home() {
 
                     </div>
 
-                    <strong className="story-result">{story.result}</strong>
+                   
                   </div>
                 </Insight>
               </article>

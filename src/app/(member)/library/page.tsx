@@ -45,7 +45,7 @@ export default async function LibraryPage() {
                             </p>
 
                             <h2 className="continue-section__lesson">
-                                Explore the work available to you
+                                Explore the resources available to you
                             </h2>
 
                             <p className="continue-section__module">

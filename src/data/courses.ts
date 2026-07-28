@@ -58,7 +58,7 @@ export const courses: Course[] = [
                     videoUrl:
                         "https://player.vimeo.com/video/1065291347?h=755bf11cb2",
                     audioUrl:
-                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/million_dollar_authority_module_1.mp3",
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/MDA/million_dollar_authority_module_1.mp3",
                     pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/MDA/Mod%201%20-%20Million%20Dollar%20Authority%20(1).pdf",
                 },
             },
@@ -75,7 +75,7 @@ export const courses: Course[] = [
                     videoUrl:
                         "https://player.vimeo.com/video/1067490750?h=d449579a87",
                     audioUrl:
-                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/million_dollar_authority_module_2.mp3",
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/MDA/million_dollar_authority_module_2.mp3",
                     pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/MDA/Day%202%20-%20Million%20Dollar%20Authority%20(1).pdf",
                 },
             },
@@ -92,7 +92,7 @@ export const courses: Course[] = [
                     videoUrl:
                         "https://player.vimeo.com/video/1070152453?h=9324a6e056",
                     audioUrl:
-                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/million_dollar_authority_module_3.mp3",
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/MDA/million_dollar_authority_module_3.mp3",
                     pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/MDA/Day%203%20-%20Million%20Dollar%20Authority%20(1).pdf",
                 },
             },
@@ -109,7 +109,7 @@ export const courses: Course[] = [
                     videoUrl:
                         "https://player.vimeo.com/video/1071957511?h=0a9eead00a",
                     audioUrl:
-                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/million_dollar_authority_module_4.mp3",
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/MDA/million_dollar_authority_module_4.mp3",
                     pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/MDA/Day%204%20-%20Million%20Dollar%20Authority%20(1).pdf",
                 },
             },
@@ -157,9 +157,9 @@ export const courses: Course[] = [
         slug: "effortless-sales-system",
         title: "Effortless Sales System",
         subtitle:
-            "Create a sales process that feels natural, clear, and consistently effective.",
+            "Create a content sequence that feels natural, clear, and consistently effective.",
         description:
-            "A complete sales system designed to help you lead aligned clients from interest to decision without pressure, overexplaining, or complicated strategy.",
+            "A complete content system designed to help you lead aligned clients from interest to decision without pressure so sales compound for you.",
         content: [
             {
                 type: "lesson",
@@ -489,6 +489,35 @@ export const courses: Course[] = [
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/quiet_close_plug-and-play_emails_v2%20(240p).mp3",
                     pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/Quiet%20Close%20Plug-and-play%20Emails%20-%20Signature%20Close.pdf",
+                },
+            },
+            {
+                type: "section",
+                section: {
+                    id: "bonus-content",
+                    title: "Bonus Content",
+                    lessons: [
+                        {
+                            id: "ai-content-call",
+                            slug: "ai-content-call",
+                            title: "AI Content Bonus Training",
+                            description:
+                                "AI Content Bonus Training",
+                            duration: "65 min",
+                            videoUrl: "https://player.vimeo.com/video/1094513621?h=44b18a0b38",
+                            audioUrl:
+                                "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/ESS/effortless_sales_system_-_ai_content_bonus_v2%20(240p).mp3"
+
+                        },
+                        {
+                            id: "ess-ai-prompts",
+                            slug: "ess-ai-prompts",
+                            title: "AI Prompts Bonus PDF",
+                            description: "AI Prompts Bonus PDF",
+                            pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/ESS/ESS_%20Prompt%20Sheet%20+%20Plug-and-Play%20Templates.pdf",
+
+                        },
+                    ],
                 },
             },
         ]

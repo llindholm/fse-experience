@@ -323,11 +323,10 @@ function WelcomeSetup({
                     />
 
                     <p className={styles.completeBody}>
-                        Everything you’ve invested in
+                        Everything you’ve purchased
                         is waiting for you—available
-                        whenever you need it, and
-                        designed to meet you wherever
-                        you are in the work.
+                        to access now, and
+                        designed to support your goals.
                     </p>
 
                     <Link
@@ -357,9 +356,8 @@ function WelcomeSetup({
                 </p>
 
                 <p className={styles.body}>
-                    Inside you’ll find the courses
-                    you’ve invested in, available
-                    whenever you need them.
+                    Inside you’ll find instant access to your purchase, ready and available
+                    now.
                 </p>
             </section>
 

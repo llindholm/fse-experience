@@ -2535,10 +2535,10 @@ a {
 .story-chapter {
   position: relative;
   display: flex;
-  min-height: 115svh;
+  min-height: 90svh;
   align-items: center;
   justify-content: center;
-  padding: 130px 10vw;
+  padding: 100px 10vw;
   overflow: hidden;
 }
 
