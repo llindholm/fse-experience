@@ -4,7 +4,7 @@ export const PRODUCT_ACCESS = {
     "feminine-sales-engine": [
         "million-dollar-authority",
         "effortless-sales-system",
-        "the-signature-close",
+        "signature-close",
     ],
 
     "million-dollar-authority": [
@@ -15,8 +15,8 @@ export const PRODUCT_ACCESS = {
         "effortless-sales-system",
     ],
 
-    "the-signature-close": [
-        "the-signature-close",
+    "signature-close": [
+        "signature-close",
     ],
 } as const;
 

@@ -39,7 +39,7 @@ const courses = [
         title: "Effortless Sales System",
     },
     {
-        slug: "the-signature-close",
+        slug: "signature-close",
         title: "The Signature Close",
     },
 ];
