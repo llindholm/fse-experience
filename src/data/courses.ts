@@ -281,7 +281,7 @@ export const courses: Course[] = [
                     opening:
                         "See how every piece of the Feminine Sales Engine fits together into a complete client journey—from first interaction to premium sale—before you begin building your own.",
                     videoUrl:
-                        "https://player.vimeo.com/video/1119166260?h=3b161f3dad",
+                        "https://player.vimeo.com/video/1107908294?h=e93a073f2c",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/the_feminine_sales_system_v2%20(240p).mp3",
                     pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/Mod%201%20-%20Signature%20Close.pdf",
@@ -301,7 +301,7 @@ export const courses: Course[] = [
                         "https://player.vimeo.com/video/1109736361?h=630236225d",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/choosing_your_micro_offer_v2%20(240p).mp3",
-                    pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/choosing_your_micro_offer_v2%20(240p).mp3",
+                    pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/Pick%20Your%20Micro%20Offer%20-%20Signature%20Close.pdf",
                 },
             },
             {
@@ -349,7 +349,7 @@ export const courses: Course[] = [
                     opening:
                         "Refine the buying experience with small improvements that increase conversions and remove unnecessary friction throughout your funnel.",
                     videoUrl:
-                        "https://player.vimeo.com/video/1110601870?h=b6cd352490",
+                        "https://player.vimeo.com/video/1115916207?h=878a125134",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/cart_optimization_v2%20(240p).mp3",
                     pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/Cart%20Optimization%20-%20Signature%20Close.pdf",
@@ -468,7 +468,7 @@ export const courses: Course[] = [
                     opening:
                         "Learn the evergreen five-email sequence that sells premium offers without launches, webinars, or constant promotion.",
                     videoUrl:
-                        "https://player.vimeo.com/video/1117198717?h=a82a7d6a6d",
+                        "https://player.vimeo.com/video/1124920877?h=508af14e37",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/quiet_close_promo_v2%20(240p).mp3",
                     pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Signature%20Close/Quiet%20Close%20Promo%20-%20Signature%20Close.pdf",
