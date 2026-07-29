@@ -36,60 +36,102 @@ export default function ResetPasswordForm() {
     useEffect(() => {
         const supabase = createClient();
 
-        let mounted = true;
+        let isMounted = true;
 
-        async function checkRecoverySession() {
-            const {
-                data: { session },
-            } = await supabase.auth.getSession();
+        async function establishRecoverySession() {
+            try {
+                const searchParams =
+                    new URLSearchParams(
+                        window.location.search
+                    );
 
-            if (!mounted) {
-                return;
-            }
+                const code =
+                    searchParams.get("code");
 
-            if (session) {
-                setStatus("ready");
-            }
-        }
+                /*
+                 * Supabase redirects back with a temporary
+                 * authorization code. Exchange it for the
+                 * recovery session before checking whether
+                 * the member is authenticated.
+                 */
+                if (code) {
+                    const { error: exchangeError } =
+                        await supabase.auth
+                            .exchangeCodeForSession(
+                                code
+                            );
 
-        void checkRecoverySession();
+                    if (exchangeError) {
+                        console.error(
+                            "Unable to exchange password recovery code:",
+                            {
+                                message:
+                                    exchangeError.message,
+                                code:
+                                    exchangeError.code,
+                                status:
+                                    exchangeError.status,
+                            }
+                        );
 
-        const {
-            data: { subscription },
-        } = supabase.auth.onAuthStateChange(
-            (event, session) => {
-                if (!mounted) {
+                        if (isMounted) {
+                            setStatus("invalid");
+                        }
+
+                        return;
+                    }
+
+                    /*
+                     * Remove the one-time authorization
+                     * code from the address bar after it
+                     * has been successfully exchanged.
+                     */
+                    window.history.replaceState(
+                        {},
+                        "",
+                        window.location.pathname
+                    );
+                }
+
+                const {
+                    data: { session },
+                    error: sessionError,
+                } =
+                    await supabase.auth.getSession();
+
+                if (!isMounted) {
                     return;
                 }
 
-                if (
-                    event ===
-                    "PASSWORD_RECOVERY" ||
-                    (event === "SIGNED_IN" &&
-                        session)
-                ) {
-                    setStatus("ready");
+                if (sessionError || !session) {
+                    if (sessionError) {
+                        console.error(
+                            "Unable to establish password recovery session:",
+                            sessionError
+                        );
+                    }
+
+                    setStatus("invalid");
+                    return;
+                }
+
+                setStatus("ready");
+            } catch (error) {
+                console.error(
+                    "Password recovery setup failed:",
+                    error
+                );
+
+                if (isMounted) {
+                    setStatus("invalid");
                 }
             }
-        );
+        }
 
-        const timeout = window.setTimeout(
-            () => {
-                if (mounted) {
-                    setStatus((current) =>
-                        current === "checking"
-                            ? "invalid"
-                            : current
-                    );
-                }
-            },
-            4000
-        );
+        void establishRecoverySession();
 
         return () => {
-            mounted = false;
-            window.clearTimeout(timeout);
-            subscription.unsubscribe();
+            isMounted = false;
         };
     }, []);
 
