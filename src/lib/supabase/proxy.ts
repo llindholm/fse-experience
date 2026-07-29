@@ -105,15 +105,23 @@ export async function updateSession(
         pathname === "/admin" ||
         pathname.startsWith("/admin/");
 
+    const isAccountRoute =
+        pathname === "/account" ||
+        pathname.startsWith("/account/");
+
+
     const isLibraryRoute =
         pathname === "/library" ||
         pathname.startsWith("/library/");
 
     const isProtectedRoute =
-        isAdminRoute || isLibraryRoute;
+        isAdminRoute ||
+        isLibraryRoute ||
+        isAccountRoute;
 
     const isLoginRoute =
         pathname === "/login";
+
 
     /*
      * The root of library.tolivingfree.com is the

@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 
 import { createClient } from "@/lib/supabase/client";
 
+import Link from "next/link";
+
 type AdminLoginFormProps = {
     nextPath?: string;
 };
@@ -68,6 +70,33 @@ export default function AdminLoginForm({
                     autoComplete="current-password"
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
+                    required
+                />
+            </div>
+
+            <div className="admin-login-field">
+                <div className="admin-login-password-heading">
+                    <label htmlFor="admin-password">
+                        Password
+                    </label>
+
+                    <Link
+                        href="/forgot-password"
+                        className="admin-login-forgot"
+                    >
+                        Forgot your password?
+                    </Link>
+                </div>
+
+                <input
+                    id="admin-password"
+                    name="password"
+                    type="password"
+                    autoComplete="current-password"
+                    value={password}
+                    onChange={(event) =>
+                        setPassword(event.target.value)
+                    }
                     required
                 />
             </div>

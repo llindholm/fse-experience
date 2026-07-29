@@ -1,10 +1,11 @@
 import { redirect } from "next/navigation";
 
+import AccountPasswordForm from "@/components/library/AccountPasswordForm";
 import AccountSignOutButton from "@/components/library/AccountSignOutButton";
+import LibraryHeader from "@/components/library/LibraryHeader";
 import { createClient } from "@/lib/supabase/server";
 
 import "./account.css";
-import LibraryHeader from "@/components/library/LibraryHeader";
 
 export default async function AccountPage() {
     const supabase = await createClient();
@@ -14,7 +15,9 @@ export default async function AccountPage() {
     } = await supabase.auth.getUser();
 
     if (!user) {
-        redirect("/login?next=/library/account");
+        redirect(
+            "/login?next=/library/account"
+        );
     }
 
     return (
@@ -28,14 +31,57 @@ export default async function AccountPage() {
 
                 <h1>Account</h1>
 
-                <div className="account-details">
-                    <div className="account-detail">
-                        <span>Email</span>
-                        <strong>{user.email ?? "—"}</strong>
+                <div className="account-section">
+                    <div className="account-section-heading">
+                        <h2>Sign-in details</h2>
+
+                        <p>
+                            The email connected to
+                            your private library.
+                        </p>
+                    </div>
+
+                    <div className="account-details">
+                        <div className="account-detail">
+                            <span>Email</span>
+
+                            <strong>
+                                {user.email ?? "—"}
+                            </strong>
+                        </div>
                     </div>
                 </div>
 
-                <AccountSignOutButton />
+                <div className="account-divider" />
+
+                <div className="account-section">
+                    <div className="account-section-heading">
+                        <h2>Change password</h2>
+
+                        <p>
+                            Choose the password
+                            you’ll use whenever you
+                            return.
+                        </p>
+                    </div>
+
+                    <AccountPasswordForm />
+                </div>
+
+                <div className="account-divider" />
+
+                <div className="account-section">
+                    <div className="account-section-heading">
+                        <h2>Sign out</h2>
+
+                        <p>
+                            Sign out of your library
+                            on this device.
+                        </p>
+                    </div>
+
+                    <AccountSignOutButton />
+                </div>
             </section>
         </main>
     );

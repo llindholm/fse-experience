@@ -144,7 +144,7 @@ export default async function CustomersPage() {
                             <input
                                 type="checkbox"
                                 name="courseSlugs"
-                                value="the-signature-close"
+                                value="signature-close"
                             />
 
                             <span>The Signature Close</span>
