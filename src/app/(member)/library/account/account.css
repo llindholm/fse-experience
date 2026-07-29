@@ -1,54 +1,241 @@
 .account-page {
     min-height: 100svh;
-    padding: 120px 8vw;
+    padding: 120px 8vw 90px;
 }
 
 .account-card {
-    max-width: 720px;
+    width: min(100%, 720px);
     margin: 0 auto;
 }
 
 .account-eyebrow {
-    margin-bottom: 16px;
+    margin: 0 0 14px;
     font-family: var(--font-manrope);
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
 }
 
-.account-card h1 {
-    margin-bottom: 48px;
+.account-card>h1 {
+    margin: 0 0 64px;
     font-family: var(--font-italiana);
-    font-size: clamp(3rem, 7vw, 6rem);
+    font-size: clamp(3.5rem, 7vw, 6rem);
     font-weight: 400;
+    line-height: 0.95;
 }
 
+/* Sections */
+
+.account-section {
+    display: grid;
+    gap: 28px;
+}
+
+.account-section-heading {
+    display: grid;
+    gap: 8px;
+}
+
+.account-section-heading h2 {
+    margin: 0;
+    font-family: var(--font-italiana);
+    font-size: clamp(1.75rem, 3vw, 2.4rem);
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.account-section-heading p {
+    max-width: 500px;
+    margin: 0;
+    opacity: 0.62;
+    font-family: var(--font-manrope);
+    font-size: 0.86rem;
+    line-height: 1.65;
+}
+
+.account-divider {
+    height: 1px;
+    margin: 52px 0;
+    background: rgba(0, 0, 0, 0.12);
+}
+
+/* Email */
+
 .account-details {
-    padding: 28px 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.14);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+    padding: 24px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .account-detail {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     gap: 24px;
+    font-family: var(--font-manrope);
 }
 
 .account-detail span {
-    opacity: 0.6;
+    opacity: 0.56;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
-.account-sign-out {
-    margin-top: 40px;
-    padding: 14px 24px;
-    border: 1px solid currentColor;
+.account-detail strong {
+    overflow-wrap: anywhere;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: right;
+}
+
+/* Password form */
+
+.account-password-form {
+    display: grid;
+    gap: 20px;
+    width: min(100%, 520px);
+}
+
+.account-password-field {
+    display: grid;
+    gap: 9px;
+}
+
+.account-password-field>span {
+    font-family: var(--font-manrope);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.account-password-field input {
+    display: block;
+    width: 100%;
+    min-height: 52px;
+    padding: 0 16px;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    border-radius: 2px;
+    outline: none;
     background: transparent;
-    font: inherit;
-    cursor: pointer;
+    color: inherit;
+    font-family: var(--font-manrope);
+    font-size: 1rem;
+    box-sizing: border-box;
 }
 
+.account-password-field input:focus {
+    border-color: rgba(0, 0, 0, 0.55);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
+}
+
+.account-form-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.account-show-password {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    width: fit-content;
+    cursor: pointer;
+    font-family: var(--font-manrope);
+    font-size: 0.78rem;
+}
+
+.account-show-password input {
+    margin: 0;
+}
+
+.account-password-hint {
+    margin: -8px 0 0;
+    opacity: 0.5;
+    font-family: var(--font-manrope);
+    font-size: 0.74rem;
+}
+
+.account-message {
+    margin: 0;
+    font-family: var(--font-manrope);
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+.account-message-error {
+    color: #963840;
+}
+
+.account-message-success {
+    color: #49634b;
+}
+
+.account-password-submit,
+.account-sign-out {
+    width: fit-content;
+    min-height: 48px;
+    padding: 13px 24px;
+    border: 1px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--font-manrope);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+        background 180ms ease,
+        color 180ms ease,
+        opacity 180ms ease;
+}
+
+.account-password-submit {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.account-password-submit:hover,
+.account-sign-out:hover {
+    background: var(--rose);
+    border-color: var(--rose);
+    color: var(--paper);
+}
+
+.account-password-submit:disabled,
 .account-sign-out:disabled {
     cursor: wait;
-    opacity: 0.6;
+    opacity: 0.55;
+}
+
+/* Mobile */
+
+@media (max-width: 640px) {
+    .account-page {
+        padding: 96px 24px 70px;
+    }
+
+    .account-card>h1 {
+        margin-bottom: 48px;
+    }
+
+    .account-divider {
+        margin: 44px 0;
+    }
+
+    .account-detail {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .account-detail strong {
+        text-align: left;
+    }
+
+    .account-password-submit,
+    .account-sign-out {
+        width: 100%;
+    }
 }

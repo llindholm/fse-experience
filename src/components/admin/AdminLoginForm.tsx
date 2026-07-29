@@ -61,20 +61,6 @@ export default function AdminLoginForm({
             </div>
 
             <div className="admin-login-field">
-                <label htmlFor="admin-password">Password</label>
-
-                <input
-                    id="admin-password"
-                    name="password"
-                    type="password"
-                    autoComplete="current-password"
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                    required
-                />
-            </div>
-
-            <div className="admin-login-field">
                 <div className="admin-login-password-heading">
                     <label htmlFor="admin-password">
                         Password

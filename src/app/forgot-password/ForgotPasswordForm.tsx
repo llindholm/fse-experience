@@ -29,7 +29,7 @@ export default function ForgotPasswordForm() {
             const supabase = createClient();
 
             const redirectTo =
-                `${window.location.origin}/reset-password`;
+                "https://library.tolivingfree.com/reset-password";
 
             const { error } =
                 await supabase.auth
