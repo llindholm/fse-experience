@@ -1,7 +1,14 @@
 import Link from "next/link";
-import { getAdminCustomers } from "@/lib/admin/customers";
+
+import { getCustomers } from "@/lib/admin/customers";
 import { createCustomerAction } from "./actions";
+
 import "./customers.css";
+
+type CustomerStatus = {
+    label: string;
+    className: string;
+};
 
 function formatDate(value: string | null) {
     if (!value) {
@@ -30,23 +37,96 @@ function getCustomerName(customer: {
     return fullName || customer.email;
 }
 
+function getCustomerStatus(customer: {
+    emailConfirmedAt: string | null;
+    lastSignInAt: string | null;
+}): CustomerStatus {
+    if (!customer.emailConfirmedAt) {
+        return {
+            label: "Pending setup",
+            className: "is-pending",
+        };
+    }
+
+    if (!customer.lastSignInAt) {
+        return {
+            label: "Never logged in",
+            className: "is-new",
+        };
+    }
+
+    return {
+        label: "Active",
+        className: "is-active",
+    };
+}
+
+function getCourseLabel(courseSlug: string) {
+    const courseNames: Record<string, string> = {
+        "million-dollar-authority":
+            "Million Dollar Authority",
+        "effortless-sales-system":
+            "Effortless Sales System",
+        "signature-close":
+            "The Signature Close",
+    };
+
+    return courseNames[courseSlug] ?? courseSlug;
+}
+
+function getAccessSummary(courseSlugs: string[]) {
+    if (courseSlugs.length === 0) {
+        return "No access";
+    }
+
+    const hasFullFseBundle = [
+        "million-dollar-authority",
+        "effortless-sales-system",
+        "signature-close",
+    ].every((courseSlug) =>
+        courseSlugs.includes(courseSlug)
+    );
+
+    if (hasFullFseBundle) {
+        return "Feminine Sales Engine";
+    }
+
+    if (courseSlugs.length === 1) {
+        return getCourseLabel(courseSlugs[0]);
+    }
+
+    return `${getCourseLabel(
+        courseSlugs[0]
+    )} + ${courseSlugs.length - 1} more`;
+}
+
 export default async function CustomersPage() {
-    const customers = await getAdminCustomers();
+    const customers = await getCustomers();
+
+    const memberCount = customers.filter(
+        (customer) => customer.role === "member"
+    ).length;
 
     const adminCount = customers.filter(
         (customer) => customer.role === "admin"
     ).length;
 
-    const activeAccessCount = customers.reduce(
-        (total, customer) =>
-            total + customer.courseSlugs.length,
-        0
-    );
+    const activeMemberCount = customers.filter(
+        (customer) =>
+            customer.role === "member" &&
+            Boolean(customer.lastSignInAt)
+    ).length;
+
+    const pendingSetupCount = customers.filter(
+        (customer) =>
+            customer.role === "member" &&
+            !customer.lastSignInAt
+    ).length;
 
     return (
         <main className="customers-page">
             <header className="customers-header">
-                <div>
+                <div className="customers-header__copy">
                     <p className="customers-eyebrow">
                         Members
                     </p>
@@ -54,185 +134,293 @@ export default async function CustomersPage() {
                     <h1>Customers</h1>
 
                     <p className="customers-intro">
-                        View member accounts and manage
-                        access to the To Living Free
+                        Manage member accounts, onboarding,
+                        and access to the To Living Free
                         Library.
                     </p>
                 </div>
-            </header>
-            <details className="customers-create-panel">
-                <summary className="customers-create">
-                    Invite customer
-                </summary>
 
-                <form
-                    action={createCustomerAction}
-                    className="customers-create-form"
-                >
-                    <div className="customers-create-form__heading">
-                        <div>
-                            <p className="customers-eyebrow">
-                                New member
+                <details className="customers-create-panel">
+                    <summary className="customers-create">
+                        <span aria-hidden="true">+</span>
+                        Add member
+                    </summary>
+
+                    <form
+                        action={createCustomerAction}
+                        className="customers-create-form"
+                    >
+                        <div className="customers-create-form__heading">
+                            <div>
+                                <p className="customers-eyebrow">
+                                    New member
+                                </p>
+
+                                <h2>Add a member</h2>
+                            </div>
+
+                            <p>
+                                Create their account and assign
+                                their initial Library access.
                             </p>
-
-                            <h2>Invite a customer</h2>
                         </div>
 
-                        <p>
-                            Create their account, send their login
-                            invitation and assign initial access.
-                        </p>
-                    </div>
+                        <div className="customers-create-form__fields">
+                            <label>
+                                <span>First name</span>
 
-                    <div className="customers-create-form__fields">
-                        <label>
-                            <span>First name</span>
+                                <input
+                                    type="text"
+                                    name="firstName"
+                                    autoComplete="given-name"
+                                />
+                            </label>
 
-                            <input
-                                type="text"
-                                name="firstName"
-                                autoComplete="given-name"
-                            />
-                        </label>
+                            <label>
+                                <span>Last name</span>
 
-                        <label>
-                            <span>Last name</span>
+                                <input
+                                    type="text"
+                                    name="lastName"
+                                    autoComplete="family-name"
+                                />
+                            </label>
 
-                            <input
-                                type="text"
-                                name="lastName"
-                                autoComplete="family-name"
-                            />
-                        </label>
+                            <label className="customers-create-form__email">
+                                <span>Email address</span>
 
-                        <label className="customers-create-form__email">
-                            <span>Email address</span>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    autoComplete="email"
+                                    required
+                                />
+                            </label>
+                        </div>
 
-                            <input
-                                type="email"
-                                name="email"
-                                autoComplete="email"
-                                required
-                            />
-                        </label>
-                    </div>
+                        <fieldset className="customers-create-access">
+                            <legend>
+                                Initial Library access
+                            </legend>
 
-                    <fieldset className="customers-create-access">
-                        <legend>Initial course access</legend>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="courseSlugs"
+                                    value="million-dollar-authority"
+                                />
 
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="courseSlugs"
-                                value="million-dollar-authority"
-                            />
+                                <span>
+                                    Million Dollar Authority
+                                </span>
+                            </label>
 
-                            <span>Million Dollar Authority</span>
-                        </label>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="courseSlugs"
+                                    value="effortless-sales-system"
+                                />
 
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="courseSlugs"
-                                value="effortless-sales-system"
-                            />
+                                <span>
+                                    Effortless Sales System
+                                </span>
+                            </label>
 
-                            <span>Effortless Sales System</span>
-                        </label>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="courseSlugs"
+                                    value="signature-close"
+                                />
 
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="courseSlugs"
-                                value="signature-close"
-                            />
+                                <span>
+                                    The Signature Close
+                                </span>
+                            </label>
+                        </fieldset>
 
-                            <span>The Signature Close</span>
-                        </label>
-                    </fieldset>
+                        <div className="customers-create-form__footer">
+                            <p>
+                                Existing members will keep their
+                                account. Any selected access will
+                                simply be added.
+                            </p>
 
-                    <div className="customers-create-form__footer">
-                        <p>
-                            Existing customers will not receive a
-                            second invitation. Their selected access
-                            will simply be added.
-                        </p>
+                            <button type="submit">
+                                Add member
+                            </button>
+                        </div>
+                    </form>
+                </details>
+            </header>
 
-                        <button type="submit">
-                            Send invitation
-                        </button>
-                    </div>
-                </form>
-            </details>
-            <section className="customers-summary">
-                <div>
-                    <span>Total customers</span>
-                    <strong>{customers.length}</strong>
+            <section
+                className="customers-summary"
+                aria-label="Customer summary"
+            >
+                <div className="customers-summary__card">
+                    <span>Members</span>
+                    <strong>{memberCount}</strong>
+                    <small>
+                        Library customer accounts
+                    </small>
                 </div>
 
-                <div>
+                <div className="customers-summary__card">
+                    <span>Active members</span>
+                    <strong>{activeMemberCount}</strong>
+                    <small>
+                        Have logged into the Library
+                    </small>
+                </div>
+
+                <div className="customers-summary__card">
+                    <span>Awaiting setup</span>
+                    <strong>{pendingSetupCount}</strong>
+                    <small>
+                        Have not logged in yet
+                    </small>
+                </div>
+
+                <div className="customers-summary__card">
                     <span>Administrators</span>
                     <strong>{adminCount}</strong>
-                </div>
-
-                <div>
-                    <span>Active course access</span>
-                    <strong>{activeAccessCount}</strong>
+                    <small>
+                        Internal platform access
+                    </small>
                 </div>
             </section>
 
             <section className="customers-list">
+                <div className="customers-list__top">
+                    <div>
+                        <p className="customers-eyebrow">
+                            Directory
+                        </p>
+
+                        <h2>All customers</h2>
+                    </div>
+
+                    <span className="customers-list__count">
+                        {customers.length}{" "}
+                        {customers.length === 1
+                            ? "account"
+                            : "accounts"}
+                    </span>
+                </div>
+
                 <div className="customers-list__heading">
                     <span>Customer</span>
-                    <span>Access</span>
-                    <span>Role</span>
+                    <span>Status</span>
+                    <span>Library access</span>
+                    <span>Last login</span>
                     <span></span>
                 </div>
 
                 {customers.length === 0 ? (
-                    <p>No customer accounts exist yet.</p>
+                    <div className="customers-empty">
+                        <h3>No customers yet</h3>
+
+                        <p>
+                            Add your first member to begin
+                            managing their Library access.
+                        </p>
+                    </div>
                 ) : (
-                    customers.map((customer) => (
-                        <div
-                            key={customer.id}
-                            className="customer-row"
-                        >
-                            <div className="customer-row__identity">
-                                <strong>
-                                    {getCustomerName(
-                                        customer
-                                    )}
-                                </strong>
+                    customers.map((customer) => {
+                        const status =
+                            getCustomerStatus(customer);
 
-                                <span>
-                                    {customer.email}
-                                </span>
-                            </div>
-
-                            <div className="customer-row__access">
-                                {customer.courseSlugs.length}{" "}
-                                {customer.courseSlugs.length === 1
-                                    ? "course"
-                                    : "courses"}
-                            </div>
-
-                            <div>
-                                <span className="customer-row__role">
-                                    {customer.role}
-                                </span>
-                            </div>
-
-                            <Link
-                                href={`/admin/customers/${customer.id}`}
-                                className="customer-row__manage"
+                        return (
+                            <article
+                                key={customer.id}
+                                className="customer-row"
                             >
-                                Manage
-                                <span aria-hidden="true">
-                                    →
-                                </span>
-                            </Link>
-                        </div>
-                    ))
+                                <div className="customer-row__identity">
+                                    <strong>
+                                        {getCustomerName(
+                                            customer
+                                        )}
+                                    </strong>
+
+                                    <span>
+                                        {customer.email}
+                                    </span>
+
+                                    {customer.role ===
+                                        "admin" && (
+                                        <small>
+                                            Administrator
+                                        </small>
+                                    )}
+                                </div>
+
+                                <div className="customer-row__status">
+                                    <span
+                                        className={`customer-status ${status.className}`}
+                                    >
+                                        <span
+                                            className="customer-status__dot"
+                                            aria-hidden="true"
+                                        />
+
+                                        {status.label}
+                                    </span>
+                                </div>
+
+                                <div className="customer-row__access">
+                                    <strong>
+                                        {getAccessSummary(
+                                            customer.courseSlugs
+                                        )}
+                                    </strong>
+
+                                    <span>
+                                        {customer.courseSlugs
+                                            .length === 0
+                                            ? "No courses assigned"
+                                            : `${
+                                                  customer
+                                                      .courseSlugs
+                                                      .length
+                                              } ${
+                                                  customer
+                                                      .courseSlugs
+                                                      .length === 1
+                                                      ? "course"
+                                                      : "courses"
+                                              }`}
+                                    </span>
+                                </div>
+
+                                <div className="customer-row__login">
+                                    <strong>
+                                        {formatDate(
+                                            customer.lastSignInAt
+                                        )}
+                                    </strong>
+
+                                    <span>
+                                        Joined{" "}
+                                        {formatDate(
+                                            customer.createdAt
+                                        )}
+                                    </span>
+                                </div>
+
+                                <Link
+                                    href={`/admin/customers/${customer.id}`}
+                                    className="customer-row__manage"
+                                >
+                                    Open
+                                    <span aria-hidden="true">
+                                        →
+                                    </span>
+                                </Link>
+                            </article>
+                        );
+                    })
                 )}
             </section>
         </main>

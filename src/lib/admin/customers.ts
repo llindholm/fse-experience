@@ -26,7 +26,7 @@ type EntitlementRow = {
     revoked_at: string | null;
 };
 
-export async function getAdminCustomers(): Promise<
+export async function getCustomers(): Promise<
     AdminCustomer[]
 > {
     const supabase = createAdminClient();
@@ -129,4 +129,16 @@ export async function getAdminCustomers(): Promise<
         .sort((a, b) =>
             b.createdAt.localeCompare(a.createdAt)
         );
+}
+
+export async function getCustomerById(
+    customerId: string
+): Promise<AdminCustomer | null> {
+    const customers = await getCustomers();
+
+    return (
+        customers.find(
+            (customer) => customer.id === customerId
+        ) ?? null
+    );
 }

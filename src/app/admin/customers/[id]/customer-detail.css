@@ -1,0 +1,410 @@
+.customer-detail-page {
+    width: min(1440px, 100%);
+    margin: 0 auto;
+    padding: 48px clamp(24px, 4vw, 72px) 80px;
+    color: var(--ink);
+}
+
+.customer-detail-header {
+    margin-bottom: 40px;
+}
+
+.customer-detail-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    color: rgba(33, 29, 26, 0.62);
+    font-family: var(--font-manrope);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+        color 160ms ease,
+        transform 160ms ease;
+}
+
+.customer-detail-back:hover {
+    color: var(--ink);
+    transform: translateX(-3px);
+}
+
+.customer-detail-header__main {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.customer-detail-eyebrow {
+    margin: 0 0 10px;
+    color: var(--rose);
+    font-family: var(--font-manrope);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.customer-detail-header h1 {
+    max-width: 850px;
+    margin: 0;
+    font-family: "Italiana", serif;
+    font-size: clamp(3rem, 6vw, 6.5rem);
+    font-weight: 400;
+    letter-spacing: -0.045em;
+    line-height: 0.94;
+}
+
+.customer-detail-email {
+    margin: 18px 0 0;
+    color: rgba(33, 29, 26, 0.62);
+    font-family: var(--font-manrope);
+    font-size: 0.95rem;
+}
+
+.customer-detail-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    width: fit-content;
+    padding: 10px 14px;
+    border: 1px solid rgba(33, 29, 26, 0.09);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.52);
+    font-family: var(--font-manrope);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.customer-detail-status__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.customer-detail-status.is-active {
+    color: #47725d;
+}
+
+.customer-detail-status.is-pending {
+    color: #a56a46;
+}
+
+.customer-detail-status.is-new {
+    color: #716083;
+}
+
+.customer-detail-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.customer-detail-summary__card {
+    display: flex;
+    min-height: 150px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+    border: 1px solid rgba(33, 29, 26, 0.08);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.38);
+}
+
+.customer-detail-summary__card > span {
+    color: rgba(33, 29, 26, 0.54);
+    font-family: var(--font-manrope);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.customer-detail-summary__card strong {
+    margin-top: 24px;
+    font-family: "Italiana", serif;
+    font-size: clamp(1.75rem, 3vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1;
+}
+
+.customer-detail-summary__card small {
+    margin-top: 10px;
+    color: rgba(33, 29, 26, 0.5);
+    font-family: var(--font-manrope);
+    font-size: 0.76rem;
+    line-height: 1.5;
+}
+
+.customer-detail-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(
+            300px,
+            0.8fr
+        );
+    align-items: start;
+    gap: 24px;
+}
+
+.customer-detail-sidebar {
+    display: grid;
+    gap: 24px;
+}
+
+.customer-detail-panel {
+    padding: clamp(24px, 3vw, 38px);
+    border: 1px solid rgba(33, 29, 26, 0.08);
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.customer-detail-panel__heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.customer-detail-panel__heading--compact {
+    margin-bottom: 22px;
+}
+
+.customer-detail-panel__heading h2 {
+    margin: 0;
+    font-family: "Italiana", serif;
+    font-size: clamp(2rem, 3vw, 3.1rem);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+}
+
+.customer-detail-panel__heading > p {
+    max-width: 330px;
+    margin: 0;
+    color: rgba(33, 29, 26, 0.55);
+    font-family: var(--font-manrope);
+    font-size: 0.82rem;
+    line-height: 1.65;
+}
+
+.customer-course-list {
+    display: grid;
+    gap: 12px;
+}
+
+.customer-course {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 22px;
+    border: 1px solid rgba(33, 29, 26, 0.08);
+    border-radius: 18px;
+    background: rgba(245, 240, 234, 0.6);
+    transition:
+        border-color 160ms ease,
+        background 160ms ease;
+}
+
+.customer-course.has-access {
+    border-color: rgba(125, 74, 77, 0.2);
+    background: rgba(125, 74, 77, 0.055);
+}
+
+.customer-course__copy {
+    min-width: 0;
+}
+
+.customer-course__title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.customer-course__title h3 {
+    margin: 0;
+    font-family: var(--font-manrope);
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.customer-course__title span {
+    padding: 6px 9px;
+    border-radius: 999px;
+    background: rgba(33, 29, 26, 0.06);
+    color: rgba(33, 29, 26, 0.52);
+    font-family: var(--font-manrope);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.customer-course.has-access
+    .customer-course__title
+    span {
+    background: rgba(71, 114, 93, 0.1);
+    color: #47725d;
+}
+
+.customer-course__copy p {
+    margin: 8px 0 0;
+    color: rgba(33, 29, 26, 0.55);
+    font-family: var(--font-manrope);
+    font-size: 0.78rem;
+    line-height: 1.55;
+}
+
+.customer-course button {
+    min-width: 132px;
+    padding: 11px 15px;
+    border-radius: 999px;
+    font-family: var(--font-manrope);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition:
+        transform 160ms ease,
+        background 160ms ease,
+        color 160ms ease;
+}
+
+.customer-course button:hover {
+    transform: translateY(-1px);
+}
+
+.customer-course__grant {
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.customer-course__remove {
+    border: 1px solid rgba(33, 29, 26, 0.14);
+    background: transparent;
+    color: rgba(33, 29, 26, 0.62);
+}
+
+.customer-onboarding-status {
+    display: grid;
+    gap: 16px;
+}
+
+.customer-onboarding-status p {
+    margin: 0;
+    color: rgba(33, 29, 26, 0.58);
+    font-family: var(--font-manrope);
+    font-size: 0.82rem;
+    line-height: 1.65;
+}
+
+.customer-account-facts {
+    display: grid;
+    gap: 0;
+    margin: 28px 0 0;
+}
+
+.customer-account-facts > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 0;
+    border-top: 1px solid rgba(33, 29, 26, 0.08);
+    font-family: var(--font-manrope);
+    font-size: 0.76rem;
+}
+
+.customer-account-facts dt {
+    color: rgba(33, 29, 26, 0.5);
+}
+
+.customer-account-facts dd {
+    margin: 0;
+    font-weight: 600;
+    text-align: right;
+}
+
+.customer-detail-id {
+    display: block;
+    padding: 14px;
+    overflow-wrap: anywhere;
+    border-radius: 12px;
+    background: rgba(33, 29, 26, 0.055);
+    font-size: 0.72rem;
+    line-height: 1.55;
+}
+
+.customer-detail-note {
+    margin: 16px 0 0;
+    color: rgba(33, 29, 26, 0.5);
+    font-family: var(--font-manrope);
+    font-size: 0.76rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 1050px) {
+    .customer-detail-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .customer-detail-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .customer-detail-sidebar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 720px) {
+    .customer-detail-page {
+        padding: 32px 18px 60px;
+    }
+
+    .customer-detail-header__main {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .customer-detail-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .customer-detail-summary__card {
+        min-height: 130px;
+    }
+
+    .customer-detail-panel__heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .customer-course {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .customer-course__title {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .customer-course form,
+    .customer-course button {
+        width: 100%;
+    }
+
+    .customer-detail-sidebar {
+        grid-template-columns: 1fr;
+    }
+}

@@ -190,7 +190,11 @@ export async function createOrInviteCustomer({
     ];
 
     for (const courseSlug of uniqueCourseSlugs) {
-        await grantCourseAccess(userId, courseSlug);
+        await grantCourseAccess(
+            userId,
+            courseSlug,
+            "keap"
+        );
     }
 
     let welcomeUrl: string | null = null;

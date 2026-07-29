@@ -17,9 +17,11 @@ function getErrorMessage(error: unknown) {
         : "An unexpected error occurred.";
 }
 
+
 export async function grantCourseAccess(
     userId: string,
-    courseSlug: string
+    courseSlug: string,
+    source = "manual"
 ): Promise<AccessActionResult> {
     try {
         const supabase = createAdminClient();
@@ -45,6 +47,8 @@ export async function grantCourseAccess(
                 .from("course_entitlements")
                 .update({
                     revoked_at: null,
+                    source,
+                    granted_at: new Date().toISOString(),
                 })
                 .eq("user_id", userId)
                 .eq("course_slug", courseSlug);
@@ -55,11 +59,15 @@ export async function grantCourseAccess(
                 );
             }
         } else {
+            const now = new Date().toISOString();
+
             const { error: insertError } = await supabase
                 .from("course_entitlements")
                 .insert({
                     user_id: userId,
                     course_slug: courseSlug,
+                    source,
+                    granted_at: now,
                     revoked_at: null,
                 });
 
@@ -79,6 +87,8 @@ export async function grantCourseAccess(
         throw new Error(getErrorMessage(error));
     }
 }
+
+
 
 export async function revokeCourseAccess(
     userId: string,
@@ -111,6 +121,8 @@ export async function revokeCourseAccess(
         throw new Error(getErrorMessage(error));
     }
 }
+
+
 
 export async function setCustomerRole(
     userId: string,
