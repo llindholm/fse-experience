@@ -14,6 +14,9 @@ import { buildIntelligenceBrief } from "@/lib/admin/intelligence";
 import SessionExplorer from "@/components/admin/SessionExplorer";
 import SignOutButton from "@/components/admin/SignOutButton";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 
 export default async function AdminPage() {
     const [

@@ -2,6 +2,7 @@ import "server-only";
 
 import { supabaseAdmin } from "@/lib/supabase-admin";
 
+
 export type OverviewMetrics = {
     visitors: number;
     sessions: number;
@@ -59,13 +60,76 @@ export type RecentSessionMetric = {
     outcome: "checkout" | "enrollment" | "left";
     events: SessionJourneyEvent[];
 };
-
-type AnalyticsRow = {
+type FullAnalyticsRow = {
     visitor_id: string;
     session_id: string;
     event_name: string;
     event_value: number | null;
+    section_id: string | null;
+    created_at: string;
+    device_type: string | null;
 };
+
+async function getAllAnalyticsEvents({
+    eventNames,
+    startDate,
+}: {
+    eventNames: string[];
+    startDate?: string;
+}): Promise<FullAnalyticsRow[]> {
+    const pageSize = 1000;
+    const rows: FullAnalyticsRow[] = [];
+
+    let from = 0;
+
+    while (true) {
+        let query = supabaseAdmin
+            .from("analytics_events")
+            .select(
+                [
+                    "visitor_id",
+                    "session_id",
+                    "event_name",
+                    "event_value",
+                    "section_id",
+                    "created_at",
+                    "device_type",
+                ].join(", ")
+            )
+            .eq("site", "fse")
+            .in("event_name", eventNames)
+            .order("created_at", {
+                ascending: true,
+            })
+            .range(from, from + pageSize - 1);
+
+        if (startDate) {
+            query = query.gte("created_at", startDate);
+        }
+
+        const { data, error } =
+            await query.returns<FullAnalyticsRow[]>();
+
+        if (error) {
+            throw new Error(
+                `Unable to load analytics events: ${error.message}`
+            );
+        }
+
+        const page = data ?? [];
+
+        rows.push(...page);
+
+        if (page.length < pageSize) {
+            break;
+        }
+
+        from += pageSize;
+    }
+
+    return rows;
+}
+
 
 const EMPTY_METRICS: OverviewMetrics = {
     visitors: 0,
@@ -116,23 +180,25 @@ const FSE_CHAPTERS = [
 ] as const;
 
 export async function getOverviewMetrics(): Promise<OverviewMetrics> {
-    const { data, error } = await supabaseAdmin
-        .from("analytics_events")
-        .select("visitor_id, session_id, event_name, event_value")
-        .eq("site", "fse")
-        .in("event_name", [
-            "page_view",
-            "scroll_depth",
-            "enrollment_open",
-            "checkout_click",
-        ]);
+    let rows: FullAnalyticsRow[];
 
-    if (error) {
-        console.error("Unable to load dashboard overview metrics:", error);
+    try {
+        rows = await getAllAnalyticsEvents({
+            eventNames: [
+                "page_view",
+                "scroll_depth",
+                "enrollment_open",
+                "checkout_click",
+            ],
+        });
+    } catch (error) {
+        console.error(
+            "Unable to load dashboard overview metrics:",
+            error
+        );
+
         return EMPTY_METRICS;
     }
-
-    const rows = (data ?? []) as AnalyticsRow[];
 
     const pageViews = rows.filter((row) => row.event_name === "page_view");
 
@@ -212,23 +278,24 @@ export async function getOverviewMetrics(): Promise<OverviewMetrics> {
     };
 }
 
-type ChapterAnalyticsRow = {
-    visitor_id: string;
-    event_name: string;
-    section_id: string | null;
-};
 
 export async function getChapterProgression(): Promise<
     ChapterProgressMetric[]
 > {
-    const { data, error } = await supabaseAdmin
-        .from("analytics_events")
-        .select("visitor_id, event_name, section_id")
-        .eq("site", "fse")
-        .in("event_name", ["page_view", "chapter_view"]);
+    let rows: FullAnalyticsRow[];
 
-    if (error) {
-        console.error("Unable to load chapter progression:", error);
+    try {
+        rows = await getAllAnalyticsEvents({
+            eventNames: [
+                "page_view",
+                "chapter_view",
+            ],
+        });
+    } catch (error) {
+        console.error(
+            "Unable to load chapter progression:",
+            error
+        );
 
         return FSE_CHAPTERS.map((chapter) => ({
             ...chapter,
@@ -236,8 +303,6 @@ export async function getChapterProgression(): Promise<
             visitors: 0,
         }));
     }
-
-    const rows = (data ?? []) as ChapterAnalyticsRow[];
 
     const allVisitors = new Set(
         rows
@@ -275,11 +340,6 @@ export async function getChapterProgression(): Promise<
     });
 }
 
-type DailyAnalyticsRow = {
-    visitor_id: string;
-    session_id: string;
-    created_at: string;
-};
 
 function formatDateKey(date: Date) {
     return date.toISOString().slice(0, 10);
@@ -305,20 +365,21 @@ export async function getDailyVisitorTrend(
         startDate.getUTCDate() - (safeDays - 1)
     );
 
-    const { data, error } = await supabaseAdmin
-        .from("analytics_events")
-        .select("visitor_id, session_id, created_at")
-        .eq("site", "fse")
-        .eq("event_name", "page_view")
-        .gte("created_at", startDate.toISOString())
-        .order("created_at", { ascending: true });
+    let rows: FullAnalyticsRow[];
 
-    if (error) {
-        console.error("Unable to load daily visitor trend:", error);
+    try {
+        rows = await getAllAnalyticsEvents({
+            eventNames: ["page_view"],
+            startDate: startDate.toISOString(),
+        });
+    } catch (error) {
+        console.error(
+            "Unable to load daily visitor trend:",
+            error
+        );
+
         return [];
     }
-
-    const rows = (data ?? []) as DailyAnalyticsRow[];
 
     const visitorsByDate = new Map<string, Set<string>>();
     const sessionsByDate = new Map<string, Set<string>>();
@@ -354,26 +415,24 @@ export async function getDailyVisitorTrend(
     });
 }
 
-type FunnelAnalyticsRow = {
-    visitor_id: string;
-    event_name: string;
-    section_id: string | null;
-};
 
 export async function getSalesFunnel(): Promise<FunnelStageMetric[]> {
-    const { data, error } = await supabaseAdmin
-        .from("analytics_events")
-        .select("visitor_id, event_name, section_id")
-        .eq("site", "fse")
-        .in("event_name", [
-            "page_view",
-            "chapter_view",
-            "enrollment_open",
-            "checkout_click",
-        ]);
+    let rows: FullAnalyticsRow[];
 
-    if (error) {
-        console.error("Unable to load sales funnel:", error);
+    try {
+        rows = await getAllAnalyticsEvents({
+            eventNames: [
+                "page_view",
+                "chapter_view",
+                "enrollment_open",
+                "checkout_click",
+            ],
+        });
+    } catch (error) {
+        console.error(
+            "Unable to load sales funnel:",
+            error
+        );
 
         return [
             {
@@ -406,8 +465,6 @@ export async function getSalesFunnel(): Promise<FunnelStageMetric[]> {
             },
         ];
     }
-
-    const rows = (data ?? []) as FunnelAnalyticsRow[];
 
     const allVisitors = new Set(
         rows
