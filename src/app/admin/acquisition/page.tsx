@@ -1,5 +1,9 @@
 import Link from "next/link";
 
+import {
+    getTodaysRecommendation,
+} from "@/lib/acquisition/strategy";
+
 import "./acquisition.css";
 
 type QueueItem = {
@@ -19,6 +23,28 @@ type RecentAsset = {
     pageVisitors: number | null;
     learning: string;
 };
+
+function formatContentFormat(
+    format: string
+) {
+    return (
+        format.charAt(0).toUpperCase() +
+        format.slice(1)
+    );
+}
+
+function formatChapterList(
+    chapters: string[]
+) {
+    return chapters
+        .map((chapter) =>
+            chapter.replace(
+                "chapter-",
+                "Chapter "
+            )
+        )
+        .join(", ");
+}
 
 const queueItems: QueueItem[] = [
     {
@@ -67,6 +93,19 @@ const recentAssets: RecentAsset[] = [
 ];
 
 export default function AcquisitionPage() {
+    const recommendation =
+        getTodaysRecommendation();
+
+    const {
+        theme,
+        experiment,
+        format,
+        openingIdea,
+        whyToday,
+        estimatedMinutes,
+        confidence,
+    } = recommendation;
+
     const today = new Intl.DateTimeFormat(
         "en-US",
         {
@@ -75,6 +114,15 @@ export default function AcquisitionPage() {
             day: "numeric",
         }
     ).format(new Date());
+
+    const experimentProgress =
+        experiment.targetPostCount > 0
+            ? Math.round(
+                (experiment.publishedPostCount /
+                    experiment.targetPostCount) *
+                100
+            )
+            : 0;
 
     return (
         <main className="acquisition-page">
@@ -210,7 +258,8 @@ export default function AcquisitionPage() {
                             </p>
 
                             <h2>
-                                Create an Instagram carousel
+                                Create an Instagram{" "}
+                                {formatContentFormat(format)}
                             </h2>
                         </div>
 
@@ -225,14 +274,12 @@ export default function AcquisitionPage() {
                         </p>
 
                         <h3>
-                            The myth of consistency
+                            {theme.title}
                         </h3>
                     </div>
 
                     <blockquote>
-                        Maybe you are not inconsistent.
-                        Maybe your business only knows
-                        how to work when you do.
+                        {openingIdea}
                     </blockquote>
 
                     <div className="acquisition-belief-grid">
@@ -242,8 +289,7 @@ export default function AcquisitionPage() {
                             </p>
 
                             <p>
-                                “I need to become more
-                                disciplined.”
+                                “{theme.currentBelief}”
                             </p>
                         </div>
 
@@ -253,9 +299,7 @@ export default function AcquisitionPage() {
                             </p>
 
                             <p>
-                                “My business needs a structure
-                                that does not depend on my daily
-                                energy.”
+                                “{theme.desiredBelief}”
                             </p>
                         </div>
                     </div>
@@ -267,9 +311,7 @@ export default function AcquisitionPage() {
                             </p>
 
                             <p>
-                                Attract established women whose
-                                sales slow down whenever they stop
-                                actively marketing.
+                                {theme.purpose}
                             </p>
                         </div>
 
@@ -279,7 +321,10 @@ export default function AcquisitionPage() {
                             </p>
 
                             <p>
-                                Prepares readers for Chapters 1–3
+                                Prepares readers for{" "}
+                                {formatChapterList(
+                                    theme.salesPageChapters
+                                )}{" "}
                                 of the FSE experience.
                             </p>
                         </div>
@@ -290,10 +335,31 @@ export default function AcquisitionPage() {
                             </p>
 
                             <p>
-                                30 minutes
+                                {estimatedMinutes} minutes
                             </p>
                         </div>
                     </div>
+
+                    <details className="acquisition-why-details">
+                        <summary>
+                            Why this recommendation?
+                        </summary>
+
+                        <p>
+                            {whyToday}
+                        </p>
+
+                        <div className="acquisition-why-meta">
+                            <span>
+                                Confidence: {confidence}
+                            </span>
+
+                            <span>
+                                Strategy score:{" "}
+                                {recommendation.score}
+                            </span>
+                        </div>
+                    </details>
 
                     <div className="acquisition-assignment-actions">
                         <Link
@@ -324,13 +390,12 @@ export default function AcquisitionPage() {
                         </p>
 
                         <h2>
-                            Identity-first versus
-                            educational carousels
+                            {experiment.title}
                         </h2>
                     </div>
 
                     <span className="acquisition-status acquisition-status--quiet">
-                        Setup
+                        {experiment.status}
                     </span>
                 </div>
 
@@ -341,9 +406,7 @@ export default function AcquisitionPage() {
                         </p>
 
                         <p>
-                            Do identity-first carousels create
-                            more qualified FSE readers than
-                            educational carousels?
+                            {experiment.question}
                         </p>
                     </div>
 
@@ -353,10 +416,7 @@ export default function AcquisitionPage() {
                         </p>
 
                         <p>
-                            Recognition-led posts will create
-                            more profile visits and deeper
-                            sales-page progression than tactical
-                            advice.
+                            {experiment.hypothesis}
                         </p>
                     </div>
 
@@ -366,8 +426,7 @@ export default function AcquisitionPage() {
                         </p>
 
                         <p>
-                            Profile visits per 100
-                            non-follower accounts reached.
+                            {experiment.primaryPlatformSignal}
                         </p>
                     </div>
 
@@ -377,8 +436,7 @@ export default function AcquisitionPage() {
                         </p>
 
                         <p>
-                            Percentage of Instagram visitors
-                            reaching Chapter 5 or later.
+                            {experiment.primaryBusinessSignal}
                         </p>
                     </div>
                 </div>
@@ -386,7 +444,9 @@ export default function AcquisitionPage() {
                 <div className="acquisition-experiment-progress">
                     <div className="acquisition-progress-copy">
                         <span>
-                            0 of 6 posts published
+                            {experiment.publishedPostCount} of{" "}
+                            {experiment.targetPostCount} posts
+                            published
                         </span>
 
                         <span>
@@ -398,7 +458,11 @@ export default function AcquisitionPage() {
                         className="acquisition-progress-track"
                         aria-label="Experiment progress"
                     >
-                        <span style={{ width: "0%" }} />
+                        <span
+                            style={{
+                                width: `${experimentProgress}%`,
+                            }}
+                        />
                     </div>
                 </div>
             </section>

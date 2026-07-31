@@ -2,6 +2,8 @@ import AcquisitionCarouselCreator from "@/components/admin/AcquisitionCarouselCr
 
 import "../acquisition.css";
 
+
+
 export default function CreateAcquisitionAssetPage() {
     return (
         <main className="acquisition-page">
