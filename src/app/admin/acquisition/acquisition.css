@@ -1,0 +1,501 @@
+.acquisition-create-header {
+    max-width: 950px;
+    padding-bottom: clamp(38px, 5vw, 64px);
+}
+
+.acquisition-create-header h1 {
+    margin: 14px 0 0;
+    font-family: var(--font-italiana);
+    font-size: clamp(3.4rem, 7vw, 6.5rem);
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    line-height: 0.93;
+}
+
+.acquisition-create-header h1 span {
+    display: block;
+    color: var(--rose);
+}
+
+.acquisition-create-header > div > p:last-child {
+    max-width: 680px;
+    margin: 22px 0 0;
+    color: rgba(33, 29, 26, 0.58);
+    font-family: var(--font-manrope);
+    font-size: 0.86rem;
+    line-height: 1.75;
+}
+
+.acquisition-creator {
+    max-width: 1280px;
+}
+
+.acquisition-workflow-nav {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.acquisition-workflow-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 15px;
+    border: 1px solid rgba(33, 29, 26, 0.08);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.42);
+    color: rgba(33, 29, 26, 0.46);
+    cursor: pointer;
+    text-align: left;
+}
+
+.acquisition-workflow-step span {
+    display: grid;
+    width: 29px;
+    height: 29px;
+    flex: 0 0 auto;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(33, 29, 26, 0.055);
+    font-family: var(--font-manrope);
+    font-size: 0.62rem;
+    font-weight: 750;
+}
+
+.acquisition-workflow-step strong {
+    font-family: var(--font-manrope);
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.acquisition-workflow-step.is-active {
+    border-color: rgba(125, 74, 77, 0.22);
+    background: rgba(125, 74, 77, 0.08);
+    color: var(--ink);
+}
+
+.acquisition-workflow-step.is-active span {
+    background: var(--rose);
+    color: var(--paper);
+}
+
+.acquisition-workflow-step.is-complete {
+    color: var(--ink);
+}
+
+.acquisition-workflow-step.is-complete span {
+    background: rgba(33, 29, 26, 0.1);
+}
+
+.acquisition-creator-panel {
+    padding: clamp(26px, 4vw, 48px);
+    border: 1px solid rgba(33, 29, 26, 0.08);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.54);
+    box-shadow:
+        0 18px 48px rgba(33, 29, 26, 0.035);
+}
+
+.acquisition-creator-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.acquisition-creator-heading h2 {
+    margin: 10px 0 0;
+    font-family: var(--font-italiana);
+    font-size: clamp(2.25rem, 4vw, 4rem);
+    font-weight: 400;
+    line-height: 0.98;
+}
+
+.acquisition-creator-intro {
+    max-width: 720px;
+    margin: 20px 0 0;
+    color: rgba(33, 29, 26, 0.6);
+    font-family: var(--font-manrope);
+    font-size: 0.82rem;
+    line-height: 1.75;
+}
+
+.acquisition-strategy-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 34px;
+}
+
+.acquisition-strategy-grid article {
+    padding: 22px;
+    border-radius: 17px;
+    background: rgba(33, 29, 26, 0.032);
+}
+
+.acquisition-strategy-grid h3 {
+    margin: 12px 0 0;
+    font-family: var(--font-manrope);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.acquisition-strategy-grid article > p:last-child {
+    margin: 10px 0 0;
+    color: rgba(33, 29, 26, 0.58);
+    font-family: var(--font-manrope);
+    font-size: 0.74rem;
+    line-height: 1.68;
+}
+
+.acquisition-belief-shift {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto
+        minmax(0, 1fr);
+    align-items: center;
+    gap: 22px;
+    margin-top: 18px;
+    padding: 24px;
+    border: 1px solid rgba(125, 74, 77, 0.13);
+    border-radius: 18px;
+    background: rgba(125, 74, 77, 0.055);
+}
+
+.acquisition-belief-shift blockquote {
+    margin: 13px 0 0;
+    font-family: var(--font-italiana);
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    line-height: 1.1;
+}
+
+.acquisition-belief-shift > span {
+    color: var(--rose);
+    font-size: 1.3rem;
+}
+
+.acquisition-source-list {
+    display: grid;
+    gap: 12px;
+    margin-top: 34px;
+}
+
+.acquisition-source-card {
+    display: grid;
+    grid-template-columns: minmax(210px, 0.7fr) minmax(0, 1.3fr);
+    gap: 28px;
+    padding: 22px;
+    border-radius: 17px;
+    background: rgba(33, 29, 26, 0.032);
+}
+
+.acquisition-source-card span {
+    color: var(--rose);
+    font-family: var(--font-manrope);
+    font-size: 0.61rem;
+    font-weight: 750;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+}
+
+.acquisition-source-card h3 {
+    margin: 8px 0 0;
+    font-family: var(--font-italiana);
+    font-size: 1.65rem;
+    font-weight: 400;
+    line-height: 1.05;
+}
+
+.acquisition-source-card > p {
+    margin: 0;
+    color: rgba(33, 29, 26, 0.62);
+    font-family: var(--font-manrope);
+    font-size: 0.77rem;
+    line-height: 1.75;
+}
+
+.acquisition-source-guardrail {
+    margin-top: 18px;
+    padding: 22px;
+    border: 1px solid rgba(125, 74, 77, 0.14);
+    border-radius: 17px;
+    background: rgba(125, 74, 77, 0.055);
+}
+
+.acquisition-source-guardrail > p:last-child {
+    margin: 11px 0 0;
+    font-family: var(--font-manrope);
+    font-size: 0.78rem;
+    line-height: 1.72;
+}
+
+.acquisition-slide-editor-list {
+    display: grid;
+    gap: 13px;
+    margin-top: 34px;
+}
+
+.acquisition-slide-editor {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 18px;
+    padding: 20px;
+    border-radius: 17px;
+    background: rgba(33, 29, 26, 0.032);
+}
+
+.acquisition-slide-number {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(125, 74, 77, 0.1);
+    color: var(--rose);
+    font-family: var(--font-manrope);
+    font-size: 0.68rem;
+    font-weight: 750;
+}
+
+.acquisition-slide-editor > div {
+    display: grid;
+    grid-template-columns: minmax(160px, 0.35fr) minmax(0, 1fr);
+    gap: 14px;
+}
+
+.acquisition-slide-editor label {
+    display: grid;
+    gap: 8px;
+    color: rgba(33, 29, 26, 0.48);
+    font-family: var(--font-manrope);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.acquisition-slide-editor input,
+.acquisition-slide-editor textarea {
+    width: 100%;
+    border: 1px solid rgba(33, 29, 26, 0.09);
+    border-radius: 12px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.68);
+    color: var(--ink);
+    font-family: var(--font-manrope);
+    font-size: 0.78rem;
+    line-height: 1.55;
+}
+
+.acquisition-slide-editor input {
+    min-height: 46px;
+    padding: 0 13px;
+}
+
+.acquisition-slide-editor textarea {
+    min-height: 92px;
+    padding: 13px;
+    resize: vertical;
+}
+
+.acquisition-slide-editor input:focus,
+.acquisition-slide-editor textarea:focus {
+    border-color: rgba(125, 74, 77, 0.35);
+}
+
+.acquisition-carousel-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    margin-top: 34px;
+}
+
+.acquisition-carousel-slide {
+    display: flex;
+    min-height: 290px;
+    flex-direction: column;
+    padding: 24px;
+    border: 1px solid rgba(33, 29, 26, 0.08);
+    border-radius: 20px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(125, 74, 77, 0.06),
+            rgba(255, 255, 255, 0.58)
+        );
+}
+
+.acquisition-carousel-slide-topline {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    color: rgba(33, 29, 26, 0.43);
+    font-family: var(--font-manrope);
+    font-size: 0.61rem;
+    font-weight: 750;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.acquisition-carousel-slide > p {
+    margin: auto 0;
+    padding: 30px 0;
+    font-family: var(--font-italiana);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    line-height: 1.08;
+}
+
+.acquisition-carousel-slide button,
+.acquisition-caption-card button {
+    align-self: flex-start;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--rose);
+    font-family: var(--font-manrope);
+    font-size: 0.67rem;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+.acquisition-caption-card {
+    margin-top: 18px;
+    padding: 28px;
+    border-radius: 20px;
+    background: rgba(33, 29, 26, 0.032);
+}
+
+.acquisition-caption-card h3,
+.acquisition-finalize-card h3 {
+    margin: 9px 0 0;
+    font-family: var(--font-italiana);
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.acquisition-caption-card > p {
+    margin: 24px 0 0;
+    white-space: pre-line;
+    font-family: var(--font-manrope);
+    font-size: 0.79rem;
+    line-height: 1.8;
+}
+
+.acquisition-finalize-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    margin-top: 18px;
+    padding: 26px;
+    border: 1px solid rgba(125, 74, 77, 0.14);
+    border-radius: 20px;
+    background: rgba(125, 74, 77, 0.055);
+}
+
+.acquisition-finalize-card > div > p:last-child {
+    max-width: 610px;
+    margin: 10px 0 0;
+    color: rgba(33, 29, 26, 0.58);
+    font-family: var(--font-manrope);
+    font-size: 0.74rem;
+    line-height: 1.68;
+}
+
+.acquisition-workflow-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.acquisition-workflow-actions button:disabled {
+    cursor: not-allowed;
+    opacity: 0.35;
+}
+
+@media (max-width: 900px) {
+    .acquisition-source-card {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .acquisition-slide-editor > div {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .acquisition-workflow-nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .acquisition-strategy-grid,
+    .acquisition-carousel-preview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .acquisition-belief-shift {
+        grid-template-columns: 1fr;
+    }
+
+    .acquisition-belief-shift > span {
+        transform: rotate(90deg);
+        justify-self: center;
+    }
+
+    .acquisition-finalize-card {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 520px) {
+    .acquisition-create-header h1 {
+        font-size: clamp(3rem, 16vw, 4.7rem);
+    }
+
+    .acquisition-workflow-nav {
+        grid-template-columns: 1fr;
+    }
+
+    .acquisition-workflow-step {
+        padding: 11px 13px;
+    }
+
+    .acquisition-creator-panel {
+        padding: 21px;
+        border-radius: 20px;
+    }
+
+    .acquisition-creator-heading {
+        flex-direction: column;
+    }
+
+    .acquisition-slide-editor {
+        grid-template-columns: 1fr;
+    }
+
+    .acquisition-slide-number {
+        width: 36px;
+        height: 36px;
+    }
+
+    .acquisition-carousel-slide {
+        min-height: 250px;
+    }
+
+    .acquisition-workflow-actions {
+        align-items: stretch;
+        flex-direction: column-reverse;
+    }
+
+    .acquisition-workflow-actions
+        .acquisition-primary-action,
+    .acquisition-workflow-actions
+        .acquisition-secondary-action {
+        width: 100%;
+    }
+}

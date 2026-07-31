@@ -25,6 +25,19 @@ const navigationItems: AdminNavigationItem[] = [
         ),
     },
     {
+    href: "/admin/acquisition",
+    label: "Acquisition Lab",
+    description: "Organic demand",
+    icon: (
+        <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+        >
+            <path d="M12 2a7 7 0 0 0-4 12.74V18a2 2 0 0 0 2 2h1v2h2v-2h1a2 2 0 0 0 2-2v-3.26A7 7 0 0 0 12 2Zm2.75 11.34-.75.47V18h-4v-4.19l-.75-.47A5 5 0 1 1 14.75 13.34ZM9 9h6v2H9V9Z" />
+        </svg>
+    ),
+},
+    {
         href: "/admin/customers",
         label: "Customers",
         description: "Members and access",
