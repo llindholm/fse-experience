@@ -1,5 +1,9 @@
 import type { ReactNode } from "react";
+
+import AdminSidebar from "@/components/admin/AdminSidebar";
 import { requireAdmin } from "@/lib/auth/requireAdmin";
+
+import "./admin-shell.css";
 
 type AdminLayoutProps = {
     children: ReactNode;
@@ -10,5 +14,13 @@ export default async function AdminLayout({
 }: AdminLayoutProps) {
     await requireAdmin();
 
-    return children;
+    return (
+        <div className="admin-shell">
+            <AdminSidebar />
+
+            <div className="admin-shell__content">
+                {children}
+            </div>
+        </div>
+    );
 }

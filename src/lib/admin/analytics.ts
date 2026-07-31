@@ -2,6 +2,10 @@ import "server-only";
 
 import { supabaseAdmin } from "@/lib/supabase-admin";
 
+export type AnalyticsDateRange = {
+    startDate?: string;
+    endDate?: string;
+};
 
 export type OverviewMetrics = {
     visitors: number;
@@ -73,9 +77,11 @@ type FullAnalyticsRow = {
 async function getAllAnalyticsEvents({
     eventNames,
     startDate,
+    endDate,
 }: {
     eventNames: string[];
     startDate?: string;
+    endDate?: string;
 }): Promise<FullAnalyticsRow[]> {
     const pageSize = 1000;
     const rows: FullAnalyticsRow[] = [];
@@ -104,7 +110,17 @@ async function getAllAnalyticsEvents({
             .range(from, from + pageSize - 1);
 
         if (startDate) {
-            query = query.gte("created_at", startDate);
+            query = query.gte(
+                "created_at",
+                startDate
+            );
+        }
+
+        if (endDate) {
+            query = query.lt(
+                "created_at",
+                endDate
+            );
         }
 
         const { data, error } =
@@ -179,7 +195,9 @@ const FSE_CHAPTERS = [
     },
 ] as const;
 
-export async function getOverviewMetrics(): Promise<OverviewMetrics> {
+export async function getOverviewMetrics(
+    range: AnalyticsDateRange = {}
+): Promise<OverviewMetrics> {
     let rows: FullAnalyticsRow[];
 
     try {
@@ -190,6 +208,8 @@ export async function getOverviewMetrics(): Promise<OverviewMetrics> {
                 "enrollment_open",
                 "checkout_click",
             ],
+            startDate: range.startDate,
+            endDate: range.endDate,
         });
     } catch (error) {
         console.error(
@@ -279,9 +299,9 @@ export async function getOverviewMetrics(): Promise<OverviewMetrics> {
 }
 
 
-export async function getChapterProgression(): Promise<
-    ChapterProgressMetric[]
-> {
+export async function getChapterProgression(
+    range: AnalyticsDateRange = {}
+): Promise<ChapterProgressMetric[]> {
     let rows: FullAnalyticsRow[];
 
     try {
@@ -290,6 +310,8 @@ export async function getChapterProgression(): Promise<
                 "page_view",
                 "chapter_view",
             ],
+            startDate: range.startDate,
+            endDate: range.endDate,
         });
     } catch (error) {
         console.error(
@@ -354,23 +376,15 @@ function formatDateLabel(date: Date) {
 }
 
 export async function getDailyVisitorTrend(
-    days = 30
+    range: AnalyticsDateRange = {}
 ): Promise<DailyVisitorMetric[]> {
-    const safeDays = Math.max(1, Math.min(days, 90));
-
-    const startDate = new Date();
-
-    startDate.setUTCHours(0, 0, 0, 0);
-    startDate.setUTCDate(
-        startDate.getUTCDate() - (safeDays - 1)
-    );
-
     let rows: FullAnalyticsRow[];
 
     try {
         rows = await getAllAnalyticsEvents({
             eventNames: ["page_view"],
-            startDate: startDate.toISOString(),
+            startDate: range.startDate,
+            endDate: range.endDate,
         });
     } catch (error) {
         console.error(
@@ -381,42 +395,98 @@ export async function getDailyVisitorTrend(
         return [];
     }
 
-    const visitorsByDate = new Map<string, Set<string>>();
-    const sessionsByDate = new Map<string, Set<string>>();
+    const visitorsByDate = new Map<
+        string,
+        Set<string>
+    >();
+
+    const sessionsByDate = new Map<
+        string,
+        Set<string>
+    >();
 
     rows.forEach((row) => {
-        const dateKey = formatDateKey(new Date(row.created_at));
+        const dateKey = formatDateKey(
+            new Date(row.created_at)
+        );
 
         if (!visitorsByDate.has(dateKey)) {
-            visitorsByDate.set(dateKey, new Set());
+            visitorsByDate.set(
+                dateKey,
+                new Set()
+            );
         }
 
         if (!sessionsByDate.has(dateKey)) {
-            sessionsByDate.set(dateKey, new Set());
+            sessionsByDate.set(
+                dateKey,
+                new Set()
+            );
         }
 
-        visitorsByDate.get(dateKey)?.add(row.visitor_id);
-        sessionsByDate.get(dateKey)?.add(row.session_id);
+        visitorsByDate
+            .get(dateKey)
+            ?.add(row.visitor_id);
+
+        sessionsByDate
+            .get(dateKey)
+            ?.add(row.session_id);
     });
 
-    return Array.from({ length: safeDays }, (_, index) => {
-        const date = new Date(startDate);
+    const today = new Date();
+    today.setUTCHours(0, 0, 0, 0);
 
-        date.setUTCDate(startDate.getUTCDate() + index);
+    let firstDate: Date;
 
-        const dateKey = formatDateKey(date);
+    if (range.startDate) {
+        firstDate = new Date(range.startDate);
+        firstDate.setUTCHours(0, 0, 0, 0);
+    } else if (rows.length > 0) {
+        firstDate = new Date(rows[0].created_at);
+        firstDate.setUTCHours(0, 0, 0, 0);
+    } else {
+        firstDate = new Date(today);
+    }
 
-        return {
-            date: dateKey,
-            label: formatDateLabel(date),
-            visitors: visitorsByDate.get(dateKey)?.size ?? 0,
-            sessions: sessionsByDate.get(dateKey)?.size ?? 0,
-        };
-    });
+    const millisecondsPerDay =
+        24 * 60 * 60 * 1000;
+
+    const dayCount =
+        Math.floor(
+            (today.getTime() -
+                firstDate.getTime()) /
+            millisecondsPerDay
+        ) + 1;
+
+    return Array.from(
+        { length: Math.max(dayCount, 1) },
+        (_, index) => {
+            const date = new Date(firstDate);
+
+            date.setUTCDate(
+                firstDate.getUTCDate() + index
+            );
+
+            const dateKey = formatDateKey(date);
+
+            return {
+                date: dateKey,
+                label: formatDateLabel(date),
+                visitors:
+                    visitorsByDate.get(dateKey)
+                        ?.size ?? 0,
+                sessions:
+                    sessionsByDate.get(dateKey)
+                        ?.size ?? 0,
+            };
+        }
+    );
 }
 
 
-export async function getSalesFunnel(): Promise<FunnelStageMetric[]> {
+export async function getSalesFunnel(
+    range: AnalyticsDateRange = {}
+): Promise<FunnelStageMetric[]> {
     let rows: FullAnalyticsRow[];
 
     try {
@@ -427,6 +497,8 @@ export async function getSalesFunnel(): Promise<FunnelStageMetric[]> {
                 "enrollment_open",
                 "checkout_click",
             ],
+            startDate: range.startDate,
+            endDate: range.endDate,
         });
     } catch (error) {
         console.error(
@@ -619,7 +691,8 @@ function createVisitorLabel(visitorId: string) {
 }
 
 export async function getRecentSessions(
-    limit = 20
+    limit = 20,
+    range: AnalyticsDateRange = {}
 ): Promise<RecentSessionMetric[]> {
     const safeLimit = Math.max(1, Math.min(limit, 100));
 
@@ -627,7 +700,7 @@ export async function getRecentSessions(
      * We pull more rows than sessions because each session contains
      * multiple events.
      */
-    const { data, error } = await supabaseAdmin
+    let query = supabaseAdmin
         .from("analytics_events")
         .select(
             "visitor_id, session_id, event_name, section_id, created_at, device_type"
@@ -640,13 +713,26 @@ export async function getRecentSessions(
             "enrollment_close",
             "checkout_click",
         ])
-        .order("created_at", { ascending: false })
+        .order("created_at", {
+            ascending: false,
+        })
         .limit(safeLimit * 30);
 
-    if (error) {
-        console.error("Unable to load recent sessions:", error);
-        return [];
+    if (range.startDate) {
+        query = query.gte(
+            "created_at",
+            range.startDate
+        );
     }
+
+    if (range.endDate) {
+        query = query.lt(
+            "created_at",
+            range.endDate
+        );
+    }
+
+    const { data, error } = await query;
 
     const rows = (data ?? []) as SessionAnalyticsRow[];
 
