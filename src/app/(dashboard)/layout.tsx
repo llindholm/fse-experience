@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import AdminSidebar from "@/components/admin/AdminSidebar";
+
 import TopBar from "@/components/admin/TopBar";
 import "./dashboard.css";
 
@@ -12,7 +12,7 @@ export default function DashboardLayout({
 }: DashboardLayoutProps) {
     return (
         <div className="dashboard-shell">
-            <AdminSidebar />
+            
 
             <div className="dashboard-main">
                 <TopBar />

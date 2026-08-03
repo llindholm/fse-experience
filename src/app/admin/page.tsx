@@ -7,7 +7,7 @@ import SessionExplorer from "@/components/admin/SessionExplorer";
 import AnalyticsRangeFilter, {
     type AnalyticsRangeKey,
 } from "@/components/admin/AnalyticsRangeFilter";
-
+import "./dashboard.css";
 import {
     getChapterProgression,
     getDailyVisitorTrend,

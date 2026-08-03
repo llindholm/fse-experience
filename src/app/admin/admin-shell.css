@@ -1,6 +1,7 @@
 .admin-shell {
     display: grid;
     grid-template-columns: 280px minmax(0, 1fr);
+    gap: clamp(24px, 2vw, 40px);
     min-height: 100svh;
     background: var(--paper);
     color: var(--ink);
@@ -8,6 +9,7 @@
 
 .admin-shell__content {
     min-width: 0;
+    padding: 0 clamp(28px, 3vw, 48px) 0 0;
 }
 
 .admin-sidebar {

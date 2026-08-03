@@ -1760,6 +1760,16 @@ export default function Home() {
               </h2>
             </Insight>
 
+            <div className="offer-price">
+                <p>Enrollment</p>
+
+                {/* Replace with the confirmed current price */}
+                <strong>$1,497</strong>
+
+                {/* Replace or remove when the payment plan is confirmed */}
+                <span>or 3 monthly payments of $597</span>
+              </div>
+
             <Insight delay={0.24}>
               <TrackedCheckoutLink
                 className="final-enrollment-button"
@@ -1771,6 +1781,7 @@ export default function Home() {
                 <span aria-hidden="true">→</span>
               </TrackedCheckoutLink>
             </Insight>
+            
 
             <Insight delay={0.3}>
               <p className="final-note">
