@@ -1683,6 +1683,10 @@ export default function Home() {
                 <span aria-hidden="true">→</span>
               </TrackedCheckoutLink>
 
+              <Insight>
+              <p className="offer-description">Sign up today to save $1,000 + get 4 months of live coaching ($6,000 value)</p>
+            </Insight>
+
               <Insight delay={0.3}>
                 <p className="final-note">
                   <span>Your message. Your authority. Your offers.</span>
@@ -1780,6 +1784,10 @@ export default function Home() {
                 <span>Join Feminine Sales Engine</span>
                 <span aria-hidden="true">→</span>
               </TrackedCheckoutLink>
+            </Insight>
+
+            <Insight>
+              <p className="offer-description">Sign up today to save $1,000 + get 4 months of live coaching ($6,000 value)</p>
             </Insight>
             
 
