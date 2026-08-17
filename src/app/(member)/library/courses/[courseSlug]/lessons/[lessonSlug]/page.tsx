@@ -143,11 +143,13 @@ export default async function LessonPage({
                         <div className="lesson-audio__content">
                             <div>
                                 <p className="lesson-audio__eyebrow">
-                                    Audio Version
+                                    {lesson.videoUrl ? "Audio Version" : "Audio Training"}
                                 </p>
 
                                 <p className="lesson-audio__text">
-                                    Prefer to listen instead?
+                                    {lesson.videoUrl
+                                        ? "Prefer to listen instead?"
+                                        : "Listen to this training"}
                                 </p>
                             </div>
 

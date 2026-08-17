@@ -529,28 +529,22 @@ export const courses: Course[] = [
         subtitle:
             "From Optional to the Only Option.",
         description:
-            "Brief Underrated course description here....",
+            "Become impossible to scroll past and irresistable to buy from.",
         content: [
             {
-                type: "section",
-                section: {
-                    id: "welcome",
-                    title: "Welcome",
-                    lessons: [
-                        {
+                type: "lesson", 
+                lesson: {
+                    
                             id: "start-here",
                             slug: "start-here",
-                            title: "Start Here >>",
-                            description:
-                                "Description",
+                            title: "Welcome to UNDERRATED! Start here >>",
                             duration: "16 min",
+                            videoUrl:"",
                             audioUrl:
                                 "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Underrated-Welcome.mp3"
 
-                        },
-                    ],
+                        },  
                 },
-            },
             {
                 type: "lesson",
                 lesson: {
@@ -561,6 +555,7 @@ export const courses: Course[] = [
                     duration: "26 min",
                     opening:
                         "Here’s how to position yourself to match your power 🔥⚡️🚀",
+                        videoUrl:"",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%201.mp3",
                     },
@@ -575,6 +570,7 @@ export const courses: Course[] = [
                     duration: "26 min",
                     opening:
                         "You Don’t Need to Be Louder — You Need to Be Felt 🤌",
+                        videoUrl:"",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%202.mp3",
                     },
@@ -587,6 +583,7 @@ export const courses: Course[] = [
                     title: "🎙️ Day 3",
                     description: "Why They Don’t Buy (Even When You Say All the Right Things)",
                     duration: "16 min",
+                    videoUrl:"",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%203.mp3",
                     },
@@ -601,6 +598,7 @@ export const courses: Course[] = [
                     duration: "16 min",
                     opening:
                         "And the subtle shift from recognition to revenue + how to make it today.",
+                        videoUrl:"",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%204.mp3",
                     },
@@ -615,6 +613,7 @@ export const courses: Course[] = [
                     duration: "20 min",
                     opening:
                         "How to write fewer posts that do more work.",
+                        videoUrl:"",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%205.mp3",
                     },
@@ -629,6 +628,7 @@ export const courses: Course[] = [
                     duration: "21 min",
                     opening:
                         "How Standard-Setting Brands Sell More by Saying Less.",
+                        videoUrl:"",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%206.mp3",
                     },
@@ -643,6 +643,7 @@ export const courses: Course[] = [
                     duration: "25 min",
                     opening:
                         "It’s not about followers, but moving the right people.",
+                        videoUrl:"",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%207.mp3",
                     },
@@ -657,6 +658,7 @@ export const courses: Course[] = [
                     duration: "25 min",
                     opening:
                         "Why “She Just Hits Different” Is the New Strategy 😉",
+                        videoUrl:"",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%208.mp3",
                     },
@@ -671,6 +673,7 @@ export const courses: Course[] = [
                     duration: "23 min",
                     opening:
                         "The End of Performance-Based Selling",
+                        videoUrl:"",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%209.mp3",
                     },
@@ -685,6 +688,7 @@ export const courses: Course[] = [
                     duration: "24 min",
                     opening:
                         "The calibration is complete. You’ve arrived. And you walk forward fully embodied in your most powerful brand.",
+                        videoUrl:"",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%2010.mp3",
                     },
@@ -702,6 +706,7 @@ export const courses: Course[] = [
                             description:
                                 "The Calibration That Changes Everything",
                             duration: "18 min",
+                            videoUrl:"",
                             audioUrl:
                                 "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Bonus%201.mp3"
 
@@ -713,6 +718,7 @@ export const courses: Course[] = [
                             description: "Commanding Energy Starts Before They Buy 📣 🔥 ⚡️",
                             duration: "21 min",
                             opening: "The Lie That Blocks Millions — And the Power That Replaces It",
+                            videoUrl:"",
                             audioUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Bonus%202.mp3",
 
                         },
@@ -723,6 +729,7 @@ export const courses: Course[] = [
                             description: "Start Walking Like You’ve Already Been Paid 🤌 💸",
                             duration: "20 min",
                             opening: "Undeniable energy doesn’t wait. It leads.",
+                            videoUrl:"",
                             audioUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Bonus%203.mp3",
 
                         },
