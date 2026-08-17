@@ -18,6 +18,10 @@ export const PRODUCT_ACCESS = {
     "signature-close": [
         "signature-close",
     ],
+
+    "underrated": [
+        "underrated",
+    ],
 } as const;
 
 export type ProductSlug =

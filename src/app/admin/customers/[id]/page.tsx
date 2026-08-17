@@ -44,6 +44,12 @@ const COURSE_OPTIONS: CourseOption[] = [
         description:
             "The complete quiet-conversion funnel system.",
     },
+    {
+        slug: "underrated",
+        title: "UNDERRATED",
+        description:
+        "From Optional to the Only Option."
+    }
 ];
 
 function formatDate(value: string | null) {

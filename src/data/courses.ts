@@ -522,6 +522,227 @@ export const courses: Course[] = [
             },
         ]
     },
+    {
+        id: "underrated",
+        slug: "underrated",
+        title: "UNDERRATED",
+        subtitle:
+            "From Optional to the Only Option.",
+        description:
+            "Brief Underrated course description here....",
+        content: [
+            {
+                type: "section",
+                section: {
+                    id: "welcome",
+                    title: "Welcome",
+                    lessons: [
+                        {
+                            id: "start-here",
+                            slug: "start-here",
+                            title: "Start Here >>",
+                            description:
+                                "Description",
+                            duration: "16 min",
+                            audioUrl:
+                                "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Underrated-Welcome.mp3"
+
+                        },
+                    ],
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "day-1",
+                    slug: "day-1",
+                    title: "🎙️ Day 1",
+                    description: "You Weren’t Invisible. You Were Miscalibrated",
+                    duration: "26 min",
+                    opening:
+                        "Here’s how to position yourself to match your power 🔥⚡️🚀",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%201.mp3",
+                    },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "day-2",
+                    slug: "day-2",
+                    title: "🎙️ Day 2",
+                    description: "The Quiet Shift That Makes Premium Clients Move",
+                    duration: "26 min",
+                    opening:
+                        "You Don’t Need to Be Louder — You Need to Be Felt 🤌",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%202.mp3",
+                    },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "day-3",
+                    slug: "day-3",
+                    title: "🎙️ Day 3",
+                    description: "Why They Don’t Buy (Even When You Say All the Right Things)",
+                    duration: "16 min",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%203.mp3",
+                    },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "day-4",
+                    slug: "day-4",
+                    title: "🎙️ Day 4",
+                    description: "Why Convincing Energy Will Cost You Premium Clients 😮‍💨🔥🚀",
+                    duration: "16 min",
+                    opening:
+                        "And the subtle shift from recognition to revenue + how to make it today.",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%204.mp3",
+                    },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "day-5",
+                    slug: "day-5",
+                    title: "🎙️ Day 5",
+                    description: "Let Your Content Do the Heavy Lifting ⚡️💸📣",
+                    duration: "20 min",
+                    opening:
+                        "How to write fewer posts that do more work.",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%205.mp3",
+                    },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "day-6",
+                    slug: "day-6",
+                    title: "🎙️ Day 6",
+                    description: "The Shift from “Helpful” to Highly Paid 🙌🔥💸",
+                    duration: "21 min",
+                    opening:
+                        "How Standard-Setting Brands Sell More by Saying Less.",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%206.mp3",
+                    },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "day-7",
+                    slug: "day-7",
+                    title: "🎙️ Day 7",
+                    description: "Build a Presence Buyers Feel Before They Click 🤌🔥💸",
+                    duration: "25 min",
+                    opening:
+                        "It’s not about followers, but moving the right people.",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%207.mp3",
+                    },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "day-8",
+                    slug: "day-8",
+                    title: "🎙️ Day 8",
+                    description: "Become the Only Option. Not Just Another One.",
+                    duration: "25 min",
+                    opening:
+                        "Why “She Just Hits Different” Is the New Strategy 😉",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%208.mp3",
+                    },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "day-9",
+                    slug: "day-9",
+                    title: "🎙️ Day 9",
+                    description: "Be Paid Because You Exist — Not Because You Hustle",
+                    duration: "23 min",
+                    opening:
+                        "The End of Performance-Based Selling",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%209.mp3",
+                    },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "day-10",
+                    slug: "day-10",
+                    title: "🎙️ Day 10",
+                    description: "The Undeniable Woman Doesn’t Chase. She Chooses.",
+                    duration: "24 min",
+                    opening:
+                        "The calibration is complete. You’ve arrived. And you walk forward fully embodied in your most powerful brand.",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%2010.mp3",
+                    },
+            },
+            {
+                type: "section",
+                section: {
+                    id: "bonus-content",
+                    title: "Bonus Content",
+                    lessons: [
+                        {
+                            id: "bonus-audio-1",
+                            slug: "bonus-audio-1",
+                            title: "🎙️ Bonus Audio 1",
+                            description:
+                                "The Calibration That Changes Everything",
+                            duration: "18 min",
+                            audioUrl:
+                                "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Bonus%201.mp3"
+
+                        },
+                        {
+                            id: "bonus-audio-2",
+                            slug: "bonus-audio-2",
+                            title: "Bonus Audio 2",
+                            description: "Commanding Energy Starts Before They Buy 📣 🔥 ⚡️",
+                            duration: "21 min",
+                            opening: "The Lie That Blocks Millions — And the Power That Replaces It",
+                            audioUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Bonus%202.mp3",
+
+                        },
+                        {
+                            id: "bonus-audio-3",
+                            slug: "bonus-audio-3",
+                            title: "Bonus Audio 3",
+                            description: "Start Walking Like You’ve Already Been Paid 🤌 💸",
+                            duration: "20 min",
+                            opening: "Undeniable energy doesn’t wait. It leads.",
+                            audioUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Bonus%203.mp3",
+
+                        },
+                        {
+                            id: "bonus-coaching-call",
+                            slug: "bonus-coaching-call",
+                            title: "Bonus Coaching Call",
+                            description:
+                                "Activation & Strategy Call",
+                            duration: "62 min",
+                            videoUrl: "https://player.vimeo.com/video/1086913147?h=cfc6f1925a",
+                            audioUrl:
+                                "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/underrated_-_the_activation_&_strategy_call_v2%20(240p).mp3"
+
+                        },
+                    ],
+                },
+            },
+        ],
+    },
 ];
 
 export function getCourse(courseSlug: string) {

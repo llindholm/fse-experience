@@ -69,6 +69,8 @@ function getCourseLabel(courseSlug: string) {
             "Effortless Sales System",
         "signature-close":
             "The Signature Close",
+        underrated:
+            "UNDERRATED",
     };
 
     return courseNames[courseSlug] ?? courseSlug;
@@ -88,7 +90,26 @@ function getAccessSummary(courseSlugs: string[]) {
     );
 
     if (hasFullFseBundle) {
-        return "Feminine Sales Engine";
+        const additionalCourses = courseSlugs.filter(
+            (courseSlug) =>
+                ![
+                    "million-dollar-authority",
+                    "effortless-sales-system",
+                    "signature-close",
+                ].includes(courseSlug)
+        );
+
+        if (additionalCourses.length === 0) {
+            return "Feminine Sales Engine";
+        }
+
+        if (additionalCourses.length === 1) {
+            return `Feminine Sales Engine + ${getCourseLabel(
+                additionalCourses[0]
+            )}`;
+        }
+
+        return `Feminine Sales Engine + ${additionalCourses.length} more`;
     }
 
     if (courseSlugs.length === 1) {
@@ -238,6 +259,18 @@ export default async function CustomersPage() {
                                     The Signature Close
                                 </span>
                             </label>
+
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="courseSlugs"
+                                    value="underrated"
+                                />
+
+                                <span>
+                                    UNDERRATED
+                                </span>
+                            </label>
                         </fieldset>
 
                         <div className="customers-create-form__footer">
@@ -350,10 +383,10 @@ export default async function CustomersPage() {
 
                                     {customer.role ===
                                         "admin" && (
-                                        <small>
-                                            Administrator
-                                        </small>
-                                    )}
+                                            <small>
+                                                Administrator
+                                            </small>
+                                        )}
                                 </div>
 
                                 <div className="customer-row__status">
@@ -380,17 +413,15 @@ export default async function CustomersPage() {
                                         {customer.courseSlugs
                                             .length === 0
                                             ? "No courses assigned"
-                                            : `${
-                                                  customer
-                                                      .courseSlugs
-                                                      .length
-                                              } ${
-                                                  customer
-                                                      .courseSlugs
-                                                      .length === 1
-                                                      ? "course"
-                                                      : "courses"
-                                              }`}
+                                            : `${customer
+                                                .courseSlugs
+                                                .length
+                                            } ${customer
+                                                .courseSlugs
+                                                .length === 1
+                                                ? "course"
+                                                : "courses"
+                                            }`}
                                     </span>
                                 </div>
 
