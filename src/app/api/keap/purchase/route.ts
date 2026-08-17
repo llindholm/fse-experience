@@ -186,15 +186,16 @@ export async function POST(request: Request) {
                 generateWelcomeLink: true,
             });
 
-        if (!customer.welcomeUrl) {
-            throw new Error(
-                "Customer was created without a welcome URL."
-            );
-        }
+        const libraryUrl =
+            process.env.NEXT_PUBLIC_LIBRARY_URL ??
+            "https://library.tolivingfree.com";
+
+        const destinationUrl =
+            customer.welcomeUrl ?? libraryUrl;
 
         await updateKeapWelcomeUrl({
             contactId,
-            welcomeUrl: customer.welcomeUrl,
+            welcomeUrl: destinationUrl,
         });
 
         console.info("Keap purchase processed", {
@@ -203,7 +204,7 @@ export async function POST(request: Request) {
             product,
             created: customer.created,
             coursesGranted: courseSlugs.length,
-            welcomeLinkCreated: true,
+            welcomeLinkCreated: Boolean(customer.welcomeUrl),
             welcomeLinkWrittenToKeap: true,
         });
 
@@ -217,7 +218,7 @@ export async function POST(request: Request) {
             },
             product,
             courseSlugs,
-            welcomeUrl: customer.welcomeUrl,
+            welcomeUrl: destinationUrl,
             welcomeExpiresAt:
                 customer.welcomeExpiresAt,
         });

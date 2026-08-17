@@ -200,7 +200,7 @@ export async function createOrInviteCustomer({
     let welcomeUrl: string | null = null;
     let welcomeExpiresAt: string | null = null;
 
-    if (generateWelcomeLink) {
+    if (generateWelcomeLink && created) {
         const welcomeToken =
             await createWelcomeToken(userId);
 
