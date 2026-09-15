@@ -138,7 +138,7 @@ export const courses: Course[] = [
                             slug: "million-dollar-message-assessment",
                             title: "Million Dollar Message Assessment",
                             description: "Million Dollar Message Assessment",
-                            pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Million%20Dollar%20Message_%20The%20Assessment.pdf",
+                            pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/MDA/Million%20Dollar%20Message_%20The%20Assessment.pdf",
 
                         },
                         {
@@ -910,6 +910,156 @@ export const courses: Course[] = [
                     videoUrl: "",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/10%20-%20The%203%20rules%20that%20cage%20powerful%20women.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-11",
+                    slug: "signal-11",
+                    title: "🎙️ Signal 11",
+                    description: "The lie we tell ourselves about success. And how to dissolve it fast for the results and freedom you really want.",
+                    duration: "28 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/11%20-%20The%20lie%20we%20tell%20ourselves.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-12",
+                    slug: "signal-12",
+                    title: "🎙️ Signal 12",
+                    description: "How to access absolute freedom now. And why it's the real pathway to real wealth.",
+                    duration: "21 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/12%20-%20How%20to%20access%20absolute%20freedom%20now.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-13",
+                    slug: "signal-13",
+                    title: "🎙️ Signal 13",
+                    description: "What I was so sure about - One-mindedness, mental grooves, and the clarity that arrives when we stop circling.",
+                    duration: "24 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/13%20-%20What%20I%20was%20so%20sure%20about.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-14",
+                    slug: "signal-14",
+                    title: "🎙️ Signal 14",
+                    description: "The future of online business is not more content. These 3 areas will give you a big edge online.",
+                    duration: "25 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/14%20-%20The%20future%20of%20online%20business.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-15",
+                    slug: "signal-15",
+                    title: "🎙️ Signal 15",
+                    description: "I stopped forcing workouts... and my business got richer, softer, and more alive.",
+                    duration: "22 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/15%20-%20I%20stopped%20forcing%20workouts.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-16",
+                    slug: "signal-16",
+                    title: "🎙️ Signal 16",
+                    description: "What actually moves ideal buyers - consistent sales without fake scarcity or constant pushing.",
+                    duration: "25 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/16%20-%20What%20actually%20moves%20ideal%20buyers.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-17",
+                    slug: "signal-17",
+                    title: "🎙️ Signal 17",
+                    description: "I'm going to simplify pricing in minutes. Why you could charge $1K to $10K for almost any offer - and have dream buyers happily pay it.",
+                    duration: "26 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/17%20-%20Simplify%20pricing%20in%20minutes.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-18",
+                    slug: "signal-18",
+                    title: "🎙️ Signal 18",
+                    description: "The Turnaround - how to access infinite freedom and magentism on demand.",
+                    duration: "26 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/18%20-%20The%20turnaround.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-19",
+                    slug: "signal-19",
+                    title: "🎙️ Signal 19",
+                    description: "Frequency. Awareness. Body. Mind.",
+                    duration: "21 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/19%20-%20Frequency%20awareness%20body%20mind.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-20",
+                    slug: "signal-20",
+                    title: "🎙️ Signal 20",
+                    description: "The energy you do something with is more important than the action itself. And exactly how to get into the energy that creates all the results and sets you free, fast.",
+                    duration: "24 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/20%20-%20the%20energy%20you%20do%20something%20with.mp3",
                 },
             },
         ],
