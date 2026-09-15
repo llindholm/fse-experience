@@ -146,7 +146,7 @@ export const courses: Course[] = [
                             slug: "mdm-markers-ai-prompts",
                             title: "MDM: The Markers & AI Prompts",
                             description: "MDM: The Markers & AI Prompts",
-                            pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Million%20Dollar%20Message%20-%20Markers%20&%20Prompts.pdf",
+                            pdfUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/MDA/Million%20Dollar%20Message%20-%20Markers%20&%20Prompts.pdf",
 
                         },
                     ],
