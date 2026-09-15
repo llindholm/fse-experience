@@ -9,6 +9,7 @@ const VALID_COURSE_SLUGS = new Set([
     "effortless-sales-system",
     "signature-close",
     "underrated",
+    "the-signal",
 ]);
 
 function getRequiredString(

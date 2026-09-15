@@ -150,7 +150,7 @@
 }
 
 .lesson-audio {
-    margin: 72px 0 96px;
+    margin: 32px 0 96px;
     padding: 26px 34px;
     background: var(--rose);
     border-radius: 2px;
@@ -409,7 +409,7 @@
     .lesson-audio {
         grid-template-columns: 1fr;
         gap: 34px;
-        margin-bottom: 84px;
+        margin-bottom: 24px 0 84px;
         padding: 24px;
     }
 

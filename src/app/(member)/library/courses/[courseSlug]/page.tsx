@@ -6,11 +6,13 @@ import { requireCourseAccess } from "@/lib/auth/requireCourseAccess";
 
 import {
     getCourse,
+    getCourseLessons,
     courses,
     type Lesson,
 } from "@/data/courses";
 
 import "./course.css";
+import SignalFeed from "./SignalFeed";
 
 
 
@@ -99,6 +101,14 @@ export default async function CoursePage({
             ? primaryLessons[0].lesson
             : null;
 
+    const isSignal = course.slug === "the-signal";
+
+    const signalLessons = isSignal
+        ? getCourseLessons(course).map(
+            ({ lesson }) => lesson
+        )
+        : [];
+
     return (
         <main className="course-page">
             <header className="course-header">
@@ -141,7 +151,13 @@ export default async function CoursePage({
                 </p>
             </section>
 
-            {nextLesson && (
+            {isSignal && (
+                <section className="course-curriculum">
+                <SignalFeed lessons={signalLessons} />
+                </section>
+            )}
+
+            {!isSignal && nextLesson && (
                 <section className="course-continue">
                     <div className="course-continue__label">
                         Begin here
@@ -212,7 +228,7 @@ export default async function CoursePage({
                 </div>
             </section>
 
-            {sections.map((item) => {
+            {!isSignal && sections.map((item) => {
                 if (item.type !== "section") {
                     return null;
                 }

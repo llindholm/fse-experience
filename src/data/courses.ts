@@ -758,7 +758,7 @@ export const courses: Course[] = [
         slug: "the-signal",
         title: "The Signal",
         subtitle:
-            "Private audio transmissions from Jessica.",
+            "Private audios from Jess",
         description:
             "A living archive of timely ideas, deeper observations, and the shifts that change how you see your work, money, business, and life.",
         content: [
@@ -767,8 +767,8 @@ export const courses: Course[] = [
                 lesson: {
                     id: "signal-1",
                     slug: "signal-1",
-                    title: "🎙️ Welcome to The Signal. Let's Begin.",
-                    description: "",
+                    title: "🎙️ Signal 1",
+                    description: "Welcome - Let's Begin.",
                     duration: "16 min",
                     opening:
                         "",
@@ -782,23 +782,8 @@ export const courses: Course[] = [
                 lesson: {
                     id: "signal-2",
                     slug: "signal-2",
-                    title: "🎙️ How to Use This Space.",
-                    description: "",
-                    duration: "5 min",
-                    opening:
-                        "",
-                    videoUrl: "",
-                    audioUrl:
-                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/2%20-%20How%20to%20Use%20This%20Space.mp3",
-                },
-            },
-            {
-                type: "lesson",
-                lesson: {
-                    id: "signal-3",
-                    slug: "signal-3",
-                    title: "🎙️ Break the Rules. Set Yourself and Your Cash Flow Free.",
-                    description: "",
+                    title: "🎙️ Signal 2",
+                    description: "Break the Rules. Set Yourself and Your Cash Flow Free.",
                     duration: "23 min",
                     opening:
                         "",
@@ -810,10 +795,10 @@ export const courses: Course[] = [
             {
                 type: "lesson",
                 lesson: {
-                    id: "signal-4",
-                    slug: "signal-4",
-                    title: "🎙️ Everything just shifted - and it only happens every 7-8 years.",
-                    description: "",
+                    id: "signal-3",
+                    slug: "signal-3",
+                    title: "🎙️ Signal 3",
+                    description: "Everything just shifted - and it only happens every 7-8 years.",
                     duration: "19 min",
                     opening:
                         "",
@@ -825,10 +810,10 @@ export const courses: Course[] = [
             {
                 type: "lesson",
                 lesson: {
-                    id: "signal-5",
-                    slug: "signal-5",
-                    title: "🎙️ In 12 years of online business, THIS is what's made the biggest difference in my success.",
-                    description: "",
+                    id: "signal-4",
+                    slug: "signal-4",
+                    title: "🎙️ Signal 4",
+                    description: "In 12 years of online business, THIS is what's made the biggest difference in my success.",
                     duration: "21 min",
                     opening:
                         "",
@@ -840,10 +825,10 @@ export const courses: Course[] = [
             {
                 type: "lesson",
                 lesson: {
-                    id: "signal-6",
-                    slug: "signal-6",
-                    title: "🎙️ Information alone is losing value. Those who thrive next will build differently.",
-                    description: "",
+                    id: "signal-5",
+                    slug: "signal-5",
+                    title: "🎙️ Signal 5",
+                    description: "Information alone is losing value. Those who thrive next will build differently.",
                     duration: "23 min",
                     opening:
                         "",
@@ -855,10 +840,10 @@ export const courses: Course[] = [
             {
                 type: "lesson",
                 lesson: {
-                    id: "signal-7-1",
-                    slug: "signal-7-1",
-                    title: "🎙️ Human imperfection is about to become THE premium.",
-                    description: "Part 1",
+                    id: "signal-6",
+                    slug: "signal-6",
+                    title: "🎙️ Signal 6",
+                    description: "Human imperfection is about to become THE premium - Part 1",
                     duration: "5 min",
                     opening:
                         "",
@@ -870,10 +855,10 @@ export const courses: Course[] = [
             {
                 type: "lesson",
                 lesson: {
-                    id: "signal-7-2",
-                    slug: "signal-7-2",
-                    title: "🎙️ Human imperfection is about to become THE premium.",
-                    description: "Part 2",
+                    id: "signal-7",
+                    slug: "signal-7",
+                    title: "🎙️ Signal 7",
+                    description: "Human imperfection is about to become THE premium - Part 2",
                     duration: "16 min",
                     opening:
                         "",
@@ -887,8 +872,8 @@ export const courses: Course[] = [
                 lesson: {
                     id: "signal-8",
                     slug: "signal-8",
-                    title: "🎙️ My insanely simple business model that's created millions online.",
-                    description: "",
+                    title: "🎙️ Signal 8",
+                    description: "My insanely simple business model that's created millions online.",
                     duration: "22 min",
                     opening:
                         "",
@@ -902,8 +887,8 @@ export const courses: Course[] = [
                 lesson: {
                     id: "signal-9",
                     slug: "signal-9",
-                    title: "🎙️ Expansion will always convert better than scarcity.",
-                    description: "Here's how to use it to get exactly what you want out of business and life.",
+                    title: "🎙️ Signal 9",
+                    description: "Expansion will always convert better than scarcity. Here's how to use it to get exactly what you want out of business and life.",
                     duration: "23 min",
                     opening:
                         "",
@@ -917,8 +902,8 @@ export const courses: Course[] = [
                 lesson: {
                     id: "signal-10",
                     slug: "signal-10",
-                    title: "🎙️ The 3 rules that cage powerful women.",
-                    description: "And how to break them and set yourself free now.",
+                    title: "🎙️ Signal 10",
+                    description: "The 3 rules that cage powerful women. And how to break them and set yourself free now.",
                     duration: "24 min",
                     opening:
                         "",
