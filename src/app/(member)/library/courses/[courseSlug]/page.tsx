@@ -152,9 +152,9 @@ export default async function CoursePage({
             </section>
 
             {isSignal && (
-                <section className="course-curriculum">
+
                 <SignalFeed lessons={signalLessons} />
-                </section>
+
             )}
 
             {!isSignal && nextLesson && (
@@ -191,42 +191,44 @@ export default async function CoursePage({
                 </section>
             )}
 
-            <section className="course-curriculum">
-                <div className="course-section-heading">
-                    <p className="course-section-heading__eyebrow">
-                        Curriculum
-                    </p>
+            {!isSignal && (
+                <section className="course-curriculum">
+                    <div className="course-section-heading">
+                        <p className="course-section-heading__eyebrow">
+                            Curriculum
+                        </p>
 
-                    <p className="course-section-heading__count">
-                        {primaryLessons.length} core modules
-                    </p>
-                </div>
+                        <p className="course-section-heading__count">
+                            {primaryLessons.length} core modules
+                        </p>
+                    </div>
 
-                <div className="course-lesson-list">
-                    {primaryLessons.map(
-                        (item, index) => {
-                            if (
-                                item.type !== "lesson"
-                            ) {
-                                return null;
+                    <div className="course-lesson-list">
+                        {primaryLessons.map(
+                            (item, index) => {
+                                if (
+                                    item.type !== "lesson"
+                                ) {
+                                    return null;
+                                }
+
+                                return (
+                                    <LessonRow
+                                        key={item.lesson.id}
+                                        courseSlug={
+                                            course.slug
+                                        }
+                                        lesson={
+                                            item.lesson
+                                        }
+                                        index={index}
+                                    />
+                                );
                             }
-
-                            return (
-                                <LessonRow
-                                    key={item.lesson.id}
-                                    courseSlug={
-                                        course.slug
-                                    }
-                                    lesson={
-                                        item.lesson
-                                    }
-                                    index={index}
-                                />
-                            );
-                        }
-                    )}
-                </div>
-            </section>
+                        )}
+                    </div>
+                </section>
+            )}
 
             {!isSignal && sections.map((item) => {
                 if (item.type !== "section") {
