@@ -49,6 +49,12 @@ const COURSE_OPTIONS: CourseOption[] = [
         title: "UNDERRATED",
         description:
         "From Optional to the Only Option."
+    },
+    {
+        slug: "the-signal",
+        title: "The Signal",
+        description:
+        "A private world for women building wealth, leadership, freedom, and life differently"
     }
 ];
 

@@ -8,6 +8,8 @@ export type Lesson = {
     videoUrl?: string;
     audioUrl?: string;
     pdfUrl?: string;
+    publishedAt?: string;
+    tags?: string[];
 };
 
 export type CourseSection = {
@@ -532,19 +534,19 @@ export const courses: Course[] = [
             "Become impossible to scroll past and irresistable to buy from.",
         content: [
             {
-                type: "lesson", 
+                type: "lesson",
                 lesson: {
-                    
-                            id: "start-here",
-                            slug: "start-here",
-                            title: "Welcome to UNDERRATED! Start here >>",
-                            duration: "16 min",
-                            videoUrl:"",
-                            audioUrl:
-                                "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Underrated-Welcome.mp3"
 
-                        },  
+                    id: "start-here",
+                    slug: "start-here",
+                    title: "Welcome to UNDERRATED! Start here >>",
+                    duration: "16 min",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Underrated-Welcome.mp3"
+
                 },
+            },
             {
                 type: "lesson",
                 lesson: {
@@ -555,10 +557,10 @@ export const courses: Course[] = [
                     duration: "26 min",
                     opening:
                         "Here’s how to position yourself to match your power 🔥⚡️🚀",
-                        videoUrl:"",
+                    videoUrl: "",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%201.mp3",
-                    },
+                },
             },
             {
                 type: "lesson",
@@ -570,10 +572,10 @@ export const courses: Course[] = [
                     duration: "26 min",
                     opening:
                         "You Don’t Need to Be Louder — You Need to Be Felt 🤌",
-                        videoUrl:"",
+                    videoUrl: "",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%202.mp3",
-                    },
+                },
             },
             {
                 type: "lesson",
@@ -583,10 +585,10 @@ export const courses: Course[] = [
                     title: "🎙️ Day 3",
                     description: "Why They Don’t Buy (Even When You Say All the Right Things)",
                     duration: "16 min",
-                    videoUrl:"",
+                    videoUrl: "",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%203.mp3",
-                    },
+                },
             },
             {
                 type: "lesson",
@@ -598,10 +600,10 @@ export const courses: Course[] = [
                     duration: "16 min",
                     opening:
                         "And the subtle shift from recognition to revenue + how to make it today.",
-                        videoUrl:"",
+                    videoUrl: "",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%204.mp3",
-                    },
+                },
             },
             {
                 type: "lesson",
@@ -613,10 +615,10 @@ export const courses: Course[] = [
                     duration: "20 min",
                     opening:
                         "How to write fewer posts that do more work.",
-                        videoUrl:"",
+                    videoUrl: "",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%205.mp3",
-                    },
+                },
             },
             {
                 type: "lesson",
@@ -628,10 +630,10 @@ export const courses: Course[] = [
                     duration: "21 min",
                     opening:
                         "How Standard-Setting Brands Sell More by Saying Less.",
-                        videoUrl:"",
+                    videoUrl: "",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%206.mp3",
-                    },
+                },
             },
             {
                 type: "lesson",
@@ -643,10 +645,10 @@ export const courses: Course[] = [
                     duration: "25 min",
                     opening:
                         "It’s not about followers, but moving the right people.",
-                        videoUrl:"",
+                    videoUrl: "",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%207.mp3",
-                    },
+                },
             },
             {
                 type: "lesson",
@@ -658,10 +660,10 @@ export const courses: Course[] = [
                     duration: "25 min",
                     opening:
                         "Why “She Just Hits Different” Is the New Strategy 😉",
-                        videoUrl:"",
+                    videoUrl: "",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%208.mp3",
-                    },
+                },
             },
             {
                 type: "lesson",
@@ -673,10 +675,10 @@ export const courses: Course[] = [
                     duration: "23 min",
                     opening:
                         "The End of Performance-Based Selling",
-                        videoUrl:"",
+                    videoUrl: "",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%209.mp3",
-                    },
+                },
             },
             {
                 type: "lesson",
@@ -688,10 +690,10 @@ export const courses: Course[] = [
                     duration: "24 min",
                     opening:
                         "The calibration is complete. You’ve arrived. And you walk forward fully embodied in your most powerful brand.",
-                        videoUrl:"",
+                    videoUrl: "",
                     audioUrl:
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Day%2010.mp3",
-                    },
+                },
             },
             {
                 type: "section",
@@ -706,7 +708,7 @@ export const courses: Course[] = [
                             description:
                                 "The Calibration That Changes Everything",
                             duration: "18 min",
-                            videoUrl:"",
+                            videoUrl: "",
                             audioUrl:
                                 "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Bonus%201.mp3"
 
@@ -718,7 +720,7 @@ export const courses: Course[] = [
                             description: "Commanding Energy Starts Before They Buy 📣 🔥 ⚡️",
                             duration: "21 min",
                             opening: "The Lie That Blocks Millions — And the Power That Replaces It",
-                            videoUrl:"",
+                            videoUrl: "",
                             audioUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Bonus%202.mp3",
 
                         },
@@ -729,7 +731,7 @@ export const courses: Course[] = [
                             description: "Start Walking Like You’ve Already Been Paid 🤌 💸",
                             duration: "20 min",
                             opening: "Undeniable energy doesn’t wait. It leads.",
-                            videoUrl:"",
+                            videoUrl: "",
                             audioUrl: "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/Underrated/Bonus%203.mp3",
 
                         },
@@ -750,6 +752,184 @@ export const courses: Course[] = [
             },
         ],
     },
+
+    {
+        id: "the-signal",
+        slug: "the-signal",
+        title: "The Signal",
+        subtitle:
+            "Private audio transmissions from Jessica.",
+        description:
+            "A living archive of timely ideas, deeper observations, and the shifts that change how you see your work, money, business, and life.",
+        content: [
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-1",
+                    slug: "signal-1",
+                    title: "🎙️ Welcome to The Signal. Let's Begin.",
+                    description: "",
+                    duration: "16 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/1%20-%20Welcome.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-2",
+                    slug: "signal-2",
+                    title: "🎙️ How to Use This Space.",
+                    description: "",
+                    duration: "5 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/2%20-%20How%20to%20Use%20This%20Space.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-3",
+                    slug: "signal-3",
+                    title: "🎙️ Break the Rules. Set Yourself and Your Cash Flow Free.",
+                    description: "",
+                    duration: "23 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/3%20-%20Break%20the%20Rules.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-4",
+                    slug: "signal-4",
+                    title: "🎙️ Everything just shifted - and it only happens every 7-8 years.",
+                    description: "",
+                    duration: "19 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/4%20-%20Everything%20just%20shifted.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-5",
+                    slug: "signal-5",
+                    title: "🎙️ In 12 years of online business, THIS is what's made the biggest difference in my success.",
+                    description: "",
+                    duration: "21 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/5%20-%20In%2012%20years.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-6",
+                    slug: "signal-6",
+                    title: "🎙️ Information alone is losing value. Those who thrive next will build differently.",
+                    description: "",
+                    duration: "23 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/6%20-%20Information%20alone%20is%20losing%20value.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-7-1",
+                    slug: "signal-7-1",
+                    title: "🎙️ Human imperfection is about to become THE premium.",
+                    description: "Part 1",
+                    duration: "5 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/7.1%20-%20Human%20Imperfection.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-7-2",
+                    slug: "signal-7-2",
+                    title: "🎙️ Human imperfection is about to become THE premium.",
+                    description: "Part 2",
+                    duration: "16 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/7.2%20-%20Human%20Imperfection.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-8",
+                    slug: "signal-8",
+                    title: "🎙️ My insanely simple business model that's created millions online.",
+                    description: "",
+                    duration: "22 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/8%20-%20My%20insanely%20simple%20business%20model.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-9",
+                    slug: "signal-9",
+                    title: "🎙️ Expansion will always convert better than scarcity.",
+                    description: "Here's how to use it to get exactly what you want out of business and life.",
+                    duration: "23 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/9%20-%20Expansion%20will%20always%20convert.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-10",
+                    slug: "signal-10",
+                    title: "🎙️ The 3 rules that cage powerful women.",
+                    description: "And how to break them and set yourself free now.",
+                    duration: "24 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/10%20-%20The%203%20rules%20that%20cage%20powerful%20women.mp3",
+                },
+            },
+        ],
+    },
+    
 ];
 
 export function getCourse(courseSlug: string) {
