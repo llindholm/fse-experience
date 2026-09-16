@@ -1062,6 +1062,201 @@ export const courses: Course[] = [
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/20%20-%20the%20energy%20you%20do%20something%20with.mp3",
                 },
             },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-21",
+                    slug: "signal-21",
+                    title: "🎙️ Signal 21",
+                    description: "Why billionaires don't need to be 'high vibe' to receive - and neither do you.",
+                    duration: "28 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/21%20-%20Why%20billionaires%20dont%20high%20vibe.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-22",
+                    slug: "signal-22",
+                    title: "🎙️ Signal 22",
+                    description: "It's handled. Adjusting your frequency at will and being in the present moment, because that's where your power lives.",
+                    duration: "22 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/22%20-%20Its%20handled.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-23",
+                    slug: "signal-23",
+                    title: "🎙️ Signal 23",
+                    description: "Protecting your future freedom is preventing your rich present. Your unique blueprint for success inside.",
+                    duration: "22 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/23%20-%20Protecting%20your%20future.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-24",
+                    slug: "signal-24",
+                    title: "🎙️ Signal 24",
+                    description: "The permission slip we all need sometimes.",
+                    duration: "10 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/24%20-%20The%20permission%20slip%20we%20all%20need.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-25",
+                    slug: "signal-25",
+                    title: "🎙️ Signal 25",
+                    description: "This has set me free. I hope it does the same for you.",
+                    duration: "23 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/25%20-%20This%20has%20set%20me%20free.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-26",
+                    slug: "signal-26",
+                    title: "🎙️ Signal 26",
+                    description: "6 weeks in The Signal changed my business and life for good. My offers. My business model. My income. It has made me truly rich and free.",
+                    duration: "24 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/26%20-%206%20weeks%20in%20The%20Signal.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-27",
+                    slug: "signal-27",
+                    title: "🎙️ Signal 27",
+                    description: "An unexpected message that just had to be shared. And don't forget - what makes you weird will make you wealthy... and set you free.",
+                    duration: "14 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/27%20-%20An%20unexpected%20message.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-28",
+                    slug: "signal-28",
+                    title: "🎙️ Signal 28",
+                    description: "There's so much talk about the slow life, the soft life. Here's how to have it - and your millions too.",
+                    duration: "26 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/28%20-%20So%20much%20talk%20about%20the%20slow%20life.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-29",
+                    slug: "signal-29",
+                    title: "🎙️ Signal 29",
+                    description: "Let's talk social media. Exactly how I'm using it, how I'm growing it, why I'm using two accounts, and the question I asked that chnaged the way I post.",
+                    duration: "32 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/29%20-%20Lets%20talk%20about%20social%20media.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-30",
+                    slug: "signal-30",
+                    title: "🎙️ Signal 30",
+                    description: "Are you in the right business model? You can change it anytime and it has one of the biggest impacts on your rich & free life.",
+                    duration: "28 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/30%20-%20Are%20you%20in%20the%20right%20business%20model.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-31",
+                    slug: "signal-31",
+                    title: "🎙️ Signal 31",
+                    description: "What if coaching is an art that we're trying to sell like a product? A paradigm shift on scaling, online marketing, and success.",
+                    duration: "24 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/31%20-%20What%20if%20coaching%20is%20an%20art.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-32",
+                    slug: "signal-32",
+                    title: "🎙️ Signal 32",
+                    description: "Exactly how I'm selling my Secret Summer Offer. I don't launch, I create rooms the right people want to step into. And this one feels like a party.",
+                    duration: "21 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/32%20-%20Exactly%20how%20I%20sell%20my%20secret%20offer.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-33",
+                    slug: "signal-33",
+                    title: "🎙️ Signal 33",
+                    description: "The shift from selling offers to creating rooms where the right people simply belong. Then you no longer need to push, you just let the right people self-select.",
+                    duration: "22 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/33%20-%20The%20shift%20from%20selling%20offers.mp3",
+                },
+            },
         ],
     },
     
