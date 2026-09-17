@@ -1257,6 +1257,156 @@ export const courses: Course[] = [
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/33%20-%20The%20shift%20from%20selling%20offers.mp3",
                 },
             },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-34",
+                    slug: "signal-34",
+                    title: "🎙️ Signal 34",
+                    description: "My weird approach to business that I hid for years.",
+                    duration: "23 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/34%20-%20My%20weird%20approach.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-35",
+                    slug: "signal-35",
+                    title: "🎙️ Signal 35",
+                    description: "The Rich & Free Activation. This is the companion to Signal #34.",
+                    duration: "10 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/35%20-%20The%20rich%20and%20free%20activation.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-36",
+                    slug: "signal-36",
+                    title: "🎙️ Signal 36",
+                    description: "The art of slow selling. The strategy I use to build the most joyful, soft, rich brand and experience, for my clients and me.",
+                    duration: "28 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/36%20-%20The%20art%20of%20slow%20selling.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-37",
+                    slug: "signal-37",
+                    title: "🎙️ Signal 37",
+                    description: "Will social media be around in 2 years? The question that's inspiring my business in a way that feels so good.",
+                    duration: "20 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/37%20-%20Will%20social%20media%20be%20around.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-38",
+                    slug: "signal-38",
+                    title: "🎙️ Signal 38",
+                    description: "The two business decisions that changed my life. Sell premium. And be the type of woman who can deliver it.",
+                    duration: "30 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/38%20-%20The%20two%20business%20decisions.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-39",
+                    slug: "signal-39",
+                    title: "🎙️ Signal 39",
+                    description: "Next level now.",
+                    duration: "27 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/39%20-%20Next%20level%20now.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-40-1",
+                    slug: "signal-40-1",
+                    title: "🎙️ Signal 40 Part 1",
+                    description: "Exactly how I 'launch' and sell from the frequency of overflow.",
+                    duration: "15 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/40-1%20-%20exactly%20how%20I%20launch.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-40-2",
+                    slug: "signal-40-2",
+                    title: "🎙️ Signal 40 Part 2",
+                    description: "My actual selling actions today, so this is crystal clear. Even though I don't think of them as selling actions, they're just sparkly invitations for those who want to live, play, receive in THIS energy and let money fall from the sky.",
+                    duration: "4 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/40-2%20-%20My%20actual%20selling%20actions.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-41",
+                    slug: "signal-41",
+                    title: "🎙️ Signal 41",
+                    description: "Exactly how I put my 'business is easy' approach in action today.",
+                    duration: "15 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/41%20-%20Exactly%20how%20I%20put%20my%20approach%20in%20action.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-42",
+                    slug: "signal-42",
+                    title: "🎙️ Signal 42",
+                    description: "Are Activations exactly what your business is missing? One of my favorite ways to create more energy, momentum and compounding cash flow in my business.",
+                    duration: "23 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/42%20-%20Are%20activations%20what%20your%20business%20is%20missing.mp3",
+                },
+            },
         ],
     },
     
