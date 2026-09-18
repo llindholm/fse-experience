@@ -1407,6 +1407,156 @@ export const courses: Course[] = [
                         "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/42%20-%20Are%20activations%20what%20your%20business%20is%20missing.mp3",
                 },
             },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-43",
+                    slug: "signal-43",
+                    title: "🎙️ Signal 43",
+                    description: "How I use the art of a great love story in my business.",
+                    duration: "21 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/43%20-%20How%20I%20use%20the%20art%20fo%20a%20great%20love%20story.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-44",
+                    slug: "signal-44",
+                    title: "🎙️ Signal 44",
+                    description: "Do you need a $50k or $100k offer in your business?",
+                    duration: "25 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/44%20-%20do%20you%20need%20a%2050k%20offer.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-45",
+                    slug: "signal-45",
+                    title: "🎙️ Signal 45",
+                    description: "My thoughts on premium pricing vs making your work accessible.",
+                    duration: "22 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/45%20-%20My%20thoughts%20on%20premium%20pricing.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-46",
+                    slug: "signal-46",
+                    title: "🎙️ Signal 46",
+                    description: "You're playing small and you know it. Here's how you fully unleash, get paid big and have the time of your life doing it.",
+                    duration: "22 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/46%20-%20Youre%20playing%20small.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-47",
+                    slug: "signal-47",
+                    title: "🎙️ Signal 47",
+                    description: "The real secret to millions in 11:11.",
+                    duration: "11 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/47%20-%20The%20real%20secret%20to%20millions.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-48",
+                    slug: "signal-48",
+                    title: "🎙️ Signal 48",
+                    description: "This is key to premium sales and receiving so much more in your business. And overlooked ALL the time.",
+                    duration: "19 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/48%20-%20This%20is%20key%20to%20premium%20sales.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-49",
+                    slug: "signal-49",
+                    title: "🎙️ Signal 49",
+                    description: "There's 4 steps I use to get what I want in every area of my life. I list all 4 for easy reference at the end.",
+                    duration: "22 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/49%20-%20There%20are%204%20steps%20I%20use.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-50",
+                    slug: "signal-50",
+                    title: "🎙️ Signal 50",
+                    description: "Maybe you're mean to be real freaking rich, in a real quiet way.",
+                    duration: "20 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/50%20-%20Maybe%20youre%20meant%20to%20be%20freaking%20rich.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-51",
+                    slug: "signal-51",
+                    title: "🎙️ Signal 51",
+                    description: "These 2 levers are key for hot content that builds an audience that buys everything.",
+                    duration: "18 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/51%20-%20These%202%20levers%20are%20key.mp3",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "signal-52",
+                    slug: "signal-52",
+                    title: "🎙️ Signal 52",
+                    description: "The $10k offer you're giving away for free.",
+                    duration: "18 min",
+                    opening:
+                        "",
+                    videoUrl: "",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Signal/52%20-%20The%2010K%20offer%20youre%20giving%20away.mp3",
+                },
+            },
         ],
     },
     
