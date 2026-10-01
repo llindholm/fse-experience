@@ -51,17 +51,18 @@ const COURSE_OPTIONS: CourseOption[] = [
         "From Optional to the Only Option."
     },
     {
+        slug: "the-catalyst",
+        title: "The Catalyst",
+        description:
+        "Choose who you want to be. Become her now."
+    },
+    {
         slug: "the-signal",
         title: "The Signal",
         description:
         "A private world for women building wealth, leadership, freedom, and life differently"
     },
-    {
-        slug: "the-catalyst",
-        title: "The Catalyst",
-        description:
-        "Choose who you want to be. Become her now."
-    }
+    
 ];
 
 function formatDate(value: string | null) {

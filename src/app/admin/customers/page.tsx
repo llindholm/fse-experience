@@ -71,6 +71,10 @@ function getCourseLabel(courseSlug: string) {
             "The Signature Close",
         "underrated":
             "UNDERRATED",
+        "the-catalyst":
+            "The Catalyst",
+        "the-signal":
+            "The Signal",
     };
 
     return courseNames[courseSlug] ?? courseSlug;
@@ -269,6 +273,30 @@ export default async function CustomersPage() {
 
                                 <span>
                                     UNDERRATED
+                                </span>
+                            </label>
+
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="courseSlugs"
+                                    value="the-catalyst"
+                                />
+
+                                <span>
+                                    The Catalyst
+                                </span>
+                            </label>
+
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="courseSlugs"
+                                    value="the-signal"
+                                />
+
+                                <span>
+                                    The Signal
                                 </span>
                             </label>
                         </fieldset>
