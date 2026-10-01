@@ -69,7 +69,7 @@ function getCourseLabel(courseSlug: string) {
             "Effortless Sales System",
         "signature-close":
             "The Signature Close",
-        underrated:
+        "underrated":
             "UNDERRATED",
     };
 

@@ -754,6 +754,122 @@ export const courses: Course[] = [
     },
 
     {
+        id: "the-catalyst",
+        slug: "the-catalyst",
+        title: "The Catalyst",
+        subtitle:
+            "Choose who you want to be. Become her now.",
+        description:
+            "",
+        content: [
+            {
+                type: "lesson",
+                lesson: {
+                    id: "module-1-the-selection",
+                    slug: "module-1-the-selection",
+                    title: "Module 1 - The Selection",
+                    description: "Module 1 - The Selection",
+                    duration: "56 min",
+                    opening:
+                        "",
+                    videoUrl:
+                        "https://player.vimeo.com/video/1229288498?h=8510481001",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Catalyst/the_catalyst_-_module_1.mp3",
+                    pdfUrl: "",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "module-2-the-remembered-life",
+                    slug: "module-2-the-remembered-life",
+                    title: "Module 2 - The Remembered Life",
+                    description: "Module 2 - The Remembered Life",
+                    duration: "60 min",
+                    opening:
+                        "",
+                    videoUrl:
+                        "https://player.vimeo.com/video/1229658231?h=68dc388a6c",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Catalyst/the_catalyst_-_module_2.mp3",
+                    pdfUrl: "",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "module-3-the-distortion-field",
+                    slug: "module-3-the-distortion-field",
+                    title: "Module 3 - The Distortion Field",
+                    description: "Module 3 - The Distortion Field",
+                    duration: "63 min",
+                    opening:
+                        "",
+                    videoUrl:
+                        "https://player.vimeo.com/video/1230011199?h=ed101d846b",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Catalyst/the_catalyst_-_module_3.mp3",
+                    pdfUrl: "",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "module-4-the-reorganization",
+                    slug: "module-4-the-reorganization",
+                    title: "Module 4 - The Reorganization",
+                    description: "Module 4 - The Reorganization",
+                    duration: "65 min",
+                    opening:
+                        "",
+                    videoUrl:
+                        "https://player.vimeo.com/video/1231051721?h=de777a2364",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Catalyst/the_catalyst_-_module_4.mp3",
+                    pdfUrl: "",
+                },
+            },
+            {
+                type: "lesson",
+                lesson: {
+                    id: "module-5-the-lived-timeline",
+                    slug: "module-5-the-lived-timeline",
+                    title: "Module 5 - The Lived Timeline",
+                    description: "Module 5 - The Lived Timeline",
+                    duration: "63 min",
+                    opening:
+                        "",
+                    videoUrl:
+                        "https://player.vimeo.com/video/1231447711?h=7787d993b2",
+                    audioUrl:
+                        "https://eukfckzwqkybebeyxwvs.supabase.co/storage/v1/object/public/audio/The%20Catalyst/the_catalyst_-_module_5.mp3",
+                    pdfUrl: "",
+                },
+            },
+            {
+                type: "section",
+                section: {
+                    id: "catalyst-bonus-content",
+                    title: "Bonus Content",
+                    lessons: [
+                        {
+                            id: "ai-companion",
+                            slug: "ai-companion",
+                            title: "The Catalyst - AI Companion",
+                            description:
+                                "The Catalyst - AI Companion",
+                            
+                            pdfUrl: "https://docs.google.com/document/d/1eFwOnTwdS747KGVZjei5VGdszBWgDDWZ/edit?usp=sharing&ouid=102072564033965633784&rtpof=true&sd=true",
+                        },
+                        
+                    ],
+                },
+            },
+        ]
+    },
+
+    {
         id: "the-signal",
         slug: "the-signal",
         title: "The Signal",

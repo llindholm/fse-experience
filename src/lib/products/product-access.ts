@@ -22,6 +22,9 @@ export const PRODUCT_ACCESS = {
     "underrated": [
         "underrated",
     ],
+    "the-catalyst": [
+        "the-catalyst"
+    ]
 } as const;
 
 export type ProductSlug =

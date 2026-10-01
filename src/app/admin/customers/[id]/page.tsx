@@ -55,6 +55,12 @@ const COURSE_OPTIONS: CourseOption[] = [
         title: "The Signal",
         description:
         "A private world for women building wealth, leadership, freedom, and life differently"
+    },
+    {
+        slug: "the-catalyst",
+        title: "The Catalyst",
+        description:
+        "Choose who you want to be. Become her now."
     }
 ];
 
