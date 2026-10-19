@@ -42,7 +42,7 @@ function normalizeEmail(email: string) {
     return email.trim().toLowerCase();
 }
 
-async function findAuthUserByEmail(email: string) {
+export async function findAuthUserByEmail(email: string) {
     const supabase = createAdminClient();
 
     let page = 1;
@@ -160,20 +160,33 @@ export async function createOrInviteCustomer({
         created = true;
     }
 
-    const { error: profileError } = await supabase
-        .from("profiles")
-        .upsert(
-            {
-                id: userId,
+    const profileValues = {
+        id: userId,
+        email: normalizedEmail,
+        first_name: firstName?.trim() || null,
+        last_name: lastName?.trim() || null,
+        ...(created
+            ? {
+                role: "member",
+                initial_setup_pending: true,
+            }
+            : {}),
+    };
+
+    const { error: profileError } = created
+        ? await supabase
+            .from("profiles")
+            .upsert(profileValues, {
+                onConflict: "id",
+            })
+        : await supabase
+            .from("profiles")
+            .update({
                 email: normalizedEmail,
                 first_name: firstName?.trim() || null,
                 last_name: lastName?.trim() || null,
-                role: "member",
-            },
-            {
-                onConflict: "id",
-            }
-        );
+            })
+            .eq("id", userId);
 
     if (profileError) {
         throw new Error(

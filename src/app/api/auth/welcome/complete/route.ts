@@ -159,6 +159,80 @@ export async function POST(request: Request) {
         }
 
         /*
+ * Prevent welcome invitations from resetting
+ * passwords on already activated accounts.
+ */
+        const supabase = createAdminClient();
+
+        const { data: profile, error: profileError } =
+            await supabase
+                .from("profiles")
+                .select("onboarding_completed_at, initial_setup_pending")
+                .eq("id", validation.memberId)
+                .single();
+
+        if (profileError || !profile) {
+            throw new Error(
+                "Unable to verify member onboarding status."
+            );
+        }
+
+        if (
+            profile.onboarding_completed_at ||
+            profile.initial_setup_pending !== true
+        ) {
+            return NextResponse.json(
+                {
+                    ok: false,
+                    code: "already_activated",
+                    error:
+                        "Your account is already set up. Please sign in instead.",
+                },
+                { status: 409 }
+            );
+        }
+
+        /*
+ * Also reject accounts with evidence of prior setup.
+ * This protects against a missing activation timestamp.
+ */
+        const { data: authUser, error: authUserError } =
+            await supabase.auth.admin.getUserById(
+                validation.memberId
+            );
+
+        if (authUserError || !authUser.user) {
+            throw new Error(
+                "Unable to verify member authentication status."
+            );
+        }
+
+        const { data: usedWelcomeToken, error: usedTokenError } =
+            await supabase
+                .from("member_welcome_tokens")
+                .select("id")
+                .eq("member_id", validation.memberId)
+                .not("used_at", "is", null)
+                .limit(1)
+                .maybeSingle();
+
+        if (usedTokenError) {
+            throw usedTokenError;
+        }
+
+        if (authUser.user.last_sign_in_at || usedWelcomeToken) {
+            return NextResponse.json(
+                {
+                    ok: false,
+                    code: "already_activated",
+                    error:
+                        "Your account is already set up. Please sign in instead.",
+                },
+                { status: 409 }
+            );
+        }
+
+        /*
          * Claim the token before changing the password.
          *
          * This conditional operation prevents two simultaneous
@@ -181,7 +255,6 @@ export async function POST(request: Request) {
             );
         }
 
-        const supabase = createAdminClient();
 
         const {
             data: userData,
@@ -230,6 +303,33 @@ export async function POST(request: Request) {
             );
         }
 
+        /*
+ * Atomically close initial-setup eligibility
+ * before creating the password.
+ */
+        const { data: setupClaimed, error: setupClaimError } =
+            await supabase.rpc("claim_initial_setup", {
+                p_member_id: validation.memberId,
+            });
+
+        if (setupClaimError) {
+            throw new Error(
+                `Unable to claim initial setup: ${setupClaimError.message}`
+            );
+        }
+
+        if (!setupClaimed) {
+            return NextResponse.json(
+                {
+                    ok: false,
+                    code: "already_activated",
+                    error:
+                        "This account is no longer eligible for initial setup. Please contact support if you haven't created your password.",
+                },
+                { status: 409 }
+            );
+        }
+
         const { error: passwordUpdateError } =
             await supabase.auth.admin.updateUserById(
                 validation.memberId,
@@ -240,36 +340,50 @@ export async function POST(request: Request) {
             );
 
         if (passwordUpdateError) {
-            /*
-             * Password creation failed, so allow the member to
-             * submit this invitation again.
-             */
-            const { error: restoreError } =
-                await supabase
-                    .from(
-                        "member_welcome_tokens"
-                    )
-                    .update({
-                        used_at: null,
-                    })
-                    .eq(
-                        "id",
-                        validation.tokenId
-                    )
-                    .is(
-                        "superseded_at",
-                        null
-                    );
+            console.error(
+                "CRITICAL: Initial setup claimed but password creation failed",
+                {
+                    memberId: validation.memberId,
+                    tokenId: validation.tokenId,
+                    error: passwordUpdateError,
+                }
+            );
 
-            if (restoreError) {
-                console.error(
-                    "Unable to restore welcome token",
-                    restoreError
-                );
-            }
+            return NextResponse.json(
+                {
+                    ok: false,
+                    code: "setup_recovery_required",
+                    error:
+                        "We couldn't finish setting up your account. Please contact support so we can safely restore your invitation.",
+                },
+                { status: 500 }
+            );
+        }
 
-            throw new Error(
-                `Unable to create member password: ${passwordUpdateError.message}`
+        /*
+         * Record successful account activation.
+         */
+        const { data: activatedProfile, error: activationError } =
+            await supabase
+                .from("profiles")
+                .update({
+                    onboarding_completed_at:
+                        new Date().toISOString(),
+                })
+                .eq("id", validation.memberId)
+                .is("onboarding_completed_at", null)
+                .select("id")
+                .maybeSingle();
+
+        if (activationError || !activatedProfile) {
+            console.error(
+                "CRITICAL: Password created but onboarding status not recorded",
+                {
+                    memberId: validation.memberId,
+                    tokenId: validation.tokenId,
+                    error: activationError,
+                    noRowsUpdated: !activatedProfile,
+                }
             );
         }
 

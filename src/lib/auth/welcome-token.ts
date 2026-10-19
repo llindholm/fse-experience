@@ -5,7 +5,7 @@ import { createHash, randomBytes } from "node:crypto";
 import { createAdminClient } from "@/lib/supabase/admin";
 
 const WELCOME_TOKEN_BYTES = 32;
-const WELCOME_TOKEN_EXPIRY_HOURS = 72;
+const WELCOME_TOKEN_EXPIRY_HOURS = 2160;
 
 const WELCOME_TOKEN_TABLE = "member_welcome_tokens";
 
@@ -105,6 +105,29 @@ export async function createWelcomeToken(
     }
 
     const supabase = createAdminClient();
+
+    const { data: profile, error: profileError } =
+        await supabase
+            .from("profiles")
+            .select("role, initial_setup_pending, onboarding_completed_at")
+            .eq("id", memberId)
+            .single();
+
+    if (profileError || !profile) {
+        throw new Error(
+            "Unable to verify member eligibility for a welcome invitation."
+        );
+    }
+
+    if (
+        profile.role !== "member" ||
+        profile.initial_setup_pending !== true ||
+        profile.onboarding_completed_at
+    ) {
+        throw new Error(
+            "This member is not eligible for an initial setup invitation."
+        );
+    }
 
     await supersedeOutstandingWelcomeTokens(memberId);
 

@@ -246,3 +246,98 @@ export async function updateKeapWelcomeUrl({
         );
     }
 }
+
+type KeapContact = {
+    id: number;
+    email_addresses?: {
+        email: string;
+    }[];
+};
+
+type KeapContactSearchResponse = {
+    contacts?: KeapContact[];
+};
+
+export async function findKeapContactByEmail(
+    email: string
+): Promise<number | null> {
+    const normalizedEmail =
+        email.trim().toLowerCase();
+
+    if (!normalizedEmail) {
+        return null;
+    }
+
+    const params = new URLSearchParams({
+        email: normalizedEmail,
+        limit: "100",
+    });
+
+    const response = await keapFetch(
+        `/contacts?${params.toString()}`,
+        { method: "GET" }
+    );
+
+    if (!response.ok) {
+        throw new Error(
+            `Unable to search Keap contacts: ${await readKeapError(response)
+            }`
+        );
+    }
+
+    const data =
+        (await response.json()) as
+        KeapContactSearchResponse;
+
+    
+
+    const matches = (data.contacts ?? []).filter(
+        (contact) =>
+            contact.email_addresses?.some(
+                (address) =>
+                    address.email?.trim().toLowerCase() ===
+                    normalizedEmail
+            )
+    );
+
+    // Never guess which contact to update.
+    if (matches.length > 1) {
+        throw new Error(
+            "Multiple Keap contacts match this email."
+        );
+    }
+
+    return matches[0]?.id ?? null;
+}
+
+export async function triggerKeapInvitationRenewal(
+    contactId: number
+): Promise<void> {
+    if (
+        !Number.isInteger(contactId) ||
+        contactId <= 0
+    ) {
+        throw new Error(
+            "A valid Keap contact ID is required."
+        );
+    }
+
+    const renewalTagId = 6176;
+
+    const response = await keapFetch(
+        `/contacts/${contactId}/tags`,
+        {
+            method: "POST",
+            body: JSON.stringify({
+                tagIds: [renewalTagId],
+            }),
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error(
+            `Unable to trigger Keap invitation renewal: ${await readKeapError(response)
+            }`
+        );
+    }
+}
