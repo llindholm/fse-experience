@@ -213,15 +213,52 @@ export async function createOrInviteCustomer({
     let welcomeUrl: string | null = null;
     let welcomeExpiresAt: string | null = null;
 
-    if (generateWelcomeLink && created) {
-        const welcomeToken =
-            await createWelcomeToken(userId);
+    if (generateWelcomeLink) {
+        const { data: welcomeProfile, error: welcomeProfileError } =
+            await supabase
+                .from("profiles")
+                .select("role, initial_setup_pending, onboarding_completed_at")
+                .eq("id", userId)
+                .single();
 
-        welcomeUrl =
-            buildWelcomeUrl(welcomeToken.token);
+        if (welcomeProfileError || !welcomeProfile) {
+            throw new Error(
+                `Unable to check welcome eligibility: ${welcomeProfileError?.message ?? "Profile not found"}`
+            );
+        }
 
-        welcomeExpiresAt =
-            welcomeToken.expiresAt;
+        if (
+            welcomeProfile.role === "member" &&
+            welcomeProfile.initial_setup_pending === true &&
+            !welcomeProfile.onboarding_completed_at &&
+            !existingUser?.last_sign_in_at
+        ) {
+            const { data: usedWelcomeToken, error: usedWelcomeTokenError } =
+                await supabase
+                    .from("member_welcome_tokens")
+                    .select("id")
+                    .eq("member_id", userId)
+                    .not("used_at", "is", null)
+                    .limit(1)
+                    .maybeSingle();
+
+            if (usedWelcomeTokenError) {
+                throw new Error(
+                    `Unable to check previous welcome tokens: ${usedWelcomeTokenError.message}`
+                );
+            }
+
+            if (!usedWelcomeToken) {
+                const welcomeToken =
+                    await createWelcomeToken(userId);
+
+                welcomeUrl =
+                    buildWelcomeUrl(welcomeToken.token);
+
+                welcomeExpiresAt =
+                    welcomeToken.expiresAt;
+            }
+        }
     }
 
     return {

@@ -129,6 +129,27 @@ export async function createWelcomeToken(
         );
     }
 
+    const { data: usedInvitation, error: usedInvitationError } =
+        await supabase
+            .from(WELCOME_TOKEN_TABLE)
+            .select("id")
+            .eq("member_id", memberId)
+            .not("used_at", "is", null)
+            .limit(1)
+            .maybeSingle();
+
+    if (usedInvitationError) {
+        throw new Error(
+            `Unable to check previous welcome invitations: ${usedInvitationError.message}`
+        );
+    }
+
+    if (usedInvitation) {
+        throw new Error(
+            "This member has previously used a welcome invitation."
+        );
+    }
+
     await supersedeOutstandingWelcomeTokens(memberId);
 
     const token = generateRawWelcomeToken();
