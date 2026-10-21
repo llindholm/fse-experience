@@ -45,8 +45,44 @@ export default function ResetPasswordForm() {
                         window.location.search
                     );
 
+                const tokenHash =
+                    searchParams.get("token_hash");
+
+                const recoveryType =
+                    searchParams.get("type");
+
                 const code =
                     searchParams.get("code");
+
+                if (
+                    tokenHash &&
+                    recoveryType === "recovery"
+                ) {
+                    const { error: verifyError } =
+                        await supabase.auth.verifyOtp({
+                            token_hash: tokenHash,
+                            type: "recovery",
+                        });
+
+                    if (verifyError) {
+                        console.error(
+                            "Unable to verify password recovery token:",
+                            verifyError
+                        );
+
+                        if (isMounted) {
+                            setStatus("invalid");
+                        }
+
+                        return;
+                    }
+
+                    window.history.replaceState(
+                        {},
+                        "",
+                        window.location.pathname
+                    );
+                }
 
                 /*
                  * Supabase redirects back with a temporary
