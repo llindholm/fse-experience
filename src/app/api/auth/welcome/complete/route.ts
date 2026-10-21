@@ -273,6 +273,32 @@ export async function POST(request: Request) {
             );
         }
 
+        const {
+            data: updatedProfile,
+            error: profileUpdateError,
+        } =
+            await supabase
+                .from("profiles")
+                .update({
+                    initial_setup_pending: false,
+                    onboarding_completed_at:
+                        new Date().toISOString(),
+                })
+                .eq("id", validation.memberId)
+                .select("id")
+                .maybeSingle();
+
+        if (profileUpdateError || !updatedProfile) {
+            console.error(
+                "Unable to update member onboarding status",
+                profileUpdateError
+            );
+
+            throw new Error(
+                "Unable to finalize member onboarding."
+            );
+        }
+
         return NextResponse.json(
             {
                 ok: true,

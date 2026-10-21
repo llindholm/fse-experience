@@ -186,17 +186,14 @@ export async function POST(request: Request) {
                 generateWelcomeLink: true,
             });
 
-        const libraryUrl =
-            process.env.NEXT_PUBLIC_LIBRARY_URL ??
-            "https://library.tolivingfree.com";
+        const destinationUrl = customer.welcomeUrl;
 
-        const destinationUrl =
-            customer.welcomeUrl ?? libraryUrl;
-
-        await updateKeapWelcomeUrl({
-            contactId,
-            welcomeUrl: destinationUrl,
-        });
+        if (destinationUrl) {
+            await updateKeapWelcomeUrl({
+                contactId,
+                welcomeUrl: destinationUrl,
+            });
+        }
 
         console.info("Keap purchase processed", {
             userId: customer.userId,
@@ -205,7 +202,7 @@ export async function POST(request: Request) {
             created: customer.created,
             coursesGranted: courseSlugs.length,
             welcomeLinkCreated: Boolean(customer.welcomeUrl),
-            welcomeLinkWrittenToKeap: true,
+            welcomeLinkWrittenToKeap: Boolean(destinationUrl),
         });
 
         return NextResponse.json({

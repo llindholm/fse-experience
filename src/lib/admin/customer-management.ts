@@ -42,7 +42,7 @@ function normalizeEmail(email: string) {
     return email.trim().toLowerCase();
 }
 
-async function findAuthUserByEmail(email: string) {
+export async function findAuthUserByEmail(email: string) {
     const supabase = createAdminClient();
 
     let page = 1;
@@ -160,20 +160,33 @@ export async function createOrInviteCustomer({
         created = true;
     }
 
-    const { error: profileError } = await supabase
-        .from("profiles")
-        .upsert(
-            {
-                id: userId,
+    const profileValues = {
+        id: userId,
+        email: normalizedEmail,
+        first_name: firstName?.trim() || null,
+        last_name: lastName?.trim() || null,
+        ...(created
+            ? {
+                role: "member",
+                initial_setup_pending: true,
+            }
+            : {}),
+    };
+
+    const { error: profileError } = created
+        ? await supabase
+            .from("profiles")
+            .upsert(profileValues, {
+                onConflict: "id",
+            })
+        : await supabase
+            .from("profiles")
+            .update({
                 email: normalizedEmail,
                 first_name: firstName?.trim() || null,
                 last_name: lastName?.trim() || null,
-                role: "member",
-            },
-            {
-                onConflict: "id",
-            }
-        );
+            })
+            .eq("id", userId);
 
     if (profileError) {
         throw new Error(
@@ -200,15 +213,52 @@ export async function createOrInviteCustomer({
     let welcomeUrl: string | null = null;
     let welcomeExpiresAt: string | null = null;
 
-    if (generateWelcomeLink && created) {
-        const welcomeToken =
-            await createWelcomeToken(userId);
+    if (generateWelcomeLink) {
+        const { data: welcomeProfile, error: welcomeProfileError } =
+            await supabase
+                .from("profiles")
+                .select("role, initial_setup_pending, onboarding_completed_at")
+                .eq("id", userId)
+                .single();
 
-        welcomeUrl =
-            buildWelcomeUrl(welcomeToken.token);
+        if (welcomeProfileError || !welcomeProfile) {
+            throw new Error(
+                `Unable to check welcome eligibility: ${welcomeProfileError?.message ?? "Profile not found"}`
+            );
+        }
 
-        welcomeExpiresAt =
-            welcomeToken.expiresAt;
+        if (
+            welcomeProfile.role === "member" &&
+            welcomeProfile.initial_setup_pending === true &&
+            !welcomeProfile.onboarding_completed_at &&
+            !existingUser?.last_sign_in_at
+        ) {
+            const { data: usedWelcomeToken, error: usedWelcomeTokenError } =
+                await supabase
+                    .from("member_welcome_tokens")
+                    .select("id")
+                    .eq("member_id", userId)
+                    .not("used_at", "is", null)
+                    .limit(1)
+                    .maybeSingle();
+
+            if (usedWelcomeTokenError) {
+                throw new Error(
+                    `Unable to check previous welcome tokens: ${usedWelcomeTokenError.message}`
+                );
+            }
+
+            if (!usedWelcomeToken) {
+                const welcomeToken =
+                    await createWelcomeToken(userId);
+
+                welcomeUrl =
+                    buildWelcomeUrl(welcomeToken.token);
+
+                welcomeExpiresAt =
+                    welcomeToken.expiresAt;
+            }
+        }
     }
 
     return {
