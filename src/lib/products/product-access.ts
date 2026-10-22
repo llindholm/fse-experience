@@ -1,6 +1,15 @@
 import "server-only";
 
 export const PRODUCT_ACCESS = {
+
+    "complete-library": [
+    "million-dollar-authority",
+    "effortless-sales-system",
+    "signature-close",
+    "underrated",
+    "the-catalyst",
+],
+
     "feminine-sales-engine": [
         "million-dollar-authority",
         "effortless-sales-system",

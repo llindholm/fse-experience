@@ -12,6 +12,7 @@ type KeapPurchasePayload = {
     firstName?: unknown;
     lastName?: unknown;
     product?: unknown;
+    products?: unknown;
 };
 
 function readString(
@@ -120,9 +121,11 @@ export async function POST(request: Request) {
         const lastName = readString(
             payload.lastName
         );
-        const product = readString(
-            payload.product
-        );
+        const product = readString(payload.product);
+
+        const products = Array.isArray(payload.products)
+            ? payload.products.map(readString)
+            : undefined;
 
         if (!contactId) {
             return NextResponse.json(
@@ -149,11 +152,14 @@ export async function POST(request: Request) {
             );
         }
 
-        if (!product) {
+        if (
+            !product &&
+            (!products || products.length === 0)
+        ) {
             return NextResponse.json(
                 {
                     ok: false,
-                    error: "Product is required.",
+                    error: "Product or products are required.",
                 },
                 {
                     status: 400,
@@ -161,20 +167,38 @@ export async function POST(request: Request) {
             );
         }
 
-        const courseSlugs =
-            getProductCourseSlugs(product);
+        const requestedProducts = products ?? (product ? [product] : []);
 
-        if (!courseSlugs) {
-            return NextResponse.json(
-                {
-                    ok: false,
-                    error: `Unknown product: ${product}`,
-                },
-                {
-                    status: 400,
-                }
-            );
+        const allCourseSlugs: string[] = [];
+
+        for (const requestedProduct of requestedProducts) {
+            if (!requestedProduct) {
+                return NextResponse.json(
+                    {
+                        ok: false,
+                        error: "Invalid product identifier.",
+                    },
+                    { status: 400 }
+                );
+            }
+
+            const resolvedSlugs =
+                getProductCourseSlugs(requestedProduct);
+
+            if (!resolvedSlugs) {
+                return NextResponse.json(
+                    {
+                        ok: false,
+                        error: `Unknown product: ${requestedProduct}`,
+                    },
+                    { status: 400 }
+                );
+            }
+
+            allCourseSlugs.push(...resolvedSlugs);
         }
+
+        const courseSlugs = [...new Set(allCourseSlugs)];
 
         const customer =
             await createOrInviteCustomer({
@@ -198,7 +222,7 @@ export async function POST(request: Request) {
         console.info("Keap purchase processed", {
             userId: customer.userId,
             contactId,
-            product,
+            products: requestedProducts,
             created: customer.created,
             coursesGranted: courseSlugs.length,
             welcomeLinkCreated: Boolean(customer.welcomeUrl),
@@ -213,7 +237,7 @@ export async function POST(request: Request) {
                 created: customer.created,
                 invited: customer.invited,
             },
-            product,
+            products: requestedProducts,
             courseSlugs,
             welcomeUrl: destinationUrl,
             welcomeExpiresAt:
