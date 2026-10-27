@@ -210,14 +210,14 @@ export async function POST(request: Request) {
                 generateWelcomeLink: true,
             });
 
-        const destinationUrl = customer.welcomeUrl;
+        const destinationUrl =
+            customer.welcomeUrl ??
+            "https://library.tolivingfree.com";
 
-        if (destinationUrl) {
-            await updateKeapWelcomeUrl({
-                contactId,
-                welcomeUrl: destinationUrl,
-            });
-        }
+        await updateKeapWelcomeUrl({
+            contactId,
+            welcomeUrl: destinationUrl,
+        });
 
         console.info("Keap purchase processed", {
             userId: customer.userId,
