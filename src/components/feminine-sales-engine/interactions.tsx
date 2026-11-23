@@ -7,5 +7,5 @@ export function EnrollmentButton({children}: {children: ReactNode}) {
 }
 
 export function SalesFooter() {
-  return <footer className="footer"><strong>To Living Free</strong><br/><em>Jessica Caver Lindholm</em><nav aria-label="Legal"><a href={fse.links.terms}>Terms and conditions</a><span aria-hidden="true"> · </span><a href={fse.links.privacy}>Privacy policy</a></nav></footer>;
+  return <footer className="footer"><strong>To Living Free</strong><br/><em>Jessica Caver Lindholm</em><nav aria-label="Legal"><a href={fse.links.terms} target="_blank" rel="noopener" aria-label="Terms and conditions (opens in a new tab)">Terms and conditions</a><span aria-hidden="true"> · </span><a href={fse.links.privacy} target="_blank" rel="noopener" aria-label="Privacy policy (opens in a new tab)">Privacy policy</a></nav></footer>;
 }
