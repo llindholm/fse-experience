@@ -75,3 +75,24 @@
 /* Preserve the original button appearance on semantic navigation links. */
 .page :global(a.cta){text-align:center;text-decoration:none}
 .page :global(.footer a){display:inline-block}
+
+/* Desktop refinement only: preserve every existing rule below 64rem. */
+@media (min-width:64rem){
+ .page{font-size:1.25rem;line-height:1.5}
+ .page :global(.band){padding-block:3.75rem}
+ .page :global(.measure){max-width:46rem}
+ .page :global(.hero-grid){max-width:70rem;grid-template-columns:1.1fr 1fr;gap:4rem}
+ .page :global(.hero-photo){height:clamp(26rem,36vw,32rem);aspect-ratio:auto;object-position:center 50%}
+ .page :global(.hero h1){font-size:clamp(4.5rem,6.1vw,5.5rem)}
+ .page :global(.intro){margin-top:2.5rem}
+ .page :global(.story-photo){float:right;width:44%;max-width:20rem;aspect-ratio:4/5;margin:.4rem 0 1.5rem 2rem}
+ .page :global(.band:has(.story-photo) .measure::after){content:"";display:block;clear:both}
+ .page :global(.welcome){display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;padding:3.75rem max(3rem,calc((100vw - 70rem)/2))}
+ .page :global(.welcome .measure){padding:0;max-width:none;margin:0}
+ .page :global(.welcome .meadow){height:30rem}
+ .page :global(.band:has(.testimonials-heading) .measure){max-width:62rem;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+ .page :global(.testimonials-heading),.page :global(.band:has(.testimonials-heading) .measure>p){grid-column:1/-1}
+ .page :global(.band:has(.testimonials-heading) .quote){margin:0}
+ .page :global(.band:has(.testimonials-heading) .quote:last-of-type){grid-column:1/-1}
+ .page :global(.band .cta){max-width:30rem}
+}
